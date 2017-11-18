@@ -1,0 +1,44 @@
+General Game Description:
+-layer of bricks at top
+-a ball travels across the screen, bouncing off sides and bricks
+-when a brick is hit, it's destroyed and bounces ball
+-player controls paddle at bottom to keep ball bouncing
+-ball falls below paddle/touches bottom of screen, lose life
+
+MODIFICIATIONS FOR THIS PROJECT:
+-objective is to get to next level quickly (not destroy all bricks)
+-to complete level, ball must touch top of screen after breaking bricks in the way
+-score calculated off time taken and bricks remaining
+
+Time Worked Log:
+Logan 11/18 11:30am-11:50am 
+
+Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
+Task
+1. Display brick layer on screen top w/ each brick as an object
+	Date done:
+	Prim. Person in Charge:
+2. Player paddle at bottom of screen
+	Date done:
+	Prim. Person in Charge:
+3. Ball placed randomly between bricks & paddle w/ random initial direction
+	Date done:
+	Prim. Person in Charge:
+4. Detection of ball hitting sides & appropriate change in direction
+	Date done:
+	Prim. Person in Charge:
+5. Detection of ball hitting ceiling & indic. of level completed
+	Date done:
+	Prim. Person in Charge:
+6. Detection of ball hitting floor & indication of level failed
+	Date done:
+	Prim. Person in Charge:
+7. Player ability to control paddle via keyboard or mouse interface
+	Date done:
+	Prim. Person in Charge:
+8. Change in angle of reflection of ball depending on where it hits player paddle
+	Date done:
+	Prim. Person in Charge:
+9. Destruction of a brick when hit by ball
+	Date done:
+	Prim. Person in Charge:
