@@ -12,6 +12,7 @@ MODIFICIATIONS FOR THIS PROJECT:
 
 Time Worked Log:
 Logan 11/18 11:30am-11:50am 
+Team meeting 11/19 3:45pm-4:10pm
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
