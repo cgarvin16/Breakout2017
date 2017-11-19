@@ -13,6 +13,7 @@ MODIFICIATIONS FOR THIS PROJECT:
 Time Worked Log:
 Logan 11/18 11:30am-11:50am 
 Team meeting 11/19 3:45pm-4:10pm
+Logan 11/19 4:30-
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
@@ -43,3 +44,8 @@ Task
 9. Destruction of a brick when hit by ball
 	Date done:
 	Prim. Person in Charge:
+
+
+	Resources: 
+	orig. ball file: https://pngtree.com/freepng/glass-ball_52804.html
+	resized and edited by Logan: C:/python/ballResizedColored
