@@ -18,8 +18,8 @@ py.display.set_caption("Breakout")
 #updates the display
 py.display.flip()
 
-#creates a Ball object
-ball = py.image.load("C:/python/ballResizeColored.jpg")
+#creates ball image; having problems doing inside a class
+ball = py.image.load("C:/python/ballNoBackground.png")
 ballRect = ball.get_rect()
 ballRect.x = 400
 ballRect.y = 300
@@ -32,6 +32,7 @@ while 1:
             sys.exit()
         #add other reactions to user here as elif
     
+    #adds ball 
     gameDisplay.blit(ball, (ballRect.x, ballRect.y))
     py.display.flip()
 #exits python

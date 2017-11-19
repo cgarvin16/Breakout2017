@@ -13,7 +13,7 @@ MODIFICIATIONS FOR THIS PROJECT:
 Time Worked Log:
 Logan 11/18 11:30am-11:50am 
 Team meeting 11/19 3:45pm-4:10pm
-Logan 11/19 4:30-
+Logan 11/19 4:30pm-6:30pm
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
@@ -48,4 +48,4 @@ Task
 
 	Resources: 
 	orig. ball file: https://pngtree.com/freepng/glass-ball_52804.html
-	resized and edited by Logan: C:/python/ballResizedColored
+	resized and edited by Logan: C:/python/ballNoBackground.png
