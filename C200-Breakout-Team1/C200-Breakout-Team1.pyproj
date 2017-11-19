@@ -28,6 +28,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="C200_Breakout_Team1.py" />
+    <Compile Include="gameDisplay.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="gameIdeas.py" />
     <Compile Include="Paddle.py">
       <SubType>Code</SubType>
