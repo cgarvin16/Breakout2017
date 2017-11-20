@@ -10,12 +10,12 @@ class Wall:
 
     def buildWall(self, gameDisplay):
         locCounterY = 2
-        for i in range(0, 3):
+        for i in range(0, 4):
             locCounterX = 2
             for i in range(0,7):
                 brick = Brick()
                 brick.makeBrick(locCounterX, locCounterY, gameDisplay)
-                locCounterX += 103
-            locCounterY += 32
+                locCounterX += 114
+            locCounterY += 35
             
 

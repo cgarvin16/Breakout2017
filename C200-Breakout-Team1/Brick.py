@@ -13,21 +13,12 @@ class Brick:
         pass
 
     def makeBrick(self, locCounterX, locCounterY, gameDisplay):
-        py.draw.rect(gameDisplay, (255, 0, 0), [locCounterX, locCounterY , 100, 30])
+        py.draw.rect(gameDisplay, red, [locCounterX, locCounterY , 110, 30])
+        py.draw.rect(gameDisplay, blue, [locCounterX, locCounterY , 110, 30])
+        py.draw.rect(gameDisplay, green, [locCounterX, locCounterY , 110, 30])
+        py.draw.rect(gameDisplay, white, [locCounterX, locCounterY , 110, 30])
   
 #drawing the bricks and coordinates
-    '''
-    def drawBricks(self, gameDisplay):
-        py.draw.rect(gameDisplay, red, [0,0,100,30])
-        py.draw.rect(gameDisplay, red, [100,0,100,30])
-        py.draw.rect(gameDisplay, red, [200,0,100,30])
-        py.draw.rect(gameDisplay, red, [300,0,100,30])
-        py.draw.rect(gameDisplay, red, [400,0,100,30])
-        py.draw.rect(gameDisplay, red, [500,0,100,30])
-        py.draw.rect(gameDisplay, red, [600,0,100,30])
-        py.draw.rect(gameDisplay, green, [0,100,100,30])
-    '''
-
     
 
  
