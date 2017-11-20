@@ -30,6 +30,9 @@ ballRect.y = r.randrange(100, 600) #change ranges once paddles and bricks are se
 #variable to change ball direction; begins in random direction
 ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 
+#creates wall
+wall = Wall()
+
 #code for the game
 while 1:
 
@@ -58,6 +61,9 @@ while 1:
 
     #paints over last screen
     gameDisplay.fill((0,0,0))
+
+    #builds wall of bricks
+    wall.buildWall(gameDisplay)
 
     #moves ball [so far in only one direction]
     ballRect = ballRect.move(ballDirection)
