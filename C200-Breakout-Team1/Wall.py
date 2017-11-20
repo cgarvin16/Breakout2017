@@ -17,5 +17,6 @@ class Wall:
                 brick.makeBrick(locCounterX, locCounterY, gameDisplay)
                 locCounterX += 114
             locCounterY += 35
+
             
 
