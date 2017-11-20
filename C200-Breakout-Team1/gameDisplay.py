@@ -32,7 +32,11 @@ ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 
 #creates wall
 wall = Wall()
-
+paddle = Paddle()
+paddleRect = paddle.image.get_rect()
+paddleRect.x = 300
+paddleRect.y = 620
+py.key.set_repeat(10, 10)
 #code for the game
 while 1:
 
@@ -42,6 +46,10 @@ while 1:
         #exits game if you press close window
         if event.type == py.QUIT:
             sys.exit()
+        elif py.key.get_pressed()[py.K_LEFT]:
+            paddleRect.x -= 10
+        elif py.key.get_pressed()[py.K_RIGHT]:
+            paddleRect.x += 10
         #add other reactions to user here as elif
 
     #check if ball is below paddle 
@@ -56,6 +64,10 @@ while 1:
     if ballRect.left == 0 or ballRect.right == 800:
         ballDirection[0] = -ballDirection[0]
         
+    #ball reacting to paddle
+    if ballRect.colliderect(paddleRect):
+        ballDirection[0] = -ballDirection[0]
+        ballDirection[1] = -ballDirection[1]
     #slows down game; larger number, slower it goes
     py.time.delay(5)
 
@@ -70,6 +82,7 @@ while 1:
 
     #adds ball to screen 
     gameDisplay.blit(ball, ballRect)
+    gameDisplay.blit(paddle.image, paddleRect)
 
     #renders screen
     py.display.flip()

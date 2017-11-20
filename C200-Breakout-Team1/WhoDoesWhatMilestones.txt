@@ -21,7 +21,7 @@ Charles 11/20 11:50 am -12:05 pm
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
 1. Display brick layer on screen top w/ each brick as an object
-	Date done:
+	Date done: 11/20
 	Prim. Person in Charge: Tiffany
 2. Player paddle at bottom of screen
 	Date done:
@@ -30,8 +30,8 @@ Task
 	Date done: 
 	Prim. Person in Charge: Logan
 4. Detection of ball hitting sides & appropriate change in direction
-	Date done: 
-	Prim. Person in Charge: 
+	Date done: 11/20
+	Prim. Person in Charge: Logan
 5. Detection of ball hitting ceiling & indic. of level completed
 	Date done:
 	Prim. Person in Charge:
