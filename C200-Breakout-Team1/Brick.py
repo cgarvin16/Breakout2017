@@ -18,7 +18,7 @@ class Brick:
         py.draw.rect(gameDisplay, green, [locCounterX, locCounterY , 110, 30])
         py.draw.rect(gameDisplay, white, [locCounterX, locCounterY , 110, 30])
   
-#drawing the bricks and coordinates
+#trying to figure out how to make each line of bricks change
     
 
  
