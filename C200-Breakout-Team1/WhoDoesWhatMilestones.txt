@@ -13,7 +13,8 @@ MODIFICIATIONS FOR THIS PROJECT:
 Time Worked Log:
 Logan 11/18 11:30am-11:50am 
 Team meeting 11/19 3:45pm-4:10pm
-Logan 11/19 4:30pm-6:30pm, 7:40pm-8:10pm
+Logan 11/19 4:30pm-6:30pm, 7:40pm-8:10pm, 10:45pm-11:20pm
+
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
@@ -24,11 +25,11 @@ Task
 	Date done:
 	Prim. Person in Charge: Charles
 3. Ball placed randomly between bricks & paddle w/ random initial direction
-	Date done:
+	Date done: 
 	Prim. Person in Charge: Logan
 4. Detection of ball hitting sides & appropriate change in direction
-	Date done:
-	Prim. Person in Charge:
+	Date done: 
+	Prim. Person in Charge: 
 5. Detection of ball hitting ceiling & indic. of level completed
 	Date done:
 	Prim. Person in Charge:
@@ -46,6 +47,10 @@ Task
 	Prim. Person in Charge:
 
 
-	Resources: 
-	orig. ball file: https://pngtree.com/freepng/glass-ball_52804.html
-	resized and edited by Logan: C:/python/ballNoBackground.png
+Resources: 
+	orig. ball file: https://pngtree.com/freepng/glass-ball_52804.html 
+		resized and edited by Logan with paint 3D and https://www141.lunapic.com/editor/?action=transparent: ballNoBackground.png
+
+Problem log:
+	issues creating a ball with a clear background; attempted cropping with various programs; ended up finding an online tool called lunapic where you can make part of an image transparent https://www141.lunapic.com/editor/?action=transparent -LF
+	issues creating a ball object to use in file; bypassed for now by putting the ball's info in the main gameDisplay to focus on functionality aspects -LF

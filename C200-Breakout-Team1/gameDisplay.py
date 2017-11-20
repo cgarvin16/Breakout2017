@@ -6,7 +6,7 @@ from Brick import Brick
 from Paddle import Paddle 
 import pygame as py
 import sys
-import random
+import random as r 
 #beginning of the required pygame skeleton
 py.init()
 
@@ -20,15 +20,16 @@ py.display.set_caption("Breakout")
 py.display.flip()
 
 #creates ball image; having problems doing inside a class
-ball = py.image.load("C:/python/ballNoBackground.png")
+ball = py.image.load("ballNoBackground.png")
 ballRect = ball.get_rect()
 
 #randomizes initial location with assumed paddle location under 100px and assumed brick location over 600px
-ballRect.x = random.randrange(20, 680)
-ballRect.y = random.randrange(100, 600)
+ballRect.x = r.randrange(20, 680) #change ranges once paddles and bricks are set
+ballRect.y = r.randrange(100, 600) #change ranges once paddles and bricks are set
 
-#variable to change ball direction
-ballDirection = [-1, -1]
+#variable to change ball direction; begins in random direction
+ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
+
 #code for the game
 while 1:
 
@@ -41,25 +42,19 @@ while 1:
         #add other reactions to user here as elif
 
     #check if ball is below paddle 
-    if ballRect.bottom <= 0:
-        pass #do something that means you lost
+    if ballRect.bottom == 0: #change to <= under paddle later
+        ballDirection[1] = -ballDirection[1] #do something that means you lost later; keep this now for testing
 
     #check if ball is at top
-    if ballRect.top >= 100:
-        pass #do something that means you won/move on
+    if ballRect.top == 700: #change to >= top of bricks later
+        ballDirection[1] = -ballDirection[1] #do something that means you won/move on later; keep this now for testing
 
-    #if ball hits walls, send in opposite direction [needs fine tuning for angles, not opposite]
+    #if ball hits walls, send in opposite direction 
     if ballRect.left == 0 or ballRect.right == 800:
         ballDirection[0] = -ballDirection[0]
-        ballDirection[1] = -ballDirection[1]
-
-
-    
         
-    #slows down game
-    py.time.delay(10)
-
-
+    #slows down game; larger number, slower it goes
+    py.time.delay(5)
 
     #paints over last screen
     gameDisplay.fill((0,0,0))
