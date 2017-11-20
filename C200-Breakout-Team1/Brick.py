@@ -13,8 +13,8 @@ class Brick:
     def __init__(self):
         pass
 
-    def makeBrick(self, locCounterX, locCounterY, gameDisplay):
-        py.draw.rect(gameDisplay, red, [locCounterX, locCounterY , 110, 30])
+    def makeBrick(self, locCounterX, locCounterY, gameDisplay, colors):
+        py.draw.rect(gameDisplay, colors[0], [locCounterX, locCounterY , 110, 30])
   
 #trying to figure out how to make each line of bricks change
     

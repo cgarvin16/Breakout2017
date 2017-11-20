@@ -14,9 +14,10 @@ class Wall:
             locCounterX = 2
             for i in range(0,7):
                 brick = Brick()
-                brick.makeBrick(locCounterX, locCounterY, gameDisplay)
+                brick.makeBrick(locCounterX, locCounterY, gameDisplay,colors)
                 locCounterX += 114
             locCounterY += 35
+            colors += 1
 
             
 
