@@ -11,11 +11,12 @@ MODIFICIATIONS FOR THIS PROJECT:
 -score calculated off time taken and bricks remaining
 
 Time Worked Log:
+
 Logan 11/18 11:30am-11:50am 
 Team meeting 11/19 3:45pm-4:10pm
 Logan 11/19 4:30pm-6:30pm, 7:40pm-8:10pm, 10:45pm-11:20pm
 Logan & Carolyn 11/19 11:45pm-12:05pm
-
+Charles 11/20 11:50 am -12:05 pm
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
