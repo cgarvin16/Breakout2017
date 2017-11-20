@@ -4,6 +4,13 @@ import pygame as py
 from Brick import Brick
 py.init()
 #beginning of the class used to creat the brick wall object
+
+white = (255,255,255)
+red = (255,0,0)
+green = (0,255,0)
+blue = (0,0,255)
+colors = [white, red, green, blue]
+
 class Wall:
     def __init__(self):
         pass
