@@ -65,9 +65,15 @@ while 1:
         ballDirection[0] = -ballDirection[0]
         
     #ball reacting to paddle
-    if ballRect.colliderect(paddleRect):
+    if ballRect.bottom == paddleRect.midleft or ballRect.bottom == paddleRect.midright:
+        ballDirection[0] = -ballDirection[0]
+    #trying to  change reaction based on paddle position with no luck :/
+    if ballRect.bottom == paddleRect.top:
         ballDirection[0] = -ballDirection[0]
         ballDirection[1] = -ballDirection[1]
+    #if ballRect.colliderect(paddleRect):
+     #   ballDirection[0] = -ballDirection[0]
+      #  ballDirection[1] = -ballDirection[1]
     #slows down game; larger number, slower it goes
     py.time.delay(5)
 

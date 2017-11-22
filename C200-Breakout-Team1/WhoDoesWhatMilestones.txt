@@ -17,6 +17,7 @@ Team meeting 11/19 3:45pm-4:10pm
 Logan 11/19 4:30pm-6:30pm, 7:40pm-8:10pm, 10:45pm-11:20pm
 Logan & Carolyn 11/19 11:45pm-12:05pm
 Charles 11/20 11:50 am -12:05 pm
+Charles & Logan 11/20 2:30pm-3:00pm
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
@@ -24,7 +25,7 @@ Task
 	Date done: 11/20
 	Prim. Person in Charge: Tiffany
 2. Player paddle at bottom of screen
-	Date done:
+	Date done: 11/20
 	Prim. Person in Charge: Charles
 3. Ball placed randomly between bricks & paddle w/ random initial direction
 	Date done: 
@@ -39,8 +40,8 @@ Task
 	Date done:
 	Prim. Person in Charge:
 7. Player ability to control paddle via keyboard or mouse interface
-	Date done:
-	Prim. Person in Charge: 
+	Date done: 11/20
+	Prim. Person in Charge: Charles
 8. Change in angle of reflection of ball depending on where it hits player paddle
 	Date done:
 	Prim. Person in Charge:
