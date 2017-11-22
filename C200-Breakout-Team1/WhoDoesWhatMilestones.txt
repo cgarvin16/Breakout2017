@@ -18,6 +18,8 @@ Logan 11/19 4:30pm-6:30pm, 7:40pm-8:10pm, 10:45pm-11:20pm
 Logan & Carolyn 11/19 11:45pm-12:05pm
 Charles 11/20 11:50 am -12:05 pm
 Charles & Logan 11/20 2:30pm-3:00pm
+Charles 11/20 9:15pm- 9:35pm
+Charles 11/22 12:00am-12:30 pm
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
