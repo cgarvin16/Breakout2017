@@ -68,9 +68,24 @@ while 1:
     if ballRect.bottom == paddleRect.midleft or ballRect.bottom == paddleRect.midright:
         ballDirection[0] = -ballDirection[0]
     #trying to  change reaction based on paddle position with no luck :/
-    if ballRect.bottom == paddleRect.top:
-        ballDirection[0] = -ballDirection[0]
+    if ballRect.bottom >= paddleRect.top and ballRect.bottom <= paddleRect.bottom and ballRect.right >= paddleRect.left and ballRect.left <= paddleRect.right:
         ballDirection[1] = -ballDirection[1]
+        if offset > 0:
+            if offset > 30:
+                ballDirection[0] = 7
+            elif offset > 23:
+                ballDirection = 6
+            elif offset > 17:
+                ballDirection = 5
+        else:
+            if offset < -30:
+                ballDirection = -7
+            elif offset > -23:
+                ballDirection = -6
+            elif offset > -17:
+                ballDirection = -5
+    #I changed a lot of the above couple lines and then added the offset-Charles
+        
     #if ballRect.colliderect(paddleRect):
      #   ballDirection[0] = -ballDirection[0]
       #  ballDirection[1] = -ballDirection[1]
