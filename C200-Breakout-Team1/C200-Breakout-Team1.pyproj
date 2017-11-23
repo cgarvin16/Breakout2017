@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ballNoBackground.png" />
+    <Content Include="editedLevelFailed.png" />
+    <Content Include="editedLevelPassed.png" />
     <Content Include="editedPaddleImage.png" />
     <Content Include="paddleImage.png" />
     <Content Include="WhoDoesWhatMilestones.txt" />
