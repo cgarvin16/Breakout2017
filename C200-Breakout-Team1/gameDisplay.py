@@ -23,20 +23,25 @@ py.display.flip()
 ball = py.image.load("ballNoBackground.png")
 ballRect = ball.get_rect()
 
-#randomizes initial location with assumed paddle location under 100px and assumed brick location over 600px
-ballRect.x = r.randrange(20, 680) #change ranges once paddles and bricks are set
-ballRect.y = r.randrange(100, 600) #change ranges once paddles and bricks are set
+#randomizes initial location between bricks and paddle
+ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen
+ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
 
 #variable to change ball direction; begins in random direction
 ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 
 #creates wall
 wall = Wall()
+
+#creates and places paddle
 paddle = Paddle()
 paddleRect = paddle.image.get_rect()
 paddleRect.x = 300
 paddleRect.y = 620
+
+#allows for held down keys to continue movement
 py.key.set_repeat(10, 10)
+
 #code for the game
 while 1:
 
@@ -53,15 +58,26 @@ while 1:
         #add other reactions to user here as elif
 
     #check if ball is below paddle 
-    if ballRect.bottom == 0: #change to <= under paddle later
+    if ballRect.y > 630: 
         ballDirection[1] = -ballDirection[1] #do something that means you lost later; keep this now for testing
+        failedMessage= py.image.load("editedLevelFailed.png")
+        gameDisplay.blit(failedMessage, (300,400))
+        #moves and pauses ball to prevent if loop from repeating
+        ballRect.x = 300
+        ballRect.y = 400
+        ballDirection[0] = 0
+        ballDirection[1] = 0
+        py.display.flip()
+        #pauses while loop to make image visible
+        py.time.wait(3000)
+        quit()
 
     #check if ball is at top
-    if ballRect.top == 700: #change to >= top of bricks later
+    if ballRect.y < 0: #change to >= top of bricks later
         ballDirection[1] = -ballDirection[1] #do something that means you won/move on later; keep this now for testing
 
     #if ball hits walls, send in opposite direction 
-    if ballRect.left == 0 or ballRect.right == 800:
+    if ballRect.x == 0 or ballRect.x == 800:
         ballDirection[0] = -ballDirection[0]
         
     #how ball reacting to paddle
