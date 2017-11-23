@@ -64,31 +64,20 @@ while 1:
     if ballRect.left == 0 or ballRect.right == 800:
         ballDirection[0] = -ballDirection[0]
         
-    #ball reacting to paddle
-    if ballRect.bottom == paddleRect.midleft or ballRect.bottom == paddleRect.midright:
-        ballDirection[0] = -ballDirection[0]
-    #trying to  change reaction based on paddle position with no luck :/
-    if ballRect.bottom >= paddleRect.top and ballRect.bottom <= paddleRect.bottom and ballRect.right >= paddleRect.left and ballRect.left <= paddleRect.right:
+    #how ball reacting to paddle
+    if ballRect.colliderect(paddleRect):
         ballDirection[1] = -ballDirection[1]
-        if offset > 0:
-            if offset > 30:
-                ballDirection[0] = 7
-            elif offset > 23:
-                ballDirection = 6
-            elif offset > 17:
-                ballDirection = 5
-        else:
-            if offset < -30:
-                ballDirection = -7
-            elif offset > -23:
-                ballDirection = -6
-            elif offset > -17:
-                ballDirection = -5
+        #variable holds the x location of the differences between the centers of the ball and the paddle
+        offset = ballRect.center[0] - paddleRect.center[0]
+        if offset > 0: #right side of paddle, pos x and neg y, sends up to right
+            ballDirection[0] = abs(ballDirection[0])
+            ballDirection[1] = -abs(ballDirection[1])
+        elif offset < 0: #left side of paddle, neg x and neg y, sends up to left
+            ballDirection[0] = -abs(ballDirection[0])
+            ballDirection[1] = -abs(ballDirection[1])
     #I changed a lot of the above couple lines and then added the offset-Charles
-        
-    #if ballRect.colliderect(paddleRect):
-     #   ballDirection[0] = -ballDirection[0]
-      #  ballDirection[1] = -ballDirection[1]
+    #I played around with the code provided by charles and got something working
+       
     #slows down game; larger number, slower it goes
     py.time.delay(5)
 
