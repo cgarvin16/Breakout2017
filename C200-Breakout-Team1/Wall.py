@@ -15,7 +15,7 @@ class Wall:
     def __init__(self):
         pass
 
-    def buildWall(self, gameDisplay):
+    def buildWall(self, gameDisplay, ballRect, ballDirection):
         brickList = []
         locCounterY = 2
         counterColor = 0
@@ -23,8 +23,12 @@ class Wall:
             locCounterX = 2
             for i in range(0,7):
                 brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
-                brickRect = brick.rect
-                brickList.append(brickRect)
+                if brick.isBroken(ballRect, gameDisplay, locCounterX, locCounterY):
+                    ballDirection[0] = -ballDirection[0]
+                    ballDirection[1] = -ballDirection[1]
+                    py.draw.rect(gameDisplay, (000), [locCounterX, locCounterY, 110, 30])
+                    py.display.flip()
+                    py.time.wait(3000)
                 locCounterX += 114
             locCounterY += 35
             counterColor += 1

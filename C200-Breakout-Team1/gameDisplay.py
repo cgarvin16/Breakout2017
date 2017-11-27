@@ -110,12 +110,8 @@ while 1:
     gameDisplay.fill((0,0,0))
 
     #builds wall of bricks
-    wall.buildWall(gameDisplay)
-    brickList = [wall.brickList]
-    for i in range(len(brickList)):
-        if brickList[i].colliderect(ballRect):
-            ballDirection[0] = -ballDirection[0]
-            ballDirection[1] = -ballDirection[1]
+    wall.buildWall(gameDisplay, ballRect, ballDirection)
+
     #moves ball [so far in only one direction]
     ballRect = ballRect.move(ballDirection)
 

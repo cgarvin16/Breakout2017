@@ -12,6 +12,12 @@ class Brick:
     def makeBrick(self, locCounterX, locCounterY, gameDisplay, colors):
         pass
 
+    def isBroken(self, ballRect, gameDisplay, locCounterX, locCounterY):
+        if ballRect.colliderect(self.rect):
+            return True
+        else:
+            return False
+
 #brick = Brick()
 #brick.makeBrick(100, 100, 30, "colors")
 #print(brick.rect.x)
