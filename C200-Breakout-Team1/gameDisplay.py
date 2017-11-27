@@ -59,7 +59,6 @@ while 1:
 
     #check if ball is below paddle 
     if ballRect.y > 630: 
-        ballDirection[1] = -ballDirection[1] #do something that means you lost later; keep this now for testing
         failedMessage= py.image.load("editedLevelFailed.png")
         gameDisplay.blit(failedMessage, (300,400))
         #moves and pauses ball to prevent if loop from repeating
@@ -73,8 +72,18 @@ while 1:
         quit()
 
     #check if ball is at top
-    if ballRect.y < 0: #change to >= top of bricks later
-        ballDirection[1] = -ballDirection[1] #do something that means you won/move on later; keep this now for testing
+    if ballRect.y < 0: 
+        passMessage= py.image.load("editedLevelPassed.png")
+        gameDisplay.blit(passMessage, (300,400))
+        #moves and pauses ball to prevent if loop from repeating
+        ballRect.x = 300
+        ballRect.y = 400
+        ballDirection[0] = 0
+        ballDirection[1] = 0
+        py.display.flip()
+        #pauses while loop to make image visible
+        py.time.wait(3000)
+        quit()
 
     #if ball hits walls, send in opposite direction 
     if ballRect.x == 0 or ballRect.x == 800:
@@ -102,7 +111,7 @@ while 1:
 
     #builds wall of bricks
     wall.buildWall(gameDisplay)
-
+    print(wall.brickList)
     #moves ball [so far in only one direction]
     ballRect = ballRect.move(ballDirection)
 
@@ -110,6 +119,7 @@ while 1:
     gameDisplay.blit(ball, ballRect)
     gameDisplay.blit(paddle.image, paddleRect)
 
+    #
     #renders screen
     py.display.flip()
 
