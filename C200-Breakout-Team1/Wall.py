@@ -23,7 +23,7 @@ class Wall:
             locCounterX = 2
             for i in range(0,7):
                 brick = Brick()
-                brickList.append(brick.makeBrick(locCounterX, locCounterY, gameDisplay,colors[counterColor]))
+                brickList.append(py.Rect(locCounterX, locCounterY, 110, 30))
                 locCounterX += 114
             locCounterY += 35
             counterColor += 1

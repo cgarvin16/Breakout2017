@@ -10,8 +10,7 @@ class Brick:
 
     def makeBrick(self, locCounterX, locCounterY, gameDisplay, colors):
         py.draw.rect(gameDisplay, colors, [locCounterX, locCounterY , 110, 30])
-        brickRect = py.Rect(locCounterX, locCounterY, 110, 30)
-        return brickRect
+
 
 
   

@@ -111,7 +111,9 @@ while 1:
 
     #builds wall of bricks
     wall.buildWall(gameDisplay)
-    print(wall.brickList)
+    brickList = [wall.brickList]
+    for i in range(len(brickList)):
+        print(brickList[i])
     #moves ball [so far in only one direction]
     ballRect = ballRect.move(ballDirection)
 
