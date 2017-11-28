@@ -9,13 +9,14 @@ white = (255,255,255)
 red = (255,0,0)
 green = (0,255,0)
 blue = (0,0,255)
-colors = [white, red, green, blue]
+colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
 
 class Wall:
     def __init__(self):
         pass
 
     def buildWall(self, gameDisplay, ballRect, ballDirection):
+        self.recList = []
         self.brickList = []
         locCounterY = 2
         counterColor = 0
@@ -23,8 +24,8 @@ class Wall:
             locCounterX = 2
             for i in range(0,7):
                 self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
-                self.brick.makeBrick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
-                self.brickList.append(py.Rect(locCounterX, locCounterY, 110, 30))
+                self.brickList.append(self.brick.brick)
+                self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
                 locCounterX += 114
             locCounterY += 35
             counterColor += 1

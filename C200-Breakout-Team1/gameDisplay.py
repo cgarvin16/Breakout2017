@@ -119,13 +119,13 @@ while 1:
     gameDisplay.blit(ball, ballRect)
     gameDisplay.blit(paddle.image, paddleRect)
     for i in range(len(wall.brickList)):
-        gameDisplay.blit(paddle.image, wall.brickList[i])
-    if wall.brick.isBroken(ballRect, gameDisplay, wall.brick.rect.x, wall.brick.rect.y):
-        ballDirection[0] = -ballDirection[0]
-        ballDirection[1] = -ballDirection[1]
-        py.draw.rect(gameDisplay, (000), [locCounterX, locCounterY, 110, 30])
-        py.display.flip()
-        py.time.wait(3000)
+        gameDisplay.blit(wall.brickList[i], wall.recList[i])
+        if wall.brick.isBroken(ballRect, gameDisplay, wall.recList[i].x, wall.recList[i].y, wall.recList[i]):
+            ballDirection[0] = -ballDirection[0]
+            ballDirection[1] = -ballDirection[1]
+            wall.brick = py.image.load("bkBrick.png")
+            py.display.flip()
+            py.time.wait(3000)
     #
     #renders screen
     py.display.flip()
