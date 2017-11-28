@@ -117,7 +117,7 @@ while 1:
     #I played around with the code provided by charles and got something working
        
     #slows down game; larger number, slower it goes
-    py.time.delay(3)
+    py.time.delay(5)
 
     #paints over last screen
     gameDisplay.fill((0,0,0))
