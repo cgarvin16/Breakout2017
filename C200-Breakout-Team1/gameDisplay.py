@@ -99,15 +99,18 @@ while 1:
             ballDirection[0] += .5
 
         
-    #how ball reacting to paddle
+    #how ball reacting to paddle -42 <- -21 = 21 -> 42
     if ballRect.colliderect(paddleRect):
         ballDirection[1] = -ballDirection[1]
         #variable holds the x location of the differences between the centers of the ball and the paddle
         offset = ballRect.center[0] - paddleRect.center[0]
-        if offset > 0: #right side of paddle, pos x and neg y, sends up to right
+        if offset >= 21: #right side of paddle, pos x and neg y, sends up to right
             ballDirection[0] = abs(ballDirection[0]) 
             ballDirection[1] = -abs(ballDirection[1])
-        elif offset < 0: #left side of paddle, neg x and neg y, sends up to left
+        elif offset < 21 and offset > -21: #middle of paddle, opposite of current direction CAUSES SQUIGGLE BUG
+            ballDirection[0] = -ballDirection[0]
+            ballDirection[1] = -ballDirection[1]
+        elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left
             ballDirection[0] = -abs(ballDirection[0]) 
             ballDirection[1] = -abs(ballDirection[1]) 
     #I changed a lot of the above couple lines and then added the offset-Charles
