@@ -22,6 +22,7 @@ Charles 11/20 9:15pm- 9:35pm
 Charles 11/22 12:00am-12:30 pm
 Logan 11/23 2:30pm-4:40pm
 Logan 11/27 11:15am-11:40am
+Charles 11/28 3:15-3:30
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
