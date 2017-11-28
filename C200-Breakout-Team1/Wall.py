@@ -24,7 +24,7 @@ class Wall:
             locCounterX = 2
             for i in range(0,7):
                 self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
-                self.brickList.append(self.brick.brick)
+                self.brickList.append(self.brick.image)
                 self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
                 locCounterX += 114
             locCounterY += 35

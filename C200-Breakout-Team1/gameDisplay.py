@@ -120,7 +120,7 @@ while 1:
     gameDisplay.blit(paddle.image, paddleRect)
     for i in range(len(wall.brickList)):
         gameDisplay.blit(wall.brickList[i], wall.recList[i])
-        if wall.brick.isBroken(ballRect, gameDisplay, wall.recList[i].x, wall.recList[i].y, wall.recList[i]):
+        if ballRect.colliderect(wall.recList[i]):
             ballDirection[0] = -ballDirection[0]
             ballDirection[1] = -ballDirection[1]
             wall.brick = py.image.load("bkBrick.png")
