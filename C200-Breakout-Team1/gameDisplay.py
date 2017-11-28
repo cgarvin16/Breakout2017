@@ -123,7 +123,7 @@ while 1:
         if ballRect.colliderect(wall.recList[i]):
             ballDirection[0] = -ballDirection[0]
             ballDirection[1] = -ballDirection[1]
-            wall.brick = py.image.load("bkBrick.png")
+            wall.brickList[i] = py.image.load("bkBrick.png")
             py.display.flip()
             py.time.wait(3000)
     #
