@@ -34,6 +34,10 @@ ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 wall = Wall()
 #builds wall of bricks
 wall.buildWall(gameDisplay, ballRect, ballDirection)
+newBrickList = wall.brickList
+newRecList = wall.recList
+newColorList = wall.colorList
+
 #creates and places paddle
 paddle = Paddle()
 paddleRect = paddle.image.get_rect()
@@ -87,8 +91,13 @@ while 1:
         quit()
 
     #if ball hits walls, send in opposite direction 
-    if ballRect.x == 0 or ballRect.x == 800:
+    if ballRect.x <= 0 or ballRect.x >= 800:
         ballDirection[0] = -ballDirection[0]
+        if ballDirection[0] < 0:
+            ballDirection[0] -= .5
+        elif ballDirection[0] > 0:
+            ballDirection[0] += .5
+
         
     #how ball reacting to paddle
     if ballRect.colliderect(paddleRect):
@@ -96,11 +105,11 @@ while 1:
         #variable holds the x location of the differences between the centers of the ball and the paddle
         offset = ballRect.center[0] - paddleRect.center[0]
         if offset > 0: #right side of paddle, pos x and neg y, sends up to right
-            ballDirection[0] = abs(ballDirection[0]) + .5
+            ballDirection[0] = abs(ballDirection[0]) 
             ballDirection[1] = -abs(ballDirection[1])
         elif offset < 0: #left side of paddle, neg x and neg y, sends up to left
             ballDirection[0] = -abs(ballDirection[0]) 
-            ballDirection[1] = -abs(ballDirection[1]) - .5
+            ballDirection[1] = -abs(ballDirection[1]) 
     #I changed a lot of the above couple lines and then added the offset-Charles
     #I played around with the code provided by charles and got something working
        
@@ -118,14 +127,19 @@ while 1:
     #adds ball to screen 
     gameDisplay.blit(ball, ballRect)
     gameDisplay.blit(paddle.image, paddleRect)
-    for i in range(len(wall.brickList)):
-        gameDisplay.blit(wall.brickList[i], wall.recList[i])
-        if ballRect.colliderect(wall.recList[i]) and wall.colorList[i] != 'bkBrick.png':
+    for i in range(len(newBrickList)):
+        gameDisplay.blit(newBrickList[i], newRecList[i])
+        if ballRect.colliderect(newRecList[i]):
+            del(newBrickList[i])
+            del(newRecList[i])
+            del(newColorList[i])
+           #and wall.colorList[i] != 'bkBrick.png':
             ballDirection[0] = -ballDirection[0] 
             ballDirection[1] = -ballDirection[1] 
-            wall.brickList[i] = py.image.load('bkBrick.png')
-            wall.colorList[i] = 'bkBrick.png'
+            #wall.brickList[i] = py.image.load('bkBrick.png')
+            #wall.colorList[i] = 'bkBrick.png'
             py.display.flip()
+            break
                 
     #
     #renders screen
