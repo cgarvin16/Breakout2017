@@ -32,7 +32,8 @@ ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 
 #creates wall
 wall = Wall()
-
+#builds wall of bricks
+wall.buildWall(gameDisplay, ballRect, ballDirection)
 #creates and places paddle
 paddle = Paddle()
 paddleRect = paddle.image.get_rect()
@@ -109,8 +110,7 @@ while 1:
     #paints over last screen
     gameDisplay.fill((0,0,0))
 
-    #builds wall of bricks
-    wall.buildWall(gameDisplay, ballRect, ballDirection)
+   
 
     #moves ball [so far in only one direction]
     ballRect = ballRect.move(ballDirection)
@@ -118,7 +118,14 @@ while 1:
     #adds ball to screen 
     gameDisplay.blit(ball, ballRect)
     gameDisplay.blit(paddle.image, paddleRect)
-
+    for i in range(len(wall.brickList)):
+        gameDisplay.blit(paddle.image, wall.brickList[i])
+    if wall.brick.isBroken(ballRect, gameDisplay, wall.brick.rect.x, wall.brick.rect.y):
+        ballDirection[0] = -ballDirection[0]
+        ballDirection[1] = -ballDirection[1]
+        py.draw.rect(gameDisplay, (000), [locCounterX, locCounterY, 110, 30])
+        py.display.flip()
+        py.time.wait(3000)
     #
     #renders screen
     py.display.flip()
