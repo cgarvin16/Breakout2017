@@ -116,8 +116,11 @@ while 1:
     #I changed a lot of the above couple lines and then added the offset-Charles
     #I played around with the code provided by charles and got something working
        
-    #slows down game; larger number, slower it goes
-    py.time.delay(5)
+    #changed to a better way to adjust speed of game 
+    #using Clock object in pygame and setting frames per second
+    clock = py.time.Clock()
+    clock.tick(300)
+
 
     #paints over last screen
     gameDisplay.fill((0,0,0))
