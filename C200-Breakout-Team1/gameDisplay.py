@@ -105,14 +105,14 @@ while 1:
         offset = ballRect.center[0] - paddleRect.center[0]
         #tried using trig to calculate better angle options, but move() function only takes int
         if offset >= 21: #right side of paddle, pos x and neg y, sends up to right @ 45deg
-            ballDirection[0] = m.sin(m.pi/4)
-            ballDirection[1] = m.cos(m.pi/4)
+            ballDirection[0] = abs(ballDirection[0])
+            ballDirection[1] = -abs(ballDirection[1])
         elif offset < 21 and offset > -21: #middle of paddle, sends up @ 90deg CAUSES SQUIGGLE BUG
-            ballDirection[0] = m.sin(m.pi/2)
-            ballDirection[1] = m.cos(m.pi/2)
+            ballDirection[0] = -ballDirection[0]
+            ballDirection[1] = -ballDirection[1]
         elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left @ 135deg 
-            ballDirection[0] = m.sin((3*m.pi)/4)
-            ballDirection[1] = m.cos((3*m.pi)/4)
+            ballDirection[0] = -abs(ballDirection[0])
+            ballDirection[1] = -abs(ballDirection[1])
     #I changed a lot of the above couple lines and then added the offset-Charles
     #I played around with the code provided by charles and got something working
        
