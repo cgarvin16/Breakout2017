@@ -7,6 +7,7 @@ from Paddle import Paddle
 import pygame as py
 import sys
 import random as r 
+import math as m
 #beginning of the required pygame skeleton
 py.init()
 
@@ -28,6 +29,7 @@ ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not 
 ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
 
 #variable to change ball direction; begins in random direction
+#tried using trig to calculate better angle options, but move() function only takes int
 ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 
 #creates wall
@@ -93,10 +95,7 @@ while 1:
     #if ball hits walls, send in opposite direction 
     if ballRect.x <= 0 or ballRect.x >= 800:
         ballDirection[0] = -ballDirection[0]
-        if ballDirection[0] < 0:
-            ballDirection[0] -= .5
-        elif ballDirection[0] > 0:
-            ballDirection[0] += .5
+        
 
         
     #how ball reacting to paddle -42 <- -21 = 21 -> 42
@@ -104,15 +103,16 @@ while 1:
         ballDirection[1] = -ballDirection[1]
         #variable holds the x location of the differences between the centers of the ball and the paddle
         offset = ballRect.center[0] - paddleRect.center[0]
-        if offset >= 21: #right side of paddle, pos x and neg y, sends up to right
-            ballDirection[0] = abs(ballDirection[0]) 
-            ballDirection[1] = -abs(ballDirection[1])
-        elif offset < 21 and offset > -21: #middle of paddle, opposite of current direction CAUSES SQUIGGLE BUG
-            ballDirection[0] = -ballDirection[0]
-            ballDirection[1] = -ballDirection[1]
-        elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left
-            ballDirection[0] = -abs(ballDirection[0]) 
-            ballDirection[1] = -abs(ballDirection[1]) 
+        #tried using trig to calculate better angle options, but move() function only takes int
+        if offset >= 21: #right side of paddle, pos x and neg y, sends up to right @ 45deg
+            ballDirection[0] = m.sin(m.pi/4)
+            ballDirection[1] = m.cos(m.pi/4)
+        elif offset < 21 and offset > -21: #middle of paddle, sends up @ 90deg CAUSES SQUIGGLE BUG
+            ballDirection[0] = m.sin(m.pi/2)
+            ballDirection[1] = m.cos(m.pi/2)
+        elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left @ 135deg 
+            ballDirection[0] = m.sin((3*m.pi)/4)
+            ballDirection[1] = m.cos((3*m.pi)/4)
     #I changed a lot of the above couple lines and then added the offset-Charles
     #I played around with the code provided by charles and got something working
        
