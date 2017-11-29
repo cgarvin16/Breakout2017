@@ -67,7 +67,7 @@ while 1:
     #check if ball is below paddle 
     if ballRect.y > 630: 
         failedMessage= py.image.load("editedLevelFailed.png")
-        gameDisplay.blit(failedMessage, (300,400))
+        gameDisplay.blit(failedMessage, (100,100))
         #moves and pauses ball to prevent if loop from repeating
         ballRect.x = 300
         ballRect.y = 400
@@ -81,7 +81,7 @@ while 1:
     #check if ball is at top
     if ballRect.y < 0: 
         passMessage= py.image.load("editedLevelPassed.png")
-        gameDisplay.blit(passMessage, (300,400))
+        gameDisplay.blit(passMessage, (100,100))
         #moves and pauses ball to prevent if loop from repeating
         ballRect.x = 300
         ballRect.y = 400
