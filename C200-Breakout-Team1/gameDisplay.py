@@ -79,8 +79,8 @@ while 1:
     #check if ball is at the bottom of the screen 
     if ballRect.y == 0: 
         #creates image object to be put to the screen 
-        failedMessage= py.image.load("editedLevelFailed.png")
-        gameDisplay.blit(failedMessage, (100,100))
+        passMessage= py.image.load("editedLevelPassed.png")
+        gameDisplay.blit(passMessage, (100,100))
 
         #moves and pauses ball to prevent if loop from repeating
         ballRect.x = 300
@@ -98,10 +98,10 @@ while 1:
         quit()
 
     #check if ball is at top
-    if ballRect.y < 0: 
+    if ballRect.y > 700: 
         #creates image object to be put to the screen 
-        passMessage= py.image.load("editedLevelPassed.png")
-        gameDisplay.blit(passMessage, (100,100))
+        failMessage= py.image.load("editedLevelFailed.png")
+        gameDisplay.blit(failMessage, (100,100))
 
         #moves and pauses ball to prevent if loop from repeating
         ballRect.x = 300
