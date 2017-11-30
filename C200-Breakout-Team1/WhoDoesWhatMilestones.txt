@@ -15,14 +15,19 @@ Time Worked Log:
 Logan 11/18 11:30am-11:50am 
 Team meeting 11/19 3:45pm-4:10pm
 Logan 11/19 4:30pm-6:30pm, 7:40pm-8:10pm, 10:45pm-11:20pm
-Logan & Carolyn 11/19 11:45pm-12:05pm
+Logan & Carolyn 11/19 11:45pm-12:05am
+Carolyn 11/20 12:05am-1:30am
 Charles 11/20 11:50 am -12:05 pm
 Charles & Logan 11/20 2:30pm-3:00pm
 Charles 11/20 9:15pm- 9:35pm
 Charles 11/22 12:00am-12:30 pm
 Logan 11/23 2:30pm-4:40pm
 Logan 11/27 11:15am-11:40am
-Charles 11/28 3:15-3:30
+Carolyn 11/28 3:45-5:00
+Charles 11/28 3:45-5:30
+Logan 11/29 12:00pm-1:30pm, 3:00pm-4:00pm
+Team meeting 11/30 2:45pm-3:20pm
+
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
 Task
@@ -39,8 +44,8 @@ Task
 	Date done: 11/20
 	Prim. Person in Charge: Logan
 5.DONE Detection of ball hitting ceiling & indic. of level completed
-	Date done:
-	Prim. Person in Charge:
+	Date done: 11/25
+	Prim. Person in Charge: Logan/Carolyn
 6.DONE Detection of ball hitting floor & indication of level failed
 	Date done: 11/23
 	Prim. Person in Charge: Logan
@@ -50,9 +55,9 @@ Task
 8.DONE Change in angle of reflection of ball depending on where it hits player paddle
 	Date done: 11/23
 	Prim. Person in Charge:Logan
-9. Destruction of a brick when hit by ball
-	Date done:
-	Prim. Person in Charge:
+9.DONE Destruction of a brick when hit by ball
+	Date done: 11/29
+	Prim. Person in Charge: Logan
 
 
 Resources: 

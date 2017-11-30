@@ -1,14 +1,23 @@
-#a file used to contain the main operations of the game
+#                                    Breakout Beta Version 0.1
+#                                    Milestone 1 Complete
+#                                    Done By:
+#                                           Logan Fields
+#                                           Charles Brooks
+#                                           Carolyn Garvin
+#                                    For:
+#                                        CSCI-C200 Fall 2017
+
+
+
 #imports to allow use of other modules
 from Wall import Wall
-from Ball import Ball
-from Brick import Brick
 from Paddle import Paddle 
 import pygame as py
 import sys
 import random as r 
-import math as m
+
 #beginning of the required pygame skeleton
+#initializes the pygame module
 py.init()
 
 #sets the game display size as 800px width and 700px height
@@ -20,7 +29,7 @@ py.display.set_caption("Breakout")
 #updates the display
 py.display.flip()
 
-#creates ball image; having problems doing inside a class
+#creates ball image and gives it a rectangle to manipulate later
 ball = py.image.load("ballNoBackground.png")
 ballRect = ball.get_rect()
 
@@ -32,15 +41,18 @@ ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle beg
 #tried using trig to calculate better angle options, but move() function only takes int
 ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 
-#creates wall
+#creates wall object
 wall = Wall()
+
 #builds wall of bricks
 wall.buildWall(gameDisplay, ballRect, ballDirection)
+
+#creates new lists to avoid bugs
 newBrickList = wall.brickList
 newRecList = wall.recList
 newColorList = wall.colorList
 
-#creates and places paddle
+#creates and places paddle with a rectangle
 paddle = Paddle()
 paddleRect = paddle.image.get_rect()
 paddleRect.x = 300
@@ -58,38 +70,52 @@ while 1:
         #exits game if you press close window
         if event.type == py.QUIT:
             sys.exit()
+        #moves paddle based on left and right arrow keys
         elif py.key.get_pressed()[py.K_LEFT]:
             paddleRect.x -= 10
         elif py.key.get_pressed()[py.K_RIGHT]:
             paddleRect.x += 10
-        #add other reactions to user here as elif
 
-    #check if ball is below paddle 
-    if ballRect.y > 630: 
+    #check if ball is at the bottom of the screen 
+    if ballRect.y == 0: 
+        #creates image object to be put to the screen 
         failedMessage= py.image.load("editedLevelFailed.png")
         gameDisplay.blit(failedMessage, (100,100))
+
         #moves and pauses ball to prevent if loop from repeating
         ballRect.x = 300
         ballRect.y = 400
         ballDirection[0] = 0
         ballDirection[1] = 0
+
+        #updates the screen
         py.display.flip()
+
         #pauses while loop to make image visible
         py.time.wait(3000)
+
+        #exits the game
         quit()
 
     #check if ball is at top
     if ballRect.y < 0: 
+        #creates image object to be put to the screen 
         passMessage= py.image.load("editedLevelPassed.png")
         gameDisplay.blit(passMessage, (100,100))
+
         #moves and pauses ball to prevent if loop from repeating
         ballRect.x = 300
         ballRect.y = 400
         ballDirection[0] = 0
         ballDirection[1] = 0
+
+        #updates the screen
         py.display.flip()
+
         #pauses while loop to make image visible
         py.time.wait(3000)
+
+        #exits the game
         quit()
 
     #if ball hits walls, send in opposite direction 
@@ -98,57 +124,58 @@ while 1:
         
 
         
-    #how ball reacting to paddle -42 <- -21 = 21 -> 42
+    #how ball reacting to paddle (paddle pixel ranges: -42 <- -21 = 21 -> 42)
     if ballRect.colliderect(paddleRect):
         ballDirection[1] = -ballDirection[1]
+
         #variable holds the x location of the differences between the centers of the ball and the paddle
         offset = ballRect.center[0] - paddleRect.center[0]
+
         #tried using trig to calculate better angle options, but move() function only takes int
-        if offset >= 21: #right side of paddle, pos x and neg y, sends up to right @ 45deg
+        if offset >= 21: #right side of paddle, pos x and neg y, sends up to right 
             ballDirection[0] = 1
             ballDirection[1] = -1
-        elif offset < 21 and offset > -21: #middle of paddle, sends up @ 90deg 
+        elif offset < 21 and offset > -21: #middle of paddle, sends up 
             ballDirection[0] = 0
             ballDirection[1] = -1
-        elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left @ 135deg 
+        elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left 
             ballDirection[0] = -1
             ballDirection[1] = -1
-    #I changed a lot of the above couple lines and then added the offset-Charles
-    #I played around with the code provided by charles and got something working
        
-    #changed to a better way to adjust speed of game 
     #using Clock object in pygame and setting frames per second
     clock = py.time.Clock()
     clock.tick(300)
 
-
     #paints over last screen
     gameDisplay.fill((0,0,0))
 
-   
-
-    #moves ball [so far in only one direction]
+    #moves ball 
     ballRect = ballRect.move(ballDirection)
 
     #adds ball to screen 
     gameDisplay.blit(ball, ballRect)
+
+    #adds paddle to screen
     gameDisplay.blit(paddle.image, paddleRect)
+
+    #updates the remaining bricks to the screen and checks if a brick has been hit
+    #if the brick has been hit, it removes it from the lists
     for i in range(len(newBrickList)):
         gameDisplay.blit(newBrickList[i], newRecList[i])
         if ballRect.colliderect(newRecList[i]):
             del(newBrickList[i])
             del(newRecList[i])
             del(newColorList[i])
-           #and wall.colorList[i] != 'bkBrick.png':
             ballDirection[0] = -ballDirection[0] 
             ballDirection[1] = -ballDirection[1] 
-            #wall.brickList[i] = py.image.load('bkBrick.png')
-            #wall.colorList[i] = 'bkBrick.png'
+            
+            #updates screen
             py.display.flip()
+
+            #ends loop
             break
                 
-    #
-    #renders screen
+    #updates screen
     py.display.flip()
 
 #exits python
