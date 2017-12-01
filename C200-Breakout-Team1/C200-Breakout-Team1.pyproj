@@ -45,6 +45,7 @@
     <Content Include="editedLevelFailed.png" />
     <Content Include="editedLevelPassed.png" />
     <Content Include="paddleImage.png" />
+    <Content Include="testBrick.png" />
     <Content Include="WhoDoesWhatMilestones.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
