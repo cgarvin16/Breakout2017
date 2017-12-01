@@ -75,6 +75,10 @@ be included. Pause between levels and provide control to the user for resuming t
 	Date done:
 	Prim. Person in Charge:
 
+-Images for all the functions ex) play, pause, lives, etc.
+	Date done:
+	Prim. Person in Charge: Carolyn
+
 –Design and implement a score function that adheres to the game objective
 (reach the top wall as quickly as possible). This MUST be documented in a
 manner that completely captures how the score for your game is calculated.
@@ -86,6 +90,10 @@ manner that completely captures how the score for your game is calculated.
 2    AAZ    10,000
 3    ZCV    850
 Maintain the high-score information in a flat file that is loaded at game start-up.
+	Date done:
+	Prim. Person in Charge:
+	
+-Add a main menu game screen.
 	Date done:
 	Prim. Person in Charge:
 
