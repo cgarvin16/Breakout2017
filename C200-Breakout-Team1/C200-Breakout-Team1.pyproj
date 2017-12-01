@@ -32,6 +32,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="gameIdeas.py" />
+    <Compile Include="mainMenu.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Paddle.py">
       <SubType>Code</SubType>
     </Compile>
