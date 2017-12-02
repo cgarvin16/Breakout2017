@@ -33,29 +33,6 @@ py.display.flip()
 ball = py.image.load("ballNoBackground.png")
 ballRect = ball.get_rect()
 
-#randomizes initial location between bricks and paddle
-ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen
-ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
-
-#variable to change ball direction; begins in random direction
-#tried using trig to calculate better angle options, but move() function only takes int
-ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
-
-#creates wall object
-wall = Wall()
-
-#holds initial level value
-levelCount = 1
-
-#builds wall of bricks
-wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
-
-#creates new lists to avoid bugs
-newBrickList = wall.brickList
-newRecList = wall.recList
-newColorList = wall.colorList
-newHitList = wall.hitList
-
 #creates and places paddle with a rectangle
 paddle = Paddle()
 paddleRect = paddle.image.get_rect()
@@ -65,10 +42,96 @@ paddleRect.y = 620
 #allows for held down keys to continue movement
 py.key.set_repeat(10, 10)
 
-#holds intial life value
+#holds initial life value
 lifeCount = 3
 
+#initialized ballDirection variable
+ballDirection = [0,0]
 
+#initialized level count
+levelCount = 1
+
+def newGame():
+    #randomizes initial location between bricks and paddle
+    ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen
+    ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
+
+    #variable to change ball direction; begins in random direction
+    #tried using trig to calculate better angle options, but move() function only takes int
+    ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
+
+    #creates wall object
+    wall = Wall()
+
+    #holds initial level value
+    levelCount = 1
+
+    #builds wall of bricks
+    wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
+
+    #creates new lists to avoid bugs
+    newBrickList = wall.brickList
+    newRecList = wall.recList
+    newColorList = wall.colorList
+    newHitList = wall.hitList
+
+    #resets intial life value
+    lifeCount = 3
+
+    for i in range(len(newBrickList)):
+            gameDisplay.blit(newBrickList[i], newRecList[i])
+            if ballRect.colliderect(newRecList[i]):
+                del(newBrickList[i])
+                del(newRecList[i])
+                del(newColorList[i])
+                del(newHitList[i])
+                ballDirection[0] = -ballDirection[0] 
+                ballDirection[1] = -ballDirection[1] 
+            
+                #updates screen
+                py.display.flip()
+
+                #ends loop
+                break
+            py.display.flip()
+
+def levelTwo():
+    #randomizes initial location between bricks and paddle
+    ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen
+    ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
+
+    #variable to change ball direction; begins in random direction
+    #tried using trig to calculate better angle options, but move() function only takes int
+    ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
+
+    #creates wall object
+    wall = Wall()
+
+    #builds wall of bricks
+    wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
+
+    #creates new lists to avoid bugs
+    newBrickList = wall.brickList
+    newRecList = wall.recList
+    newColorList = wall.colorList
+    newHitList = wall.hitList
+
+    for i in range(len(newBrickList)):
+            gameDisplay.blit(newBrickList[i], newRecList[i])
+            if ballRect.colliderect(newRecList[i]):
+                del(newBrickList[i])
+                del(newRecList[i])
+                del(newColorList[i])
+                del(newHitList[i])
+                ballDirection[0] = -ballDirection[0] 
+                ballDirection[1] = -ballDirection[1] 
+            
+                #updates screen
+                py.display.flip()
+
+                #ends loop
+                break
+            py.display.flip()
 
 #code for the game
 while 1:
@@ -84,6 +147,10 @@ while 1:
             paddleRect.x -= 10
         elif py.key.get_pressed()[py.K_RIGHT]:
             paddleRect.x += 10
+    if levelCount == 1:
+        newGame()
+    elif levelCount == 2:
+        levelTwo()
 
     #check if ball is at the top of the screen 
     if ballRect.y == 0: 
@@ -117,7 +184,7 @@ while 1:
     #check if ball is at bottom
     if ballRect.y > 700: 
         #creates image object to be put to the screen 
-        failMessage= py.image.load("editedLevelFailed.png")
+        failMessage= py.image.load("pause_icon.png")
         gameDisplay.blit(failMessage, (100,100))
 
         #moves and pauses ball to prevent if loop from repeating
@@ -166,6 +233,9 @@ while 1:
     #paints over last screen
     gameDisplay.fill((0,0,0))
 
+     #checks level and changes things if needed
+    
+        
     #moves ball 
     ballRect = ballRect.move(ballDirection)
 
@@ -175,67 +245,7 @@ while 1:
     #adds paddle to screen
     gameDisplay.blit(paddle.image, paddleRect)
 
-    #checks level and changes things if needed
-    if levelCount == 1:
-        for i in range(len(newBrickList)):
-            gameDisplay.blit(newBrickList[i], newRecList[i])
-            if ballRect.colliderect(newRecList[i]):
-                del(newBrickList[i])
-                del(newRecList[i])
-                del(newColorList[i])
-                del(newHitList[i])
-                ballDirection[0] = -ballDirection[0] 
-                ballDirection[1] = -ballDirection[1] 
-            
-                #updates screen
-                py.display.flip()
-
-                #ends loop
-                break
-    elif levelCount == 2:
-        #creates wall object
-        wall2 = Wall()
-
-        #builds wall of bricks
-        wall2.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
-
-        #creates new lists to avoid bugs
-        newBrickList2 = wall2.brickList
-        newRecList2 = wall2.recList
-        newColorList2 = wall2.colorList
-        newHitList2 = wall2.hitList
-
-        print(newBrickList2)
-        print(newColorList2)
-        print(newHitList2)
-        print(newRecList2)
-        #creates and places paddle with a rectangle
-        paddle2 = Paddle()
-        paddleRect2 = paddle2.image.get_rect()
-        paddleRect2.x = 300
-        paddleRect2.y = 620
-
-        for i in range(len(newBrickList2)):
-            gameDisplay.blit(newBrickList2[i], newRecList2[i])
-            if ballRect.colliderect(newRecList2[i]):
-                if newHitList2[i] == 1:
-                    del(newBrickList2[i])
-                    del(newRecList2[i])
-                    del(newColorList2[i])
-                    del(newHitList2[i])
-                elif newHitList2[i] == 2:
-                    newHitList2[i] == 1
-                    newBrickList2[i] == py.image.load("testBrick.png")
-                ballDirection[0] = -ballDirection[0] 
-                ballDirection[1] = -ballDirection[1] 
-                
-
-            #updates screen
-            py.display.flip()
-
-            #ends loop
-            break
-        py.display.flip()
+   
 
     #updates the remaining bricks to the screen and checks if a brick has been hit
     #if the brick has been hit, it removes it from the lists

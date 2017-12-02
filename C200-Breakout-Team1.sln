@@ -1,9 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "C200-Breakout-Team1", "C200-Breakout-Team1\C200-Breakout-Team1.pyproj", "{E9CBC8D4-B84E-4955-8B85-E7F218AA9993}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{70CDE474-5A9D-45CD-B6F9-FF72EA6F4F52}"
+	ProjectSection(SolutionItems) = preProject
+		C200-Breakout-Team1\bBrick.png = C200-Breakout-Team1\bBrick.png
+		C200-Breakout-Team1\bBrick_cracked.png = C200-Breakout-Team1\bBrick_cracked.png
+		C200-Breakout-Team1\gBrick.png = C200-Breakout-Team1\gBrick.png
+		C200-Breakout-Team1\gBrick_cracked.png = C200-Breakout-Team1\gBrick_cracked.png
+		C200-Breakout-Team1\heart_icon.png = C200-Breakout-Team1\heart_icon.png
+		C200-Breakout-Team1\mainMenu_icon.png = C200-Breakout-Team1\mainMenu_icon.png
+		C200-Breakout-Team1\mBrick.png = C200-Breakout-Team1\mBrick.png
+		C200-Breakout-Team1\mBrick_cracked.png = C200-Breakout-Team1\mBrick_cracked.png
+		C200-Breakout-Team1\pause_icon.png = C200-Breakout-Team1\pause_icon.png
+		C200-Breakout-Team1\quit_icon.png = C200-Breakout-Team1\quit_icon.png
+		C200-Breakout-Team1\rBrick.png = C200-Breakout-Team1\rBrick.png
+		C200-Breakout-Team1\rBrick_cracked.png = C200-Breakout-Team1\rBrick_cracked.png
+		C200-Breakout-Team1\restart_icon.png = C200-Breakout-Team1\restart_icon.png
+		C200-Breakout-Team1\resume_icon.png = C200-Breakout-Team1\resume_icon.png
+		C200-Breakout-Team1\testBrick.png = C200-Breakout-Team1\testBrick.png
+		C200-Breakout-Team1\wBrick.png = C200-Breakout-Team1\wBrick.png
+		C200-Breakout-Team1\wBrick_cracked.png = C200-Breakout-Team1\wBrick_cracked.png
+		C200-Breakout-Team1\zBrick.png = C200-Breakout-Team1\zBrick.png
+		C200-Breakout-Team1\zBrick_cracked.png = C200-Breakout-Team1\zBrick_cracked.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
