@@ -25,6 +25,7 @@ def game_intro():
         menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
         gameDisplay.blit(menuText, (250,180))
 
+
         instructionIcon = py.image.load("instr_icon.png")
         gameDisplay.blit(instructionIcon, (370,400))
         instr = py.font.SysFont("times", 50)
