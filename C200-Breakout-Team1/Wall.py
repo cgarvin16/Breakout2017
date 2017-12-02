@@ -14,17 +14,17 @@ class Wall:
         pass
 
     def buildWall(self, gameDisplay, ballRect, ballDirection, levelCount):
-        #creates empty list to hold variable for reference in the main game
-        self.recList = []
-        self.brickList = []
-        self.colorList = []
-        self.hitList = []
-
         #base numbers for graph location of bricks
         locCounterY = 2
         counterColor = 0
 
         if levelCount == 1:
+            #creates empty list to hold variable for reference in the main game
+            self.recList = []
+            self.brickList = []
+            self.colorList = []
+            self.hitList = []
+
             #creates four lines of bricks
             for i in range(0, 4):
                 locCounterX = 2
@@ -40,6 +40,12 @@ class Wall:
                 locCounterY += 35
                 counterColor += 1
         elif levelCount == 2:
+             #creates empty list to hold variable for reference in the main game
+            self.recList = []
+            self.brickList = []
+            self.colorList = []
+            self.hitList = []
+
             #make some bricks require 2 hits to break
             for x in range(0, 4):
                 locCounterX = 2
@@ -52,11 +58,12 @@ class Wall:
                     #sets the hit number of certain bricks in index to two
                     #at some point in the future, try to randomize these selections
                     #also changes which bricks are chosen to be two hit based on which line
+                    '''
                     if i == 1 or i == 3 or i == 6:
                         self.hitList.append(2)
                     else:
                         self.hitList.append(1)
-                        '''
+         
                     elif x == 1:
                         if i == 1 or i == 4:
                             self.hitList.append(2)
