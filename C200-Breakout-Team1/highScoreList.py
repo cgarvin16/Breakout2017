@@ -1,29 +1,30 @@
-from operator import itemgetter
-import pickle
+import fileinput, hashlib, operator
 
-# pickle
-high_scores = [
-    ('Liz', 1800),
-    ('Desi', 5000),
-    ('Mike', 3200),
-    ('John', 2000),
-    ('Gabi', 3150),
-    ('John', 3500),
-    ('Gabi', 3100),
-    ('John', 3000),
-    ('Liz', 2800),
-    ('Desi', 2800),
-]
+class Highscore:
+    def __init__(self, ):
+        self.__highscores = self.load()
 
-high_scores.append(('Dave', 3300))
-high_scores = sorted(high_scores, key=itemgetter(1), reverse=True)[:10]
+    def get_scores(self):
+        return self.__highscores
 
-with open('highScores.txt', 'w') as f:
-    pickle.dump(high_scores, f)
+    def load(self):
+        highscores = []
+        for line in fileinput.input("highScores.txt"):
+            name, score, md5 = line.split("::")
+            md5 = md5.replace('\n', '')
 
+            if str(hashlib.md5(str.encode(str(name+score+"breakout"))).hexdigest()) == str(md5):
+                highscores.append([str(name), int(score), str(md5)])
 
-# unpickle
-high_scores = []
+        highscores.sort(key=operator.itemgetter(1), reverse=True)
+        highscores = highscores[0:11]
+        return highscores
 
-with open('highScores.txt', 'r') as f:
-    high_scores = pickle.load(f)
+    def add(self, name, score):
+        hash = hashlib.md5((str(name+str(score)+"breakout")).encode('utf-8'))
+        self.__highscores.append([name, str(score), hash.hexdigest()])
+
+        file = open("highScores.txt", 'w')
+        for name, score, md5 in self.__highscores:
+            file.write(str(name)+"::"+str(score)+"::"+str(md5)+"\n")
+        file.close()
