@@ -44,13 +44,17 @@ ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 #creates wall object
 wall = Wall()
 
+#holds initial level value
+levelCount = 1
+
 #builds wall of bricks
-wall.buildWall(gameDisplay, ballRect, ballDirection)
+wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
 
 #creates new lists to avoid bugs
 newBrickList = wall.brickList
 newRecList = wall.recList
 newColorList = wall.colorList
+newHitList = wall.hitList
 
 #creates and places paddle with a rectangle
 paddle = Paddle()
@@ -60,6 +64,11 @@ paddleRect.y = 620
 
 #allows for held down keys to continue movement
 py.key.set_repeat(10, 10)
+
+#holds intial life value
+lifeCount = 3
+
+
 
 #code for the game
 while 1:
@@ -76,10 +85,13 @@ while 1:
         elif py.key.get_pressed()[py.K_RIGHT]:
             paddleRect.x += 10
 
-    #check if ball is at the bottom of the screen 
+    #check if ball is at the top of the screen 
     if ballRect.y == 0: 
         #creates image object to be put to the screen 
         passMessage= py.image.load("editedLevelPassed.png")
+
+        #paints over the previous screen
+        gameDisplay.fill((0,0,0))
         gameDisplay.blit(passMessage, (100,100))
 
         #moves and pauses ball to prevent if loop from repeating
@@ -94,10 +106,15 @@ while 1:
         #pauses while loop to make image visible
         py.time.wait(3000)
 
-        #exits the game
-        quit()
+        #adds one to the level indicator for use later
+        levelCount += 1
 
-    #check if ball is at top
+        #prints level value to console for testing purposes
+        print(levelCount)
+        #exits the game
+        #quit()
+
+    #check if ball is at bottom
     if ballRect.y > 700: 
         #creates image object to be put to the screen 
         failMessage= py.image.load("editedLevelFailed.png")
@@ -158,23 +175,66 @@ while 1:
     #adds paddle to screen
     gameDisplay.blit(paddle.image, paddleRect)
 
+    #checks level and changes things if needed
+    if levelCount == 1:
+        for i in range(len(newBrickList)):
+            gameDisplay.blit(newBrickList[i], newRecList[i])
+            if ballRect.colliderect(newRecList[i]):
+                del(newBrickList[i])
+                del(newRecList[i])
+                del(newColorList[i])
+                del(newHitList[i])
+                ballDirection[0] = -ballDirection[0] 
+                ballDirection[1] = -ballDirection[1] 
+            
+                #updates screen
+                py.display.flip()
+
+                #ends loop
+                break
+    elif levelCount == 2:
+        #creates wall object
+        wall = Wall()
+
+        #builds wall of bricks
+        wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
+
+        #creates new lists to avoid bugs
+        newBrickList = wall.brickList
+        newRecList = wall.recList
+        newColorList = wall.colorList
+        newHitList = wall.hitList
+
+        #creates and places paddle with a rectangle
+        paddle = Paddle()
+        paddleRect = paddle.image.get_rect()
+        paddleRect.x = 300
+        paddleRect.y = 620
+
+        for i in range(len(newBrickList)):
+            gameDisplay.blit(newBrickList[i], newRecList[i])
+            if ballRect.colliderect(newRecList[i]):
+                if newHitList[i] == 1:
+                    del(newBrickList[i])
+                    del(newRecList[i])
+                    del(newColorList[i])
+                    del(newHitList[i])
+                elif newHitList[i] == 2:
+                    newHitList[i] == 1
+                    newBrickList[i] == py.image.load("testBrick.png")
+                ballDirection[0] = -ballDirection[0] 
+                ballDirection[1] = -ballDirection[1] 
+            
+                #updates screen
+                py.display.flip()
+
+                #ends loop
+                break
+        py.display.flip()
+
     #updates the remaining bricks to the screen and checks if a brick has been hit
     #if the brick has been hit, it removes it from the lists
-    for i in range(len(newBrickList)):
-        gameDisplay.blit(newBrickList[i], newRecList[i])
-        if ballRect.colliderect(newRecList[i]):
-            del(newBrickList[i])
-            del(newRecList[i])
-            del(newColorList[i])
-            ballDirection[0] = -ballDirection[0] 
-            ballDirection[1] = -ballDirection[1] 
-            
-            #updates screen
-            py.display.flip()
-
-            #ends loop
-            break
-                
+   
     #updates screen
     py.display.flip()
 
