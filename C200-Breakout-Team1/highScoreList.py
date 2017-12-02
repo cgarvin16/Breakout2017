@@ -9,7 +9,7 @@ class Highscore:
 
     def load(self):
         highscores = []
-        for line in fileinput.input("highScores.txt"):
+        for line in fileinput.input("highScores.dat"):
             name, score, md5 = line.split("::")
             md5 = md5.replace('\n', '')
 
@@ -24,7 +24,7 @@ class Highscore:
         hash = hashlib.md5((str(name+str(score)+"breakout")).encode('utf-8'))
         self.__highscores.append([name, str(score), hash.hexdigest()])
 
-        file = open("highScores.txt", 'w')
+        file = open("highScores.dat", 'w')
         for name, score, md5 in self.__highscores:
             file.write(str(name)+"::"+str(score)+"::"+str(md5)+"\n")
         file.close()
