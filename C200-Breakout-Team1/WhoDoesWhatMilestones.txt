@@ -107,7 +107,7 @@ prior to starting a new game.
 
 –Add a game screen for viewing game-play instructions.
 	Date done:
-	Prim. Person in Charge: Charles
+	Prim. Person in Charge: Carolyn and Charles
 
 –Add the score, number of lives, and a timer to the display.
 	Date done:

@@ -25,27 +25,41 @@ def game_intro():
         menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
         gameDisplay.blit(menuText, (250,180))
 
-        instructionIcon = py.image.load("instr_icon.png")
-        gameDisplay.blit(instructionIcon, (370,400))
+        #displays mouse
+        mouse = py.mouse.get_pos()
+
+        #This displays the instructions icon
+        if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
+            instructionIcon = py.image.load("instr_icon_trans.png")
+            gameDisplay.blit(instructionIcon, (370,400))
+        else:
+            instructionIcon = py.image.load("instr_icon.png")
+            gameDisplay.blit(instructionIcon, (370,400))
+
         instr = py.font.SysFont("times", 50)
         Instrtext = py.font.Font.render(instr, "Instructions", 0, green, None)
         gameDisplay.blit(Instrtext, (420, 390))
 
-        highscoreIcon = py.image.load("highScore_icon.png")
-        gameDisplay.blit(highscoreIcon, (370,500))
+        #This displays the highscore icon
+        if 370+40 > mouse[0] > 370 and 500+40 > mouse[1] > 500:
+            highscoreIcon = py.image.load("highScore_icon_trans.png")
+            gameDisplay.blit(highscoreIcon, (370,500))
+        else:
+            highscoreIcon = py.image.load("highScore_icon.png")
+            gameDisplay.blit(highscoreIcon, (370,500))
+
         HS = py.font.SysFont("times", 50)
         HStext = py.font.Font.render(HS, "Highscores", 0, green, None)
         gameDisplay.blit(HStext, (420, 490))
 
-
-        mouse = py.mouse.get_pos()
-        print(mouse)
-        #if 150+100 > mouse[0] > 150 and 450 + 50 > mouse[1] > 450:
-        playIcon = py.image.load("resume_icon.png")
-        gameDisplay.blit(playIcon, (370, 300))
-            #py.draw.rect(gameDisplay, play_icon,150,450,100,50) #play icon
-        #else:
-            #py.draw.rect(gameDisplay, instructions_icon,150,450,100,50) #transparent play icon
+        #This displays the Play Icon
+        if 370+40 > mouse[0] > 370 and 300+40 > mouse[1] > 300:
+            playIcon = py.image.load("resume_icon_trans.png")
+            gameDisplay.blit(playIcon, (370, 300))
+        else:
+            playIcon = py.image.load("resume_icon.png")
+            gameDisplay.blit(playIcon, (370, 300))
+        
         play = py.font.SysFont("times", 50)
         Playtext = py.font.Font.render(play, "Play!", 0, green, None)
         gameDisplay.blit(Playtext, (420, 290))
