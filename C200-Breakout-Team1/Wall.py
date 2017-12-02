@@ -52,11 +52,11 @@ class Wall:
                     #sets the hit number of certain bricks in index to two
                     #at some point in the future, try to randomize these selections
                     #also changes which bricks are chosen to be two hit based on which line
-                    if x == 0:
-                        if i == 1 or i == 3 or i == 6:
-                            self.hitList.append(2)
-                        else:
-                            self.hitList.append(1)
+                    if i == 1 or i == 3 or i == 6:
+                        self.hitList.append(2)
+                    else:
+                        self.hitList.append(1)
+                        '''
                     elif x == 1:
                         if i == 1 or i == 4:
                             self.hitList.append(2)
@@ -72,6 +72,7 @@ class Wall:
                             self.hitList.append(2)
                         else:
                             self.hitList.append(1)
+                            '''
 
         elif levelCount == 3:
             #inherit level 2 qualities plus add some unbreakable/iron bricks

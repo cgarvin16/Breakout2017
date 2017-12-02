@@ -45,7 +45,7 @@ ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 wall = Wall()
 
 #holds initial level value
-levelCount = 1
+levelCount = 2
 
 #builds wall of bricks
 wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
@@ -194,42 +194,47 @@ while 1:
                 break
     elif levelCount == 2:
         #creates wall object
-        wall = Wall()
+        wall2 = Wall()
 
         #builds wall of bricks
-        wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
+        wall2.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
 
         #creates new lists to avoid bugs
-        newBrickList = wall.brickList
-        newRecList = wall.recList
-        newColorList = wall.colorList
-        newHitList = wall.hitList
+        newBrickList2 = wall2.brickList
+        newRecList2 = wall2.recList
+        newColorList2 = wall2.colorList
+        newHitList2 = wall2.hitList
 
+        print(newBrickList2)
+        print(newColorList2)
+        print(newHitList2)
+        print(newRecList2)
         #creates and places paddle with a rectangle
-        paddle = Paddle()
-        paddleRect = paddle.image.get_rect()
-        paddleRect.x = 300
-        paddleRect.y = 620
+        paddle2 = Paddle()
+        paddleRect2 = paddle2.image.get_rect()
+        paddleRect2.x = 300
+        paddleRect2.y = 620
 
-        for i in range(len(newBrickList)):
-            gameDisplay.blit(newBrickList[i], newRecList[i])
-            if ballRect.colliderect(newRecList[i]):
-                if newHitList[i] == 1:
-                    del(newBrickList[i])
-                    del(newRecList[i])
-                    del(newColorList[i])
-                    del(newHitList[i])
-                elif newHitList[i] == 2:
-                    newHitList[i] == 1
-                    newBrickList[i] == py.image.load("testBrick.png")
+        for i in range(len(newBrickList2)):
+            gameDisplay.blit(newBrickList2[i], newRecList2[i])
+            if ballRect.colliderect(newRecList2[i]):
+                if newHitList2[i] == 1:
+                    del(newBrickList2[i])
+                    del(newRecList2[i])
+                    del(newColorList2[i])
+                    del(newHitList2[i])
+                elif newHitList2[i] == 2:
+                    newHitList2[i] == 1
+                    newBrickList2[i] == py.image.load("testBrick.png")
                 ballDirection[0] = -ballDirection[0] 
                 ballDirection[1] = -ballDirection[1] 
-            
-                #updates screen
-                py.display.flip()
+                
 
-                #ends loop
-                break
+            #updates screen
+            py.display.flip()
+
+            #ends loop
+            break
         py.display.flip()
 
     #updates the remaining bricks to the screen and checks if a brick has been hit

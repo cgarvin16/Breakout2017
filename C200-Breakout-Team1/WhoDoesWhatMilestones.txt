@@ -28,7 +28,7 @@ Charles 11/28 3:45-5:30
 Logan 11/29 12:00pm-1:30pm, 3:00pm-4:00pm
 Team meeting 11/30 2:45pm-3:20pm
 Team meeting 12/1 12:30pm-2:00pm
-Logan 12/1 7:20pm-8:30pm
+Logan 12/1 7:20pm-8:30pm, 11:45pm-12:30am
 
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
