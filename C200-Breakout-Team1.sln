@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "C200-Breakout-Team1", "C200-Breakout-Team1\C200-Breakout-Team1.pyproj", "{E9CBC8D4-B84E-4955-8B85-E7F218AA9993}"
 EndProject
