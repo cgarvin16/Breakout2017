@@ -1,3 +1,5 @@
+open("highScores.txt")
+
 variable = open("highScores.txt", "a")
 name = input("Add 3 initials")
 score = 0
