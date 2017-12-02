@@ -45,7 +45,7 @@ ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
 wall = Wall()
 
 #holds initial level value
-levelCount = 2
+levelCount = 1
 
 #builds wall of bricks
 wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
