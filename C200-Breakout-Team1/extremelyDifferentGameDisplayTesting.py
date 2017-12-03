@@ -28,10 +28,8 @@ def resetBall():
 
 def newGame():
     #holds initial level value
-    global levelCount
     levelCount = 1
 
-    global wall
     #builds wall of bricks
     wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
 
@@ -54,10 +52,8 @@ def newGame():
 
 
 def levelTwo():
-    global wall
     gameDisplay.fill((0,0,0))
     #builds wall of bricks
-    global levelCount
     wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
 
     #creates new lists to avoid bugs
@@ -173,8 +169,7 @@ while play:
 
             resetBall()
 
-            if levelCount == 2: 
-                levelTwo()
+            play = False
             #exits the game
             #quit()
 
