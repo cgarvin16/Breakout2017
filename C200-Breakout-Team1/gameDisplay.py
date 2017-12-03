@@ -7,8 +7,6 @@
 #                                    For:
 #                                        CSCI-C200 Fall 2017
 
-
-
 #imports to allow use of other modules
 from Wall import Wall
 from Paddle import Paddle 
@@ -20,7 +18,7 @@ import random as r
 def addScore():
     variable = open("highScores.txt", "a")
     name = input("Add 3 initials: ")
-    score = 0
+    score = 0 #default until we get a scoring mechanism set up
     variable.write("{0}. . . . .{1}\n".format(name, score))
     variable.close()
 
@@ -84,6 +82,75 @@ def levelTwo():
     global play
     play = True
 
+def levelThree():
+    wall = Wall()
+    gameDisplay.fill((0,0,0))
+    #builds wall of bricks
+    global levelCount
+    wall.buildWall(gameDisplay, ballRect, ballDirection, 3)
+
+    #creates new lists to avoid bugs
+    global newBrickList
+    global newRecList
+    global newColorList
+    global newHitList
+    newBrickList = wall.brickList
+    newRecList = wall.recList
+    newColorList = wall.colorList
+    newHitList = wall.hitList
+
+    resetBall()
+
+    py.display.flip()
+    global play
+    play = True
+
+def levelFour():
+    wall = Wall()
+    gameDisplay.fill((0,0,0))
+    #builds wall of bricks
+    global levelCount
+    wall.buildWall(gameDisplay, ballRect, ballDirection, 4)
+
+    #creates new lists to avoid bugs
+    global newBrickList
+    global newRecList
+    global newColorList
+    global newHitList
+    newBrickList = wall.brickList
+    newRecList = wall.recList
+    newColorList = wall.colorList
+    newHitList = wall.hitList
+
+    resetBall()
+
+    py.display.flip()
+    global play
+    play = True
+
+def levelFive():
+    wall = Wall()
+    gameDisplay.fill((0,0,0))
+    #builds wall of bricks
+    global levelCount
+    wall.buildWall(gameDisplay, ballRect, ballDirection, 5)
+
+    #creates new lists to avoid bugs
+    global newBrickList
+    global newRecList
+    global newColorList
+    global newHitList
+    newBrickList = wall.brickList
+    newRecList = wall.recList
+    newColorList = wall.colorList
+    newHitList = wall.hitList
+
+    resetBall()
+
+    py.display.flip()
+    global play
+    play = True
+
 play = True
 #beginning of the required pygame skeleton
 #initializes the pygame module
@@ -105,8 +172,6 @@ ballRect = ball.get_rect()
 #sets initial ball direction and location
 resetBall()
 
-#wall = Wall()
-
 #creates and places paddle with a rectangle
 paddle = Paddle()
 paddleRect = paddle.image.get_rect()
@@ -123,7 +188,8 @@ lifeCount = 3
 ballDirection = [0,0]
 
 #initialized level count
-levelCount = 2
+global levelCount
+levelCount = 1
 
 newBrickList = []
 newRecList = []
@@ -137,9 +203,6 @@ rCracked = py.image.load("rBrick_cracked.png")
 while play:
     if levelCount == 1:
         newGame()
-    elif levelCount == 2:
-        levelTwo()
-    
     while play:
         #code for the game
         #how to react to events like key presses or mouse movement
@@ -154,8 +217,7 @@ while play:
                 paddleRect.x += 10
             elif py.key.get_pressed()[py.K_RETURN]:
                 play = True
-        
-
+     
         #check if ball is at the top of the screen 
         if ballRect.y == 0: 
             #creates image object to be put to the screen 
@@ -185,8 +247,15 @@ while play:
 
             resetBall()
 
-            if levelCount == 2: 
+            
+            if levelCount == 2:
                 levelTwo()
+            elif levelCount == 3:
+                levelThree()
+            elif levelCount == 4:
+                levelFour()
+            elif levelCount == 5:
+                levelFive()
             #exits the game
             #quit()
 
@@ -216,8 +285,6 @@ while play:
         #if ball hits walls, send in opposite direction 
         if ballRect.x <= 0 or ballRect.x >= 800:
             ballDirection[0] = -ballDirection[0]
-        
-
         
         #how ball reacting to paddle (paddle pixel ranges: -42 <- -21 = 21 -> 42)
         if ballRect.colliderect(paddleRect):
@@ -260,20 +327,21 @@ while play:
         #if the brick has been hit, it removes it from the lists
         for i in range(len(newBrickList)):
             gameDisplay.blit(newBrickList[i], newRecList[i])
+            if ballRect.colliderect(newRecList[i]):
+                ballDirection[0] = -ballDirection[0] 
+                ballDirection[1] = -ballDirection[1] 
             if ballRect.colliderect(newRecList[i]) and newHitList[i] == 1:
                 del(newBrickList[i])
                 del(newRecList[i])
                 del(newColorList[i])
                 del(newHitList[i])
-                ballDirection[0] = -ballDirection[0] 
-                ballDirection[1] = -ballDirection[1] 
-             
+                
                 #updates screen
                 py.display.flip()
  
                 #ends loop
                 break
-            elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 2:
+            elif ballRect.colliderect(newRecList[i]) and newHitList[i] >= 2:
                 #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
                 #newBrickList[i] = testBrick
                 
@@ -287,8 +355,6 @@ while play:
                     newBrickList[i] = bCracked
                 py.display.flip()
                 newHitList[i] = 1
-                ballDirection[0] = -ballDirection[0]
-                ballDirection[1] = -ballDirection[1]
                 break
 
         #updates screen
