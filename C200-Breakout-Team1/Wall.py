@@ -55,7 +55,7 @@ class Wall:
                     self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
                     self.brickList.append(self.brick.image)
                     self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
-                    self.colorList.append(counterColor)
+                    self.colorList.append(colors[counterColor])
                     if i == 1 or i == 3 or i == 6:
                         self.hitList.append(2)
                     else:

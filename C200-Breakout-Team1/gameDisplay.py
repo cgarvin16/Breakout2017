@@ -123,7 +123,7 @@ lifeCount = 3
 ballDirection = [0,0]
 
 #initialized level count
-levelCount = 1
+levelCount = 2
 
 newBrickList = []
 newRecList = []
@@ -275,14 +275,16 @@ while play:
                 break
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 2:
                 #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
+                #newBrickList[i] = testBrick
+                
                 if newColorList[i] == "wBrick.png":
-                    newBrickList[i] = py.image.load("wBrick_cracked.png")
+                    newBrickList[i] = wCracked
                 elif newColorList[i] == "rBrick.png":
-                    newBrickList[i] = py.image.load("rBrick_cracked.png")
+                    newBrickList[i] = rCracked
                 elif newColorList[i] == "gBrick.png":
-                    newBrickList[i] = py.image.load("gBrick_cracked.png")
+                    newBrickList[i] = gCracked
                 elif newColorList[i] == "bBrick.png":
-                    newBrickList[i] = py.image.load("bBrick_cracked.png")
+                    newBrickList[i] = bCracked
                 py.display.flip()
                 newHitList[i] = 1
                 ballDirection[0] = -ballDirection[0]
