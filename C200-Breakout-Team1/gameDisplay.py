@@ -16,6 +16,14 @@ import pygame as py
 import sys
 import random as r 
 
+#function to add scores to a scores text file for saving
+def addScore():
+    variable = open("highScores.txt", "a")
+    name = input("Add 3 initials: ")
+    score = 0
+    variable.write("{0}. . . . .{1}\n".format(name, score))
+    variable.close()
+
 def resetBall():
     #randomizes initial location between bricks and paddle
     ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen

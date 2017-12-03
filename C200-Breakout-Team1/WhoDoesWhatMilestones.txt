@@ -74,13 +74,14 @@ Problem log:
 
 
 Milestone 2:
+
 –Add level progression – a minimum of five levels of increasing difficulty must
 be included. Pause between levels and provide control to the user for resuming the next level.
 	Date done:
 	Prim. Person in Charge: Logan
 
 -Images for all the functions ex) play, pause, lives, etc.
-	Date done:
+	Date done: 12/02
 	Prim. Person in Charge: Carolyn
 
 –Design and implement a score function that adheres to the game objective
@@ -98,7 +99,7 @@ Maintain the high-score information in a flat file that is loaded at game start-
 	Prim. Person in Charge: Charles
 	
 -Add a main menu game screen.
-	Date done:
+	Date done: 12/02
 	Prim. Person in Charge: Carolyn
 
 –Add a game screen for viewing the high-scores – scores can only be viewed
@@ -107,8 +108,8 @@ prior to starting a new game.
 	Prim. Person in Charge: Charles
 
 –Add a game screen for viewing game-play instructions.
-	Date done:
-	Prim. Person in Charge: Charles
+	Date done: 12/02
+	Prim. Person in Charge: Carolyn and Charles
 
 –Add the score, number of lives, and a timer to the display.
 	Date done:

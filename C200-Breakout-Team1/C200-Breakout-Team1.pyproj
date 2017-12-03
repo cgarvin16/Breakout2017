@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e9cbc8d4-b84e-4955-8b85-e7f218aa9993</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>gameDisplay.py</StartupFile>
+    <StartupFile>mainMenu.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -35,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="gameIdeas.py" />
+    <Compile Include="instructionsPage.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="mainMenu.py">
       <SubType>Code</SubType>
     </Compile>
@@ -50,7 +53,6 @@
     <Content Include="editedPaddleImage.png" />
     <Content Include="editedLevelFailed.png" />
     <Content Include="editedLevelPassed.png" />
-    <Content Include="paddleImage.png" />
     <Content Include="testBrick.png" />
     <Content Include="WhoDoesWhatMilestones.txt" />
   </ItemGroup>
