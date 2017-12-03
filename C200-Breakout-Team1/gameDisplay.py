@@ -24,8 +24,12 @@ def addScore():
 
 def resetBall():
     #randomizes initial location between bricks and paddle
+    global levelCount
     ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen
-    ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
+    if levelCount == 5:
+        ballRect.y = r.randrange(206, 610) #6 rows of bricks in level 5, ends at 206px, paddle begin at 620px
+    else:
+        ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
 
     #variable to change ball direction; begins in random direction
     #tried using trig to calculate better angle options, but move() function only takes int
@@ -169,6 +173,10 @@ py.display.flip()
 ball = py.image.load("ballNoBackground.png")
 ballRect = ball.get_rect()
 
+#initialized level count
+global levelCount
+levelCount = 1
+
 #sets initial ball direction and location
 resetBall()
 
@@ -187,9 +195,7 @@ lifeCount = 3
 #initialized ballDirection variable
 ballDirection = [0,0]
 
-#initialized level count
-global levelCount
-levelCount = 4
+
 
 newBrickList = []
 newRecList = []
@@ -200,6 +206,8 @@ wCracked = py.image.load("wBrick_cracked.png")
 bCracked = py.image.load("bBrick_cracked.png")
 gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
+mCracked = py.image.load("mBrick_cracked.png")
+zCracked = py.image.load("zBrick_cracked.png")
 while play:
     if levelCount == 1:
         newGame()
@@ -361,8 +369,12 @@ while play:
                     newBrickList[i] = gCracked
                 elif newColorList[i] == "bBrick.png":
                     newBrickList[i] = bCracked
+                elif newColorList[i] == "mBrick.png":
+                    newBrickList[i] = mCracked
+                elif newColorList[i] == "zBrick.png":
+                    newBrickList[i] = zCracked
                 py.display.flip()
-                newHitList[i] = 1
+                newHitList[i] -= 1
                 break
 
         #updates screen

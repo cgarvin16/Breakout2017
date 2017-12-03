@@ -32,7 +32,7 @@ Logan 12/1 7:20pm-8:30pm, 11:45pm-12:30am
 Team meeting 12/2 3:00pm-5:15pm
 Logan & Carolyn 12/2 5:15pm-7:00pm
 Logan 12/2 11:00pm-1:00am
-Logan 12/3 12:45pm-1:45pm
+Logan 12/3 12:45pm-1:45pm, 4:15pm-
 
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
