@@ -189,7 +189,7 @@ ballDirection = [0,0]
 
 #initialized level count
 global levelCount
-levelCount = 1
+levelCount = 4
 
 newBrickList = []
 newRecList = []
@@ -203,6 +203,14 @@ rCracked = py.image.load("rBrick_cracked.png")
 while play:
     if levelCount == 1:
         newGame()
+    elif levelCount == 2:
+        levelTwo()
+    elif levelCount == 3:
+        levelThree()
+    elif levelCount == 4:
+        levelFour()
+    elif levelCount == 5:
+        levelFive()
     while play:
         #code for the game
         #how to react to events like key presses or mouse movement

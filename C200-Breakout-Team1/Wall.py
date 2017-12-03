@@ -139,6 +139,64 @@ class Wall:
                 locCounterY += 35
                 counterColor += 1
                 lineCounter += 1
+        elif levelCount == 4: #level 4 has all 2 hit bricks, some 3 hit bricks, and some iron bricks
+            #creates empty list to hold variable for reference in the main game
+            self.recList = []
+            self.brickList = []
+            self.colorList = []
+            self.hitList = []
+            lineCounter = 0
+            #creates four lines of bricks
+            for i in range(0, 4):
+                locCounterX = 2
+                #creates seven bricks per line
+                for i in range(0,7):
+                    if lineCounter == 0 and i == 2:
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
+                    elif lineCounter == 1 and i == 4:
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
+                    elif lineCounter == 2 and i == 6:
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
+                    elif lineCounter == 3 and i == 4:
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
+                    else:
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
+                    self.brickList.append(self.brick.image)
+                    self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
+                    self.colorList.append(colors[counterColor])
+                    if lineCounter == 0:
+                        if i == 3 or i == 0 or i == 4:
+                            self.hitList.append(3)
+                        elif i == 2:
+                            self.hitList.append(0)
+                        else:
+                            self.hitList.append(2)
+                    elif lineCounter == 1:
+                        if i == 2 or i == 6:
+                            self.hitList.append(3)
+                        elif i == 4:
+                            self.hitList.append(0)
+                        else:
+                            self.hitList.append(2)
+                    elif lineCounter == 2:
+                        if i == 5 or i == 2 or i == 0:
+                            self.hitList.append(3)
+                        elif i == 6:
+                            self.hitList.append(0)
+                        else:
+                            self.hitList.append(1)
+                    elif lineCounter == 3:
+                        if i == 1 or i == 3:
+                            self.hitList.append(3)
+                        elif i == 4:
+                            self.hitList.append(0)
+                        else:
+                            self.hitList.append(2)
+                            
+                    locCounterX += 114
+                locCounterY += 35
+                counterColor += 1
+                lineCounter += 1
 
         '''
         elif levelCount == 2:
