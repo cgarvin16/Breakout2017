@@ -32,14 +32,14 @@ def resetBall():
     #variable to change ball direction; begins in random direction
     #tried using trig to calculate better angle options, but move() function only takes int
     global ballDirection
-    ballDirection = [r.choice([1, -1]), r.choice([1, -1])]
+    ballDirection = [r.choice([2, -2]), r.choice([2, -2])]
 
 def newGame():
     #holds initial level value
     global levelCount
     levelCount = 1
 
-    global wall
+    wall = Wall()
     #builds wall of bricks
     wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
 
@@ -62,7 +62,7 @@ def newGame():
 
 
 def levelTwo():
-    global wall
+    wall = Wall()
     gameDisplay.fill((0,0,0))
     #builds wall of bricks
     global levelCount
@@ -105,7 +105,7 @@ ballRect = ball.get_rect()
 #sets initial ball direction and location
 resetBall()
 
-wall = Wall()
+#wall = Wall()
 
 #creates and places paddle with a rectangle
 paddle = Paddle()
@@ -235,7 +235,7 @@ while play:
        
         #using Clock object in pygame and setting frames per second
         clock = py.time.Clock()
-        clock.tick(6000)
+        clock.tick(600000)
 
         #paints over last screen
         gameDisplay.fill((0,0,0))
