@@ -66,7 +66,7 @@ def levelTwo():
     gameDisplay.fill((0,0,0))
     #builds wall of bricks
     global levelCount
-    wall.buildWall(gameDisplay, ballRect, ballDirection, levelCount)
+    wall.buildWall(gameDisplay, ballRect, ballDirection, 2)
 
     #creates new lists to avoid bugs
     global newBrickList
@@ -129,7 +129,11 @@ newBrickList = []
 newRecList = []
 newColorList = []
 newHitList = []
-
+testBrick = py.image.load("testBrick.png")
+wCracked = py.image.load("wBrick_cracked.png")
+bCracked = py.image.load("bBrick_cracked.png")
+gCracked = py.image.load("gBrick_cracked.png")
+rCracked = py.image.load("rBrick_cracked.png")
 while play:
     if levelCount == 1:
         newGame()
@@ -224,14 +228,14 @@ while play:
 
             #tried using trig to calculate better angle options, but move() function only takes int
             if offset >= 21: #right side of paddle, pos x and neg y, sends up to right 
-                ballDirection[0] = 1
-                ballDirection[1] = -1
+                ballDirection[0] = 2
+                ballDirection[1] = -2
             elif offset < 21 and offset > -21: #middle of paddle, sends up 
                 ballDirection[0] = 0
-                ballDirection[1] = -1
+                ballDirection[1] = -2
             elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left 
-                ballDirection[0] = -1
-                ballDirection[1] = -1
+                ballDirection[0] = -2
+                ballDirection[1] = -2
        
         #using Clock object in pygame and setting frames per second
         clock = py.time.Clock()
@@ -256,10 +260,11 @@ while play:
         #if the brick has been hit, it removes it from the lists
         for i in range(len(newBrickList)):
             gameDisplay.blit(newBrickList[i], newRecList[i])
-            if ballRect.colliderect(newRecList[i]):
+            if ballRect.colliderect(newRecList[i]) and newHitList[i] == 1:
                 del(newBrickList[i])
                 del(newRecList[i])
                 del(newColorList[i])
+                del(newHitList[i])
                 ballDirection[0] = -ballDirection[0] 
                 ballDirection[1] = -ballDirection[1] 
              
@@ -268,6 +273,22 @@ while play:
  
                 #ends loop
                 break
+            elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 2:
+                #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
+                if newColorList[i] == "wBrick.png":
+                    newBrickList[i] = py.image.load("wBrick_cracked.png")
+                elif newColorList[i] == "rBrick.png":
+                    newBrickList[i] = py.image.load("rBrick_cracked.png")
+                elif newColorList[i] == "gBrick.png":
+                    newBrickList[i] = py.image.load("gBrick_cracked.png")
+                elif newColorList[i] == "bBrick.png":
+                    newBrickList[i] = py.image.load("bBrick_cracked.png")
+                py.display.flip()
+                newHitList[i] = 1
+                ballDirection[0] = -ballDirection[0]
+                ballDirection[1] = -ballDirection[1]
+                break
+
         #updates screen
         py.display.flip()
 

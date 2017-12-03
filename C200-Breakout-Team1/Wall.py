@@ -34,12 +34,8 @@ class Wall:
                     self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
                     self.brickList.append(self.brick.image)
                     self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
-                    self.colorList.append(counterColor)
-                    #self.hitList.append(1)
-                    if i == 1 or i == 3 or i == 6:
-                        self.hitList.append(2)
-                    else:
-                        self.hitList.append(1)
+                    self.colorList.append(colors[counterColor])
+                    self.hitList.append(1)
                     locCounterX += 114
                 locCounterY += 35
                 counterColor += 1
@@ -60,7 +56,10 @@ class Wall:
                     self.brickList.append(self.brick.image)
                     self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
                     self.colorList.append(counterColor)
-                    self.hitList.append(1)
+                    if i == 1 or i == 3 or i == 6:
+                        self.hitList.append(2)
+                    else:
+                        self.hitList.append(1)
                     locCounterX += 114
                 locCounterY += 35
                 counterColor += 1
