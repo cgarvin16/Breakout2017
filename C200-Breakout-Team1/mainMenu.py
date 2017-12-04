@@ -4,13 +4,12 @@ black = (0,0,0)
 red = (255,0,0)
 green = (0,200,0)
 blue = (0,0,255)
-
+state = 'intro'
 py.init()
 py.font.init()
 gameDisplay = py.display.set_mode((800, 700))
 def game_intro():
-    intro = True
-    while intro:
+    while state == 'intro':
         for event in py.event.get():
             if event.type == py.QUIT:
                 py.quit()
@@ -30,10 +29,10 @@ def game_intro():
 
         #This displays the instructions icon
         if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
-            instructionIcon = py.image.load("instr_icon_trans.png")
+            instructionIcon = py.image.load("instr_icon_trans.jpg")
             gameDisplay.blit(instructionIcon, (370,400))
         else:
-            instructionIcon = py.image.load("instr_icon.png")
+            instructionIcon = py.image.load("instr_icon.jpg")
             gameDisplay.blit(instructionIcon, (370,400))
 
         instr = py.font.SysFont("times", 50)
@@ -42,10 +41,10 @@ def game_intro():
 
         #This displays the highscore icon
         if 370+40 > mouse[0] > 370 and 500+40 > mouse[1] > 500:
-            highscoreIcon = py.image.load("highScore_icon_trans.png")
+            highscoreIcon = py.image.load("highScore_icon_trans.jpg")
             gameDisplay.blit(highscoreIcon, (370,500))
         else:
-            highscoreIcon = py.image.load("highScore_icon.png")
+            highscoreIcon = py.image.load("highScore_icon.jpg")
             gameDisplay.blit(highscoreIcon, (370,500))
 
         HS = py.font.SysFont("times", 50)
@@ -54,10 +53,10 @@ def game_intro():
 
         #This displays the Play Icon
         if 370+40 > mouse[0] > 370 and 300+40 > mouse[1] > 300:
-            playIcon = py.image.load("resume_icon_trans.png")
+            playIcon = py.image.load("resume_icon_trans.jpg")
             gameDisplay.blit(playIcon, (370, 300))
         else:
-            playIcon = py.image.load("resume_icon.png")
+            playIcon = py.image.load("resume_icon.jpg")
             gameDisplay.blit(playIcon, (370, 300))
         
         play = py.font.SysFont("times", 50)

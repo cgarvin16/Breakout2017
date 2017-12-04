@@ -10,7 +10,7 @@ colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png", "mBrick.png", 
 iron = "ironBrick.png"
 
 #beginning of the class used to creat the brick wall object
-class Wall:
+class Wall():
     def __init__(self):
         pass
 

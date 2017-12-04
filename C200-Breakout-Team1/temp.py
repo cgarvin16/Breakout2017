@@ -83,8 +83,6 @@ def levelTwo():
     resetBall()
 
     py.display.flip()
-    global play
-    play = True
 
 def levelThree():
     wall = Wall()
@@ -106,8 +104,8 @@ def levelThree():
     resetBall()
 
     py.display.flip()
-    global play
-    play = True
+    
+    state = 'play'
 
 def levelFour():
     wall = Wall()
@@ -129,8 +127,7 @@ def levelFour():
     resetBall()
 
     py.display.flip()
-    global play
-    play = True
+    state = 'play'
 
 def levelFive():
     wall = Wall()
@@ -152,13 +149,73 @@ def levelFive():
     resetBall()
 
     py.display.flip()
-    global play
-    play = True
+    state = 'play'
 
-play = True
+def game_intro():
+    white = (255,255,255)
+    black = (0,0,0)
+    red = (255,0,0)
+    green = (0,200,0)
+    blue = (0,0,255)
+    gameDisplay.fill(black)
+    #This displays the Title on the Main Menu screen
+    largeText = py.font.SysFont("times", 100)
+    text = py.font.Font.render(largeText, "Christmas Breakout", 0, white, None)
+    gameDisplay.blit(text, (0, 0))
+
+    menu = py.font.SysFont("calibri",60)
+    menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
+    gameDisplay.blit(menuText, (250,180))
+
+    #displays mouse
+    mouse = py.mouse.get_pos()
+
+    #This displays the instructions icon
+    if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
+        instructionIcon = py.image.load("instr_icon_trans.jpg")
+        gameDisplay.blit(instructionIcon, (370,400))
+    else:
+        instructionIcon = py.image.load("instr_icon.jpg")
+        gameDisplay.blit(instructionIcon, (370,400))
+
+    instr = py.font.SysFont("times", 50)
+    Instrtext = py.font.Font.render(instr, "Instructions", 0, green, None)
+    gameDisplay.blit(Instrtext, (420, 390))
+
+    #This displays the highscore icon
+    if 370+40 > mouse[0] > 370 and 500+40 > mouse[1] > 500:
+        highscoreIcon = py.image.load("highScore_icon_trans.jpg")
+        gameDisplay.blit(highscoreIcon, (370,500))
+    else:
+        highscoreIcon = py.image.load("highScore_icon.jpg")
+        gameDisplay.blit(highscoreIcon, (370,500))
+
+    HS = py.font.SysFont("times", 50)
+    HStext = py.font.Font.render(HS, "Highscores", 0, green, None)
+    gameDisplay.blit(HStext, (420, 490))
+
+    #This displays the Play Icon
+    if 370+40 > mouse[0] > 370 and 300+40 > mouse[1] > 300:
+        playIcon = py.image.load("resume_icon_trans.jpg")
+        gameDisplay.blit(playIcon, (370, 300))
+    else:
+        playIcon = py.image.load("resume_icon.jpg")
+        gameDisplay.blit(playIcon, (370, 300))
+        
+    play = py.font.SysFont("times", 50)
+    Playtext = py.font.Font.render(play, "Play!", 0, green, None)
+    gameDisplay.blit(Playtext, (420, 290))
+
+
+    py.display.update()
+    clock = py.time.Clock()
+    clock.tick(15)
+
+state = 'intro'
 #beginning of the required pygame skeleton
 #initializes the pygame module
 py.init()
+py.font.init()
 
 #sets the game display size as 800px width and 700px height
 gameDisplay = py.display.set_mode((800, 700))
@@ -206,7 +263,7 @@ gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
 mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
-while play:
+while 1:
     if levelCount == 1:
         newGame()
     elif levelCount == 2:
@@ -217,7 +274,24 @@ while play:
         levelFour()
     elif levelCount == 5:
         levelFive()
-    while play:
+    while state == 'intro':
+        for event in py.event.get():
+
+            if event.type == py.QUIT:
+                sys.exit()
+            elif py.key.get_pressed()[py.K_p]:
+                state = 'play'
+            elif py.key.get_pressed()[py.K_s]:
+                state = 'pause'
+        game_intro()
+    while state == 'pause':
+        for event in py.event.get():
+            if event.type == py.QUIT:
+                sys.exit()
+            elif py.key.get_pressed()[py.K_p]:
+                state = 'play'
+        game_intro()
+    while state == 'play':
         #code for the game
         #how to react to events like key presses or mouse movement
         for event in py.event.get():
@@ -229,8 +303,12 @@ while play:
                 paddleRect.x -= 10
             elif py.key.get_pressed()[py.K_RIGHT]:
                 paddleRect.x += 10
-            elif py.key.get_pressed()[py.K_RETURN]:
-                play = True
+            elif py.key.get_pressed()[py.K_p]:
+                state = 'pause'
+            elif py.key.get_pressed()[py.K_i]:
+                state = 'intro'
+            elif py.key.get_pressed()[py.K_s]:
+                state = 'pause'
      
         #check if ball is at the top of the screen 
         if ballRect.y == 0: 
@@ -260,7 +338,6 @@ while play:
             print(levelCount)
 
             resetBall()
-
             
             if levelCount == 2:
                 levelTwo()
@@ -270,6 +347,7 @@ while play:
                 levelFour()
             elif levelCount == 5:
                 levelFive()
+
             #exits the game
             #quit()
 
@@ -378,5 +456,5 @@ while play:
         #updates screen
         py.display.flip()
 
-    #exits python
-    quit()
+#exits python
+quit()
