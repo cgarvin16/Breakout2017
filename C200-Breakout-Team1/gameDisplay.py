@@ -41,7 +41,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 100
         elif timeTaken > 55 and timeTaken <= 65:
             finalScore += 50
-        elif > 65:
+        elif timeTaken > 65:
             finalScore += 0
         return finalScore
 
@@ -56,7 +56,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 120
         elif bricksBroken > 20 and bricksBroken <= 24:
             finalScore += 60
-        elif > 24:
+        elif bricksBroken > 24:
             finalScore += 0
         
         if timeTaken >= 35:
@@ -69,7 +69,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 120
         elif timeTaken > 80 and timeTaken <= 95:
             finalScore += 60
-        elif > 65:
+        elif timeTaken > 65:
             finalScore += 0
         return finalScore
 
@@ -84,7 +84,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 140
         elif bricksBroken > 20 and bricksBroken <= 24:
             finalScore += 70
-        elif > 24:
+        elif bricksBroken > 24:
             finalScore += 0
         
         if timeTaken >= 35:
@@ -97,7 +97,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 140
         elif timeTaken > 80 and timeTaken <= 95:
             finalScore += 70
-        elif > 65:
+        elif finalScore > 65:
             finalScore += 0
         return finalScore
 
@@ -112,7 +112,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 160
         elif bricksBroken > 20 and bricksBroken <= 24:
             finalScore += 80
-        elif > 24:
+        elif bricksBroken > 24:
             finalScore += 0
         
         if timeTaken >= 35:
@@ -125,7 +125,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 160
         elif timeTaken > 80 and timeTaken <= 95:
             finalScore += 80
-        elif > 65:
+        elif timeTaken > 65:
             finalScore += 0
         return finalScore
 
@@ -140,7 +140,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 180
         elif bricksBroken > 28 and bricksBroken <= 32:
             finalScore += 90
-        elif > 24:
+        elif bricksBroken > 24:
             finalScore += 0
         
         if timeTaken >= 35:
@@ -153,7 +153,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 180
         elif timeTaken > 80 and timeTaken <= 95:
             finalScore += 90
-        elif > 65:
+        elif timeTaken > 65:
             finalScore += 0
         return finalScore
 
