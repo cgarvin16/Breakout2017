@@ -1,4 +1,3 @@
-#info bar at screen top integration testing with updated gameDisplay
 #                                    Breakout Beta Version 0.1
 #                                    Milestone 1 Complete
 #                                    Done By:
@@ -14,8 +13,151 @@ from Paddle import Paddle
 import pygame as py
 import sys
 import random as r 
+import time
 
 #function to add scores to a scores text file for saving
+def calculateScore(bricksBroken, timeTaken, score, levelCount):
+    if levelCount == 1:
+        finalScore = 0
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 250
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 200
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 150
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 100
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 50
+        elif bricksBroken > 24:
+            finalScore += 0
+
+        if timeTaken >= 25:
+            finalScore += 250
+        elif timeTaken > 25 and timeTaken <= 35:
+            finalScore += 200
+        elif timeTaken > 35 and timeTaken <= 45:
+            finalScore += 150
+        elif timeTaken > 45 and timeTaken <= 55:
+            finalScore += 100
+        elif timeTaken > 55 and timeTaken <= 65:
+            finalScore += 50
+        elif timeTaken > 65:
+            finalScore += 0
+        return finalScore
+
+    elif levelCount == 2:
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 300
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 240
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 180
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 120
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 60
+        elif bricksBroken > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 300
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 240
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 180
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 120
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 60
+        elif timeTaken > 65:
+            finalScore += 0
+        return finalScore
+
+    elif levelCount == 3:
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 350
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 280
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 210
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 140
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 70
+        elif bricksBroken > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 350
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 280
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 210
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 140
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 70
+        elif finalScore > 65:
+            finalScore += 0
+        return finalScore
+
+    elif levelCount == 4:
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 400
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 320
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 240
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 160
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 80
+        elif bricksBroken > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 400
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 320
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 240
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 160
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 80
+        elif timeTaken > 65:
+            finalScore += 0
+        return finalScore
+
+    elif levelCount == 5:
+        if bricksBroken >= 4 and bricksBroken <= 10:
+            finalScore += 450
+        elif bricksBroken > 10 and bricksBroken <= 16:
+            finalScore += 360
+        elif bricksBroken > 16 and bricksBroken <= 22:
+            finalScore += 270
+        elif bricksBroken > 22 and bricksBroken <= 28:
+            finalScore += 180
+        elif bricksBroken > 28 and bricksBroken <= 32:
+            finalScore += 90
+        elif bricksBroken > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 450
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 360
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 270
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 180
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 90
+        elif timeTaken > 65:
+            finalScore += 0
+        return finalScore
+
 def addScore():
     variable = open("highScores.txt", "a")
     name = input("Add 3 initials: ")
@@ -28,9 +170,9 @@ def resetBall():
     global levelCount
     ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen
     if levelCount == 5:
-        ballRect.y = r.randrange(206, 610) #6 rows of bricks in level 5, ends at 206px, paddle begin at 620px
+        ballRect.y = r.randrange(246, 610) #6 rows of bricks in level 5, ends at 206px, paddle begin at 620px, + 40 for toolbar
     else:
-        ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
+        ballRect.y = r.randrange(186, 610) #4 rows of bricks ending at 146px, paddle begin at 620px, + 40 for toolbar
 
     #variable to change ball direction; begins in random direction
     #tried using trig to calculate better angle options, but move() function only takes int
@@ -59,10 +201,17 @@ def newGame():
     #resets intial life value
     lifeCount = 3
 
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
+    #resets startTime
+    global startTime
+    startTime = time.time()
+
     resetBall()
 
     py.display.flip()
-
 
 def levelTwo():
     wall = Wall()
@@ -82,6 +231,14 @@ def levelTwo():
     newHitList = wall.hitList
 
     resetBall()
+
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
+    #resets startTime
+    global startTime
+    startTime = time.time()
 
     py.display.flip()
     global play
@@ -106,6 +263,14 @@ def levelThree():
 
     resetBall()
 
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
+    #resets startTime
+    global startTime
+    startTime = time.time()
+
     py.display.flip()
     global play
     play = True
@@ -129,6 +294,14 @@ def levelFour():
 
     resetBall()
 
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
+    #resets startTime
+    global startTime
+    startTime = time.time()
+
     py.display.flip()
     global play
     play = True
@@ -151,6 +324,14 @@ def levelFive():
     newHitList = wall.hitList
 
     resetBall()
+
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
+    #resets startTime
+    global startTime
+    startTime = time.time()
 
     py.display.flip()
     global play
@@ -279,7 +460,12 @@ gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
 mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
-game_intro()
+
+#initializes brick hit, time, and score
+bricksBroken = 0
+score = 0
+timeTaken = 0
+startTime = 0
 while 1:
     pause = True
     game_intro()
@@ -304,7 +490,7 @@ while 1:
                 state2 = 'pause'
      
         #check if ball is at the top of the screen 
-        if ballRect.y <= 0: 
+        if ballRect.y <= 42: 
             #creates image object to be put to the screen 
             passMessage= py.image.load("editedLevelPassed.png")
 
@@ -314,7 +500,7 @@ while 1:
 
             #moves and pauses ball to prevent if loop from repeating
             ballRect.x = 300
-            ballRect.y = 400
+            ballRect.y = 440
             ballDirection[0] = 0
             ballDirection[1] = 0
 
@@ -324,13 +510,29 @@ while 1:
             #pauses while loop to make image visible
             py.time.wait(3000)
 
+            #prints break line for console
+            print('*'*20)
+            print(levelCount)
+
             #adds one to the level indicator for use later
             levelCount += 1
 
             #prints level value to console for testing purposes
             print(levelCount)
 
+            #prints bricksBroken to console for testing purposes
+            print(bricksBroken)
+
             resetBall()
+
+            #prints break line for console 
+            print('-'*20)
+
+            #prints times to console for testing
+            print("start time: {0}".format(startTime))
+            print("current time: {0}".format(time.time()))
+            timeTaken = time.time()-startTime
+            print("time taken: {0}".format(timeTaken))
 
             if levelCount == 2:
                 levelTwo()
@@ -352,7 +554,7 @@ while 1:
 
             #moves and pauses ball to prevent if loop from repeating
             ballRect.x = 300
-            ballRect.y = 400
+            ballRect.y = 440
             ballDirection[0] = 0
             ballDirection[1] = 0
 
@@ -422,7 +624,10 @@ while 1:
                 
                 #updates screen
                 py.display.flip()
- 
+                
+                #adds 1 to bricksBroken for score calculation
+                bricksBroken += 1
+
                 #ends loop
                 break
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] >= 2:

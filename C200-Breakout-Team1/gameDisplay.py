@@ -13,6 +13,7 @@ from Paddle import Paddle
 import pygame as py
 import sys
 import random as r 
+import time
 
 #function to add scores to a scores text file for saving
 def calculateScore(bricksBroken, timeTaken, score, levelCount):
@@ -204,6 +205,10 @@ def newGame():
     global bricksBroken
     bricksBroken = 0
 
+    #resets startTime
+    global startTime
+    startTime = time.time()
+
     resetBall()
 
     py.display.flip()
@@ -230,6 +235,10 @@ def levelTwo():
     #resets bricksBroken
     global bricksBroken
     bricksBroken = 0
+
+    #resets startTime
+    global startTime
+    startTime = time.time()
 
     py.display.flip()
     global play
@@ -258,6 +267,10 @@ def levelThree():
     global bricksBroken
     bricksBroken = 0
 
+    #resets startTime
+    global startTime
+    startTime = time.time()
+
     py.display.flip()
     global play
     play = True
@@ -285,6 +298,10 @@ def levelFour():
     global bricksBroken
     bricksBroken = 0
 
+    #resets startTime
+    global startTime
+    startTime = time.time()
+
     py.display.flip()
     global play
     play = True
@@ -311,6 +328,10 @@ def levelFive():
     #resets bricksBroken
     global bricksBroken
     bricksBroken = 0
+
+    #resets startTime
+    global startTime
+    startTime = time.time()
 
     py.display.flip()
     global play
@@ -444,6 +465,7 @@ zCracked = py.image.load("zBrick_cracked.png")
 bricksBroken = 0
 score = 0
 timeTaken = 0
+startTime = 0
 while 1:
     pause = True
     game_intro()
@@ -502,6 +524,15 @@ while 1:
             print(bricksBroken)
 
             resetBall()
+
+            #prints break line for console 
+            print('-'*20)
+
+            #prints times to console for testing
+            print("start time: {0}".format(startTime))
+            print("current time: {0}".format(time.time()))
+            timeTaken = time.time()-startTime
+            print("time taken: {0}".format(timeTaken))
 
             if levelCount == 2:
                 levelTwo()
