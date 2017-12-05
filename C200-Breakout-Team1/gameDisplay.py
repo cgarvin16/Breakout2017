@@ -28,7 +28,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 100
         elif bricksBroken > 20 and bricksBroken <= 24:
             finalScore += 50
-        elif > 24:
+        elif bricksBroken > 24:
             finalScore += 0
 
         if timeTaken >= 25:
@@ -200,10 +200,13 @@ def newGame():
     #resets intial life value
     lifeCount = 3
 
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
     resetBall()
 
     py.display.flip()
-
 
 def levelTwo():
     wall = Wall()
@@ -224,10 +227,13 @@ def levelTwo():
 
     resetBall()
 
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
     py.display.flip()
     global play
     play = True
-
 
 def levelThree():
     wall = Wall()
@@ -247,6 +253,10 @@ def levelThree():
     newHitList = wall.hitList
 
     resetBall()
+
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
 
     py.display.flip()
     global play
@@ -271,6 +281,10 @@ def levelFour():
 
     resetBall()
 
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
+
     py.display.flip()
     global play
     play = True
@@ -293,6 +307,10 @@ def levelFive():
     newHitList = wall.hitList
 
     resetBall()
+
+    #resets bricksBroken
+    global bricksBroken
+    bricksBroken = 0
 
     py.display.flip()
     global play
@@ -426,7 +444,6 @@ zCracked = py.image.load("zBrick_cracked.png")
 bricksBroken = 0
 score = 0
 timeTaken = 0
-game_intro()
 while 1:
     pause = True
     game_intro()
@@ -471,11 +488,18 @@ while 1:
             #pauses while loop to make image visible
             py.time.wait(3000)
 
+            #prints break line for console
+            print('*'*20)
+            print(levelCount)
+
             #adds one to the level indicator for use later
             levelCount += 1
 
             #prints level value to console for testing purposes
             print(levelCount)
+
+            #prints bricksBroken to console for testing purposes
+            print(bricksBroken)
 
             resetBall()
 
@@ -569,7 +593,10 @@ while 1:
                 
                 #updates screen
                 py.display.flip()
- 
+                
+                #adds 1 to bricksBroken for score calculation
+                bricksBroken += 1
+
                 #ends loop
                 break
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] >= 2:

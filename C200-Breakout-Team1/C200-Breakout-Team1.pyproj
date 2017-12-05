@@ -45,7 +45,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="temp.py" />
-    <Compile Include="testingWall.py" />
     <Compile Include="Wall.py">
       <SubType>Code</SubType>
     </Compile>
