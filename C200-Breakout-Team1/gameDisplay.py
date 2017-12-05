@@ -22,15 +22,140 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore += 250
         elif bricksBroken > 8 and bricksBroken <= 12:
             finalScore += 200
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 150
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 100
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 50
+        elif > 24:
+            finalScore += 0
+
+        if timeTaken >= 25:
+            finalScore += 250
+        elif timeTaken > 25 and timeTaken <= 35:
+            finalScore += 200
+        elif timeTaken > 35 and timeTaken <= 45:
+            finalScore += 150
+        elif timeTaken > 45 and timeTaken <= 55:
+            finalScore += 100
+        elif timeTaken > 55 and timeTaken <= 65:
+            finalScore += 50
+        elif > 65:
+            finalScore += 0
+        return finalScore
 
     elif levelCount == 2:
-        pass
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 300
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 240
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 180
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 120
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 60
+        elif > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 300
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 240
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 180
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 120
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 60
+        elif > 65:
+            finalScore += 0
+        return finalScore
+
     elif levelCount == 3:
-        pass
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 350
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 280
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 210
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 140
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 70
+        elif > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 350
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 280
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 210
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 140
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 70
+        elif > 65:
+            finalScore += 0
+        return finalScore
+
     elif levelCount == 4:
-        pass
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 400
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 320
+        elif bricksBroken > 12 and bricksBroken <= 16:
+            finalScore += 240
+        elif bricksBroken > 16 and bricksBroken <= 10:
+            finalScore += 160
+        elif bricksBroken > 20 and bricksBroken <= 24:
+            finalScore += 80
+        elif > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 400
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 320
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 240
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 160
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 80
+        elif > 65:
+            finalScore += 0
+        return finalScore
+
     elif levelCount == 5:
-        pass
+        if bricksBroken >= 4 and bricksBroken <= 10:
+            finalScore += 450
+        elif bricksBroken > 10 and bricksBroken <= 16:
+            finalScore += 360
+        elif bricksBroken > 16 and bricksBroken <= 22:
+            finalScore += 270
+        elif bricksBroken > 22 and bricksBroken <= 28:
+            finalScore += 180
+        elif bricksBroken > 28 and bricksBroken <= 32:
+            finalScore += 90
+        elif > 24:
+            finalScore += 0
+        
+        if timeTaken >= 35:
+            finalScore += 450
+        elif timeTaken > 35 and timeTaken <= 50:
+            finalScore += 360
+        elif timeTaken > 50 and timeTaken <= 65:
+            finalScore += 270
+        elif timeTaken > 65 and timeTaken <= 80:
+            finalScore += 180
+        elif timeTaken > 80 and timeTaken <= 95:
+            finalScore += 90
+        elif > 65:
+            finalScore += 0
+        return finalScore
 
 def addScore():
     variable = open("highScores.txt", "a")
