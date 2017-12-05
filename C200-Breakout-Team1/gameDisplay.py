@@ -209,14 +209,6 @@ zCracked = py.image.load("zBrick_cracked.png")
 while play:
     if levelCount == 1:
         newGame()
-    elif levelCount == 2:
-        levelTwo()
-    elif levelCount == 3:
-        levelThree()
-    elif levelCount == 4:
-        levelFour()
-    elif levelCount == 5:
-        levelFive()
     while play:
         #code for the game
         #how to react to events like key presses or mouse movement
@@ -233,7 +225,7 @@ while play:
                 play = True
      
         #check if ball is at the top of the screen 
-        if ballRect.y == 0: 
+        if ballRect.y <= 0: 
             #creates image object to be put to the screen 
             passMessage= py.image.load("editedLevelPassed.png")
 
@@ -261,7 +253,6 @@ while play:
 
             resetBall()
 
-            
             if levelCount == 2:
                 levelTwo()
             elif levelCount == 3:
