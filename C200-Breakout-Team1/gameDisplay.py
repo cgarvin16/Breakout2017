@@ -27,9 +27,9 @@ def resetBall():
     global levelCount
     ballRect.x = r.randrange(10, 790) #width is 800, above 10 and bellow 790 so not on edge of screen
     if levelCount == 5:
-        ballRect.y = r.randrange(206, 610) #6 rows of bricks in level 5, ends at 206px, paddle begin at 620px
+        ballRect.y = r.randrange(246, 610) #6 rows of bricks in level 5, ends at 206px, paddle begin at 620px, + 40 for toolbar
     else:
-        ballRect.y = r.randrange(146, 610) #4 rows of bricks ending at 146px, paddle begin at 620px
+        ballRect.y = r.randrange(186, 610) #4 rows of bricks ending at 146px, paddle begin at 620px, + 40 for toolbar
 
     #variable to change ball direction; begins in random direction
     #tried using trig to calculate better angle options, but move() function only takes int
@@ -155,7 +155,79 @@ def levelFive():
     global play
     play = True
 
+def game_intro():
+    white = (255,255,255)
+    black = (0,0,0)
+    red = (255,0,0)
+    green = (0,200,0)
+    blue = (0,0,255)
+    global pause
+    while pause == True: #turn this into restartGame == True once we have a pause screen to use
+        for event in py.event.get():
+                if event.type == py.QUIT:
+                    sys.exit()
+                elif py.key.get_pressed()[py.K_p]:#remove this later; this is used for pausing implementation of game_intro since we don't have a pause screen yet; use this for pause screen later
+                    pause = False
+                elif py.key.get_pressed()[py.K_s]:#you start on the main menu, and when you hit 's' it starts level 1 from the begining; if you go back to the main menu and try and start again, it will reset 
+                    pause = False
+                    play = True
+                    newGame()
+        gameDisplay.fill(black)
+        #This displays the Title on the Main Menu screen
+        largeText = py.font.SysFont("times", 100)
+        text = py.font.Font.render(largeText, "Christmas Breakout", 0, white, None)
+        gameDisplay.blit(text, (0, 0))
+
+        menu = py.font.SysFont("calibri",60)
+        menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
+        gameDisplay.blit(menuText, (250,180))
+
+        #displays mouse
+        mouse = py.mouse.get_pos()
+
+        #This displays the instructions icon
+        if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
+            instructionIcon = py.image.load("instr_icon_trans.jpg")
+            gameDisplay.blit(instructionIcon, (370,400))
+        else:
+            instructionIcon = py.image.load("instr_icon.jpg")
+            gameDisplay.blit(instructionIcon, (370,400))
+
+        instr = py.font.SysFont("times", 50)
+        Instrtext = py.font.Font.render(instr, "Instructions", 0, green, None)
+        gameDisplay.blit(Instrtext, (420, 390))
+
+        #This displays the highscore icon
+        if 370+40 > mouse[0] > 370 and 500+40 > mouse[1] > 500:
+            highscoreIcon = py.image.load("highScore_icon_trans.jpg")
+            gameDisplay.blit(highscoreIcon, (370,500))
+        else:
+            highscoreIcon = py.image.load("highScore_icon.jpg")
+            gameDisplay.blit(highscoreIcon, (370,500))
+
+        HS = py.font.SysFont("times", 50)
+        HStext = py.font.Font.render(HS, "Highscores", 0, green, None)
+        gameDisplay.blit(HStext, (420, 490))
+
+        #This displays the Play Icon
+        if 370+40 > mouse[0] > 370 and 300+40 > mouse[1] > 300:
+            playIcon = py.image.load("resume_icon_trans.jpg")
+            gameDisplay.blit(playIcon, (370, 300))
+        else:
+            playIcon = py.image.load("resume_icon.jpg")
+            gameDisplay.blit(playIcon, (370, 300))
+        
+        play = py.font.SysFont("times", 50)
+        Playtext = py.font.Font.render(play, "Play!", 0, green, None)
+        gameDisplay.blit(Playtext, (420, 290))
+
+
+        py.display.update()
+        clock = py.time.Clock()
+        clock.tick(15)
+
 play = True
+pause = False
 #beginning of the required pygame skeleton
 #initializes the pygame module
 py.init()
@@ -206,10 +278,11 @@ gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
 mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
-while play:
-    if levelCount == 1:
-        newGame()
-    while play:
+game_intro()
+while 1:
+    pause = True
+    game_intro()
+    while play == True:
         #code for the game
         #how to react to events like key presses or mouse movement
         for event in py.event.get():
@@ -221,11 +294,16 @@ while play:
                 paddleRect.x -= 10
             elif py.key.get_pressed()[py.K_RIGHT]:
                 paddleRect.x += 10
-            elif py.key.get_pressed()[py.K_RETURN]:
-                play = True
+            elif py.key.get_pressed()[py.K_p]:
+                pause = True
+                game_intro()
+            elif py.key.get_pressed()[py.K_i]:
+                game_intro()
+            elif py.key.get_pressed()[py.K_s]:
+                state2 = 'pause'
      
         #check if ball is at the top of the screen 
-        if ballRect.y <= 0: 
+        if ballRect.y <= 42: 
             #creates image object to be put to the screen 
             passMessage= py.image.load("editedLevelPassed.png")
 
@@ -235,7 +313,7 @@ while play:
 
             #moves and pauses ball to prevent if loop from repeating
             ballRect.x = 300
-            ballRect.y = 400
+            ballRect.y = 440
             ballDirection[0] = 0
             ballDirection[1] = 0
 
@@ -273,7 +351,7 @@ while play:
 
             #moves and pauses ball to prevent if loop from repeating
             ballRect.x = 300
-            ballRect.y = 400
+            ballRect.y = 440
             ballDirection[0] = 0
             ballDirection[1] = 0
 
