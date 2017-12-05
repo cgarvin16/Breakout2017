@@ -1,0 +1,89 @@
+written by Charles in class, typed up by Logan
+
+# bricks hit = b
+time spent = t
+
+LEVEL 1:
+	Bricks hit ->
+				4 <= b <= 8 --> 250 pt
+				8 <  b <= 12 -> 200 pt
+				12 < b <= 16 -> 150 pt
+				16 < b <= 20 -> 100 pt
+				20 < b <= 24 ->  50 pt
+				24 < b ------->   0 pt
+
+	Time spent in seconds ->
+					 t <= 25 -> 250 pt
+				25 < t <= 35 -> 200 pt
+				35 < t <= 45 -> 150 pt
+				45 < t <= 55 -> 100 pt
+				55 < t <= 65 ->  50 pt
+				65 < t ------->   0 pt
+
+LEVEL 2:
+	Bricks hit (same brick # as level 1, different points) ->
+				4 <= b <= 8 --> 300 pt
+				8 <  b <= 12 -> 240 pt
+				12 < b <= 16 -> 180 pt
+				16 < b <= 20 -> 120 pt
+				20 < b <= 24 ->  60 pt
+				24 < b ------->   0 pt
+
+	Time spent in seconds -> 
+					 t <= 35 -> 300 pt
+				35 < t <= 50 -> 240 pt
+				50 < t <= 65 -> 180 pt
+				65 < t <= 80 -> 120 pt
+				80 < t <= 95 ->  60 pt
+				95 < t ------->   0 pt
+
+LEVEL 3:
+	Bricks hit (same brick # as level 1, different points) ->
+				4 <= b <= 8 --> 350 pt
+				8 <  b <= 12 -> 280 pt
+				12 < b <= 16 -> 210 pt
+				16 < b <= 20 -> 140 pt
+				20 < b <= 24 ->  70 pt
+				24 < b ------->   0 pt
+
+	Time spent in seconds (same time sets, different points as level 2) -> 
+					 t <= 35 -> 350 pt
+				35 < t <= 50 -> 280 pt
+				50 < t <= 65 -> 210 pt
+				65 < t <= 80 -> 140 pt
+				80 < t <= 95 ->  70 pt
+				95 < t ------->   0 pt
+
+LEVEL 4:
+	Bricks hit (same brick # as level 1, different points) ->
+				4 <= b <= 8 --> 400 pt
+				8 <  b <= 12 -> 320 pt
+				12 < b <= 16 -> 240 pt
+				16 < b <= 20 -> 160 pt
+				20 < b <= 24 ->  80 pt
+				24 < b ------->   0 pt
+
+	Time spent in seconds (same time sets, different points as level 2) -> 
+					 t <= 35 -> 400 pt
+				35 < t <= 50 -> 320 pt
+				50 < t <= 65 -> 240 pt
+				65 < t <= 80 -> 160 pt
+				80 < t <= 95 ->  80 pt
+				95 < t ------->   0 pt
+
+LEVEL 5:
+	Bricks hit ->
+				6 <= b <= 10 -> 450 pt
+				10 < b <= 16 -> 360 pt
+				16 < b <= 22 -> 270 pt
+				22 < b <= 28 -> 180 pt
+				28 < b <= 34 ->  90 pt
+				34 < b ------->   0 pt
+
+	Time spent in seconds (same time sets, different points as level 2) -> 
+					 t <= 35 -> 450 pt
+				35 < t <= 50 -> 360 pt
+				50 < t <= 65 -> 270 pt
+				65 < t <= 80 -> 180 pt
+				80 < t <= 95 ->  90 pt
+				95 < t ------->   0 pt

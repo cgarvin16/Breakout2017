@@ -15,6 +15,23 @@ import sys
 import random as r 
 
 #function to add scores to a scores text file for saving
+def calculateScore(bricksBroken, timeTaken, score, levelCount):
+    if levelCount == 1:
+        finalScore = 0
+        if bricksBroken >= 4 and bricksBroken <= 8:
+            finalScore += 250
+        elif bricksBroken > 8 and bricksBroken <= 12:
+            finalScore += 200
+
+    elif levelCount == 2:
+        pass
+    elif levelCount == 3:
+        pass
+    elif levelCount == 4:
+        pass
+    elif levelCount == 5:
+        pass
+
 def addScore():
     variable = open("highScores.txt", "a")
     name = input("Add 3 initials: ")
@@ -85,6 +102,7 @@ def levelTwo():
     py.display.flip()
     global play
     play = True
+
 
 def levelThree():
     wall = Wall()
@@ -278,6 +296,11 @@ gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
 mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
+
+#initializes brick hit, time, and score
+bricksBroken = 0
+score = 0
+timeTaken = 0
 game_intro()
 while 1:
     pause = True
