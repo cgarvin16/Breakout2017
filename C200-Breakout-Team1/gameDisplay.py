@@ -624,7 +624,7 @@ gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
 mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
-heart = py.image.load("heart_icon.jpg")
+heart = py.image.load("new_heart_icon.png")
 
 #initializes brick hit, time, and score
 bricksBroken = 0
