@@ -523,7 +523,7 @@ def pause_screen():
         play = py.font.SysFont("times", 50)
         Playtext = py.font.Font.render(play, "Resume", 0, green, None)
         gameDisplay.blit(Playtext, (420, 220))
- 
+
 
         py.display.update()
         clock = py.time.Clock()
