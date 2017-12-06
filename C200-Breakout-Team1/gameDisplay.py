@@ -363,8 +363,6 @@ def button_i(x,y,w,h,ib,ab, action=None):
                     pass
                 elif action == "instr":
                     pass
-           
-
     else:
         instructionIcon = py.image.load(ib)
         gameDisplay.blit(instructionIcon, (x,y))
@@ -377,8 +375,6 @@ def button_i(x,y,w,h,ib,ab, action=None):
     menu = py.font.SysFont("calibri",60)
     menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
     gameDisplay.blit(menuText, (250,180))
-
-
 
 def game_intro():
     white = (255,255,255)
@@ -396,7 +392,6 @@ def game_intro():
                     pause = False
                     play = True
                     newGame()
-
 
         background = py.image.load("menu_background.png") #adds an image background
         gameDisplay.blit(background, (0,0))
@@ -427,10 +422,8 @@ def game_intro():
         Playtext = py.font.Font.render(play, "Play!", 0, green, None)
         gameDisplay.blit(Playtext, (420, 290))
 
-
         py.display.update()
-        clock = py.time.Clock()
-        clock.tick(15)
+        
 def button_p(x,y,w,h,ib,ab, action=None):
     white = (255,255,255)
     black = (0,0,0)
@@ -524,11 +517,7 @@ def pause_screen():
         Playtext = py.font.Font.render(play, "Resume", 0, green, None)
         gameDisplay.blit(Playtext, (420, 220))
 
-
         py.display.update()
-        clock = py.time.Clock()
-        clock.tick(15)
-
 
 play = True
 pause = False
