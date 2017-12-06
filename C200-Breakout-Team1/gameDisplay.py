@@ -438,6 +438,8 @@ def pause_screen():
         background = py.image.load("pause_background.png") #adds an image background
         gameDisplay.blit(background, (0,0))
 
+        sleigh = py.image.load('sleigh_icon.png')
+        gameDisplay.blit(sleigh, (0,400))
 
         #This displays the Title on the Main Menu screen
         largeText = py.font.SysFont("times", 100)
@@ -455,7 +457,7 @@ def pause_screen():
             instructionIcon = py.image.load("mainMenu_icon.jpg")
             gameDisplay.blit(instructionIcon, (370,330))
         instr = py.font.SysFont("times", 50)
-        Instrtext = py.font.Font.render(instr, "Menu", 0, green, None)
+        Instrtext = py.font.Font.render(instr, "Menu", 0, black, None)
         gameDisplay.blit(Instrtext, (420, 320))
 
         #This diplays the Quit Icon
@@ -466,7 +468,7 @@ def pause_screen():
             instructionIcon = py.image.load("quit_icon.jpg")
             gameDisplay.blit(instructionIcon, (370,530))
         instr = py.font.SysFont("times", 50)
-        Instrtext = py.font.Font.render(instr, "Quit", 0, green, None)
+        Instrtext = py.font.Font.render(instr, "Quit", 0, black, None)
         gameDisplay.blit(Instrtext, (420, 520))
 
   
@@ -479,7 +481,7 @@ def pause_screen():
             gameDisplay.blit(highscoreIcon, (370,430))
 
         HS = py.font.SysFont("times", 50)
-        HStext = py.font.Font.render(HS, "Restart", 0, green, None)
+        HStext = py.font.Font.render(HS, "Restart", 0, black, None)
         gameDisplay.blit(HStext, (420, 420))
 
         #This displays the Resume Icon
@@ -490,7 +492,7 @@ def pause_screen():
             playIcon = py.image.load("resume_icon.jpg")
             gameDisplay.blit(playIcon, (370, 230))
         play = py.font.SysFont("times", 50)
-        Playtext = py.font.Font.render(play, "Resume", 0, green, None)
+        Playtext = py.font.Font.render(play, "Resume", 0, black, None)
         gameDisplay.blit(Playtext, (420, 220))
 
 
