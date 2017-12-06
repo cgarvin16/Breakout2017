@@ -434,7 +434,7 @@ def pause_screen():
         gameDisplay.blit(text, (290, 0))
 
         mouse = py.mouse.get_pos()
-        print(mouse)
+        #print(mouse)
 
         #This displays the menu icon
         if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
