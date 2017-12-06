@@ -627,13 +627,24 @@ while 1:
             print("time taken: {0}".format(timeTaken))
 
             if levelCount == 2:
+                pause = True
+                pause_screen()
                 levelTwo()
             elif levelCount == 3:
+                pause = True
+                pause_screen()
                 levelThree()
             elif levelCount == 4:
+                pause = True
+                pause_screen()
                 levelFour()
             elif levelCount == 5:
+                pause = True
+                pause_screen()
                 levelFive()
+            elif levelCount == 6:
+                #add something that means you've won the game
+                pass
             #exits the game
             #quit()
 
