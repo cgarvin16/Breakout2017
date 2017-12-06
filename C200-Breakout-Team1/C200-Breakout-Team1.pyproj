@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e9cbc8d4-b84e-4955-8b85-e7f218aa9993</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>mainMenu.py</StartupFile>
+    <StartupFile>gameDisplay.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
