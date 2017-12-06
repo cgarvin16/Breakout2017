@@ -340,8 +340,8 @@ def levelFive():
 def game_intro():
     white = (255,255,255)
     black = (0,0,0)
-    red = (255,0,0)
-    green = (0,200,0)
+    pink = (255,150,150)
+    green = (50,200,50)
     blue = (0,0,255)
     global pause
     while pause == True: #turn this into restartGame == True once we have a pause screen to use
@@ -354,10 +354,18 @@ def game_intro():
                     pause = False
                     play = True
                     newGame()
-        gameDisplay.fill(black)
+
+
+        background = py.image.load("menu_background.png") #adds an image background
+        gameDisplay.blit(background, (0,0))
+
+        santa = py.image.load('santa_icon.png')
+        gameDisplay.blit(santa, (0,150))
+
+
         #This displays the Title on the Main Menu screen
         largeText = py.font.SysFont("times", 100)
-        text = py.font.Font.render(largeText, "Christmas Breakout", 0, white, None)
+        text = py.font.Font.render(largeText, "Christmas Breakout", 0, pink, None)
         gameDisplay.blit(text, (0, 0))
 
         menu = py.font.SysFont("calibri",60)
@@ -427,7 +435,10 @@ def pause_screen():
                     play = True
                     newGame()
 
-        gameDisplay.fill(black)
+        background = py.image.load("pause_background.png") #adds an image background
+        gameDisplay.blit(background, (0,0))
+
+
         #This displays the Title on the Main Menu screen
         largeText = py.font.SysFont("times", 100)
         text = py.font.Font.render(largeText, "Paused", 0, red, None)

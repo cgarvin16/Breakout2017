@@ -7,6 +7,7 @@ py.init()
 
 gameDisplay = py.display.set_mode((800, 700))
 
+
 def pause():
     white = (255,255,255)
     black = (0,0,0)
@@ -14,12 +15,17 @@ def pause():
     green = (0,200,0)
     blue = (0,0,255)
     pause = True
+
+    background = py.image.load("pause_background.png")
     while pause:
         for event in py.event.get():
                 if event.type == py.QUIT:
                     sys.exit()
 
-        gameDisplay.fill(black)
+        #gameDisplay.fill()
+        gameDisplay.blit(background, (0,0))
+
+
         #This displays the Title on the Main Menu screen
         largeText = py.font.SysFont("times", 100)
         text = py.font.Font.render(largeText, "Paused", 0, red, None)
