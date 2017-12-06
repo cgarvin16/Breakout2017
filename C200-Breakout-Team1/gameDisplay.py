@@ -698,6 +698,21 @@ while 1:
             py.time.wait(3000)
 
             resetBall()
+
+            lifeCount -= 1
+            
+            #console printing for testing
+            print(lifeCount)
+
+            #if lifeCount is over 3, it pauses to prepare for new ball
+            #if lifeCount is 0, it prints 'game over' to console (which is for testing) and goes back to the main menu
+            if lifeCount > 0:
+                pause = True
+                pause_screen()
+            elif lifeCount < 1:
+                print('game over')
+                pause = True
+                game_intro()
             #exits the game
             #quit()
 

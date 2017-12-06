@@ -34,7 +34,7 @@ Logan & Carolyn 12/2 5:15pm-7:00pm
 Logan 12/2 11:00pm-1:00am
 Logan 12/3 12:45pm-1:45pm, 4:15pm-5:00pm, 7:00pm-8:30pm
 Logan 12/4 7:00pm-7:30pm
-Logan 12/5 1:45pm-2:20pm, 5:00pm-5:45pm
+Logan 12/5 1:45pm-2:20pm, 5:00pm-5:45pm, 11:00pm-11:15pm
 Logan & Charles 12/5 3:10pm-3:45pm
 Carolyn 12/5 6:30pm - 11:32 pm
 
@@ -83,7 +83,7 @@ Milestone 2:
 
 –Add level progression – a minimum of five levels of increasing difficulty must
 be included. Pause between levels and provide control to the user for resuming the next level.
-	Date done:
+	Date done: 12/5
 	Prim. Person in Charge: Logan
 
 -Images for all the functions ex) play, pause, lives, etc.
@@ -124,8 +124,8 @@ prior to starting a new game.
 –The ball should reset if it touches the bottom of the screen. The number of
 lives should decrease and the game should pause until the user starts the
 next ball.
-	Date done:
-	Prim. Person in Charge: 
+	Date done: 12/5
+	Prim. Person in Charge: Logan
 
 –If the ball touches the bottom and the player is out of lives, the game should
 end with an appropriate message and allow the user to input his or her initials
