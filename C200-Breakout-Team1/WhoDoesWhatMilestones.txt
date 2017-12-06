@@ -36,6 +36,7 @@ Logan 12/3 12:45pm-1:45pm, 4:15pm-5:00pm, 7:00pm-8:30pm
 Logan 12/4 7:00pm-7:30pm
 Logan 12/5 1:45pm-2:20pm, 5:00pm-5:45pm
 Logan & Charles 12/5 3:10pm-3:45pm
+Carolyn 12/5 6:30pm - 11:32 pm
 
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
