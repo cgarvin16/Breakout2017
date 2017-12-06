@@ -519,6 +519,38 @@ def pause_screen():
 
         py.display.update()
 
+def updateToolbar():
+    #display score, but don't recaluclate it because it can only be calculated at the end of a level
+    global score
+
+    timer = time.time() - startTime
+
+    global lifeCount
+    if lifeCount == 3:
+        #display 3 hearts
+        pass
+    elif lifeCount == 2:
+        #display 2 hearts
+        pass
+    elif lifeCount == 1:
+        #display 1 heart
+        pass
+
+    print("Timer: {0}".format(int(timer)))
+
+    global levelCount
+    #blit this to screen to display
+    if levelCount == 1:
+        levelTitle = "Level 1"
+    elif levelCount == 2:
+        levelTitle = "Level 2"
+    elif levelCount == 3:
+        levelTitle = "Level 3"
+    elif levelCount == 4:
+        levelTitle = "Level 4"
+    elif levelCount == 5: 
+        levelTitle = "Level 5"
+
 play = True
 pause = False
 #beginning of the required pygame skeleton
@@ -786,7 +818,8 @@ while 1:
                 py.display.flip()
                 newHitList[i] -= 1
                 break
-
+        
+        updateToolbar()
         #updates screen
         py.display.flip()
 
