@@ -337,10 +337,52 @@ def levelFive():
     global play
     play = True
 
+def button_i(x,y,w,h,ib,ab, action=None):
+    white = (255,255,255)
+    black = (0,0,0)
+    red = (255,0,0)
+    green = (0,200,0)
+    blue = (0,0,255)
+    pink = (255,150,150)
+
+    #displays mouse
+    mouse = py.mouse.get_pos()
+
+    click = py.mouse.get_pressed()
+    global pause
+
+    if x+w > mouse[0] > x and y+h > mouse[1] > y:
+            instructionIcon = py.image.load(ab)
+            gameDisplay.blit(instructionIcon, (x,y))
+            if click[0] == 1 and action != None:
+                if action == "play":
+                    pause = False
+                    play = True
+                    newGame()
+                elif action == "scores":
+                    pass
+                elif action == "instr":
+                    pass
+           
+
+    else:
+        instructionIcon = py.image.load(ib)
+        gameDisplay.blit(instructionIcon, (x,y))
+        
+    #This displays the Title on the Main Menu screen
+    largeText = py.font.SysFont("times", 100)
+    text = py.font.Font.render(largeText, "Christmas Breakout", 0, pink, None)
+    gameDisplay.blit(text, (0, 0))
+
+    menu = py.font.SysFont("calibri",60)
+    menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
+    gameDisplay.blit(menuText, (250,180))
+
+
+
 def game_intro():
     white = (255,255,255)
     black = (0,0,0)
-    pink = (255,150,150)
     green = (50,200,50)
     blue = (0,0,255)
     global pause
@@ -363,49 +405,23 @@ def game_intro():
         gameDisplay.blit(santa, (0,150))
 
 
-        #This displays the Title on the Main Menu screen
-        largeText = py.font.SysFont("times", 100)
-        text = py.font.Font.render(largeText, "Christmas Breakout", 0, pink, None)
-        gameDisplay.blit(text, (0, 0))
-
-        menu = py.font.SysFont("calibri",60)
-        menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
-        gameDisplay.blit(menuText, (250,180))
-
         #displays mouse
         mouse = py.mouse.get_pos()
 
-        #This displays the instructions icon
-        if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
-            instructionIcon = py.image.load("instr_icon_trans.jpg")
-            gameDisplay.blit(instructionIcon, (370,400))
-        else:
-            instructionIcon = py.image.load("instr_icon.jpg")
-            gameDisplay.blit(instructionIcon, (370,400))
+         #this displays the icons from buttons
+        button_i(370,400,40,40,"instr_icon.jpg","instr_icon.jpg", "instr")
+        button_i(370,500,40,40,"highScore_icon.jpg","highScore_icon.jpg", "scores")
+        button_i(370,300,40,40,"resume_icon.jpg","resume_icon.jpg", "play")
 
+
+        #this displays the texts on the screen
         instr = py.font.SysFont("times", 50)
         Instrtext = py.font.Font.render(instr, "Instructions", 0, green, None)
         gameDisplay.blit(Instrtext, (420, 390))
 
-        #This displays the highscore icon
-        if 370+40 > mouse[0] > 370 and 500+40 > mouse[1] > 500:
-            highscoreIcon = py.image.load("highScore_icon_trans.jpg")
-            gameDisplay.blit(highscoreIcon, (370,500))
-        else:
-            highscoreIcon = py.image.load("highScore_icon.jpg")
-            gameDisplay.blit(highscoreIcon, (370,500))
-
         HS = py.font.SysFont("times", 50)
         HStext = py.font.Font.render(HS, "Highscores", 0, green, None)
         gameDisplay.blit(HStext, (420, 490))
-
-        #This displays the Play Icon
-        if 370+40 > mouse[0] > 370 and 300+40 > mouse[1] > 300:
-            playIcon = py.image.load("resume_icon_trans.jpg")
-            gameDisplay.blit(playIcon, (370, 300))
-        else:
-            playIcon = py.image.load("resume_icon.jpg")
-            gameDisplay.blit(playIcon, (370, 300))
         
         play = py.font.SysFont("times", 50)
         Playtext = py.font.Font.render(play, "Play!", 0, green, None)
@@ -415,7 +431,43 @@ def game_intro():
         py.display.update()
         clock = py.time.Clock()
         clock.tick(15)
+def button_p(x,y,w,h,ib,ab, action=None):
+    white = (255,255,255)
+    black = (0,0,0)
+    red = (255,0,0)
+    green = (0,200,0)
+    blue = (0,0,255)
 
+    #displays mouse
+    mouse = py.mouse.get_pos()
+
+    click = py.mouse.get_pressed()
+    global pause
+
+    if x+w > mouse[0] > x and y+h > mouse[1] > y:
+            instructionIcon = py.image.load(ab)
+            gameDisplay.blit(instructionIcon, (x,y))
+            if click[0] == 1 and action != None:
+                if action == "resume":
+                    pause = False
+                elif action == "quit":
+                    py.quit()
+                    quit()
+                elif action == "restart":
+                    pause = False
+                    play = True
+                    newGame()
+                elif action == "menu":
+                    game_intro()
+
+    else:
+        instructionIcon = py.image.load(ib)
+        gameDisplay.blit(instructionIcon, (x,y))
+
+    #This displays the Title on the pause screen
+        largeText = py.font.SysFont("times", 100)
+        text = py.font.Font.render(largeText, "Paused", 0, red, None)
+        gameDisplay.blit(text, (290, 0))
 
 def pause_screen():
     white = (255,255,255)
@@ -449,58 +501,34 @@ def pause_screen():
         mouse = py.mouse.get_pos()
         #print(mouse)
 
-        #This displays the menu icon
-        if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
-            instructionIcon = py.image.load("mainMenu_icon.jpg")
-            gameDisplay.blit(instructionIcon, (370,330))
-        else:
-            instructionIcon = py.image.load("mainMenu_icon.jpg")
-            gameDisplay.blit(instructionIcon, (370,330))
+         #this displays the icons from buttons
+        button_p(370,330,40,40,"mainMenu_icon.jpg","mainMenu_icon.jpg", "menu")
+        button_p(370,530,40,40,"quit_icon.jpg","quit_icon.jpg", "quit")
+        button_p(370,430,40,40,"restart_icon.jpg","restart_icon.jpg", "restart")
+        button_p(370,230,40,40,"resume_icon.jpg","resume_icon.jpg", "resume")
+
+        #This diplays the texts texts next to the icons
         instr = py.font.SysFont("times", 50)
-        Instrtext = py.font.Font.render(instr, "Menu", 0, black, None)
+        Instrtext = py.font.Font.render(instr, "Menu", 0, green, None)
         gameDisplay.blit(Instrtext, (420, 320))
 
-        #This diplays the Quit Icon
-        if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:
-            instructionIcon = py.image.load("quit_icon.jpg")
-            gameDisplay.blit(instructionIcon, (370,530))
-        else:
-            instructionIcon = py.image.load("quit_icon.jpg")
-            gameDisplay.blit(instructionIcon, (370,530))
         instr = py.font.SysFont("times", 50)
-        Instrtext = py.font.Font.render(instr, "Quit", 0, black, None)
+        Instrtext = py.font.Font.render(instr, "Quit", 0, green, None)
         gameDisplay.blit(Instrtext, (420, 520))
 
-  
-        #This displays the restart icon
-        if 370+40 > mouse[0] > 370 and 500+40 > mouse[1] > 500:
-            highscoreIcon = py.image.load("restart_icon.png")
-            gameDisplay.blit(highscoreIcon, (370,430))
-        else:
-            highscoreIcon = py.image.load("restart_icon.png")
-            gameDisplay.blit(highscoreIcon, (370,430))
-
         HS = py.font.SysFont("times", 50)
-        HStext = py.font.Font.render(HS, "Restart", 0, black, None)
+        HStext = py.font.Font.render(HS, "Restart", 0, green, None)
         gameDisplay.blit(HStext, (420, 420))
 
-        #This displays the Resume Icon
-        if 370+40 > mouse[0] > 370 and 230+40 > mouse[1] > 230:
-            playIcon = py.image.load("resume_icon_trans.jpg")
-            gameDisplay.blit(playIcon, (370, 230))
-        else:
-            playIcon = py.image.load("resume_icon.jpg")
-            gameDisplay.blit(playIcon, (370, 230))
         play = py.font.SysFont("times", 50)
-        Playtext = py.font.Font.render(play, "Resume", 0, black, None)
+        Playtext = py.font.Font.render(play, "Resume", 0, green, None)
         gameDisplay.blit(Playtext, (420, 220))
-
-
  
 
         py.display.update()
         clock = py.time.Clock()
         clock.tick(15)
+
 
 play = True
 pause = False
