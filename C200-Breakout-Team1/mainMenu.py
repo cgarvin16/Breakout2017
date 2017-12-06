@@ -26,6 +26,7 @@ def game_intro():
 
         #displays mouse
         mouse = py.mouse.get_pos()
+        print(mouse)
 
         #This displays the instructions icon
         if 370+40 > mouse[0] > 370 and 400+40 > mouse[1] > 400:

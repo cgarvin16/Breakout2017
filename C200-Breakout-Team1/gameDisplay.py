@@ -47,6 +47,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         return finalScore
 
     elif levelCount == 2:
+        finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 8:
             finalScore += 300
         elif bricksBroken > 8 and bricksBroken <= 12:
@@ -75,6 +76,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         return finalScore
 
     elif levelCount == 3:
+        finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 8:
             finalScore += 350
         elif bricksBroken > 8 and bricksBroken <= 12:
@@ -103,6 +105,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         return finalScore
 
     elif levelCount == 4:
+        finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 8:
             finalScore += 400
         elif bricksBroken > 8 and bricksBroken <= 12:
@@ -131,6 +134,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         return finalScore
 
     elif levelCount == 5:
+        finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 10:
             finalScore += 450
         elif bricksBroken > 10 and bricksBroken <= 16:
@@ -520,26 +524,21 @@ def pause_screen():
         py.display.update()
 
 def updateToolbar():
+    #default font and size for the toolbar
+    font = py.font.SysFont("times", 30)
+
     #display score, but don't recaluclate it because it can only be calculated at the end of a level
     global score
+    currentScore = py.font.Font.render(font, "Score: {0}".format(score), 0, (255, 255, 255), None)
+    gameDisplay.blit(currentScore, (10, 5))
 
+    #displays time on current level
     timer = time.time() - startTime
+    runningTime = py.font.Font.render(font, "Time: {0}".format(int(timer)), 0, (255, 255, 255), None)
+    gameDisplay.blit(runningTime, (180, 5))
 
-    global lifeCount
-    if lifeCount == 3:
-        #display 3 hearts
-        pass
-    elif lifeCount == 2:
-        #display 2 hearts
-        pass
-    elif lifeCount == 1:
-        #display 1 heart
-        pass
-
-    print("Timer: {0}".format(int(timer)))
-
+    #displays title of level based on if statement
     global levelCount
-    #blit this to screen to display
     if levelCount == 1:
         levelTitle = "Level 1"
     elif levelCount == 2:
@@ -550,6 +549,28 @@ def updateToolbar():
         levelTitle = "Level 4"
     elif levelCount == 5: 
         levelTitle = "Level 5"
+    title = py.font.Font.render(font, levelTitle, 0, (255,255,255), None)
+    gameDisplay.blit(title, (350, 5))
+
+    global lifeCount
+    life = py.font.Font.render(font, "Life: ", 0, (255, 255, 255), None)
+    gameDisplay.blit(life, (600, 5))
+    if lifeCount == 3:
+        #display 3 hearts
+        gameDisplay.blit(heart, (670, 18))
+        gameDisplay.blit(heart, (700, 18))
+        gameDisplay.blit(heart, (730, 18))
+    elif lifeCount == 2:
+        #display 2 hearts
+        gameDisplay.blit(heart, (670, 18))
+        gameDisplay.blit(heart, (700, 18))
+    elif lifeCount == 1:
+        #display 1 heart
+        gameDisplay.blit(heart, (670, 18))
+
+    print("Timer: {0}".format(int(timer)))
+
+    py.display.flip()
 
 play = True
 pause = False
@@ -603,6 +624,7 @@ gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
 mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
+heart = py.image.load("heart_icon.jpg")
 
 #initializes brick hit, time, and score
 bricksBroken = 0
@@ -656,6 +678,9 @@ while 1:
             #prints break line for console
             print('*'*20)
             print(levelCount)
+
+            #updates score
+            score = calculateScore(bricksBroken, timeTaken, score, levelCount)
 
             #adds one to the level indicator for use later
             levelCount += 1
