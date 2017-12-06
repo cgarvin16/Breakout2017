@@ -409,7 +409,7 @@ def game_intro():
         clock.tick(15)
 
 
-def pause():
+def pause_screen():
     white = (255,255,255)
     black = (0,0,0)
     red = (255,0,0)
@@ -564,7 +564,7 @@ while 1:
                 paddleRect.x += 10
             elif py.key.get_pressed()[py.K_p]:
                 pause = True
-                game_intro()
+                pause_screen()
             elif py.key.get_pressed()[py.K_i]:
                 game_intro()
             elif py.key.get_pressed()[py.K_s]:
