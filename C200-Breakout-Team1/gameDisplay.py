@@ -163,11 +163,17 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         return finalScore
 
 def addScore():
-    variable = open("highScores.txt", "a")
-    name = input("Add 3 initials: ")
-    score = 0 #default until we get a scoring mechanism set up
-    variable.write("{0}. . . . .{1}\n".format(name, score))
-    variable.close()
+    #opens static file to read scores and check against current score
+    #also opens for writing after 
+    highScores = open("highScores.txt", "r+")
+    #name = input("Add 3 initials: ")
+    global score
+    scoreList = highScores.readlines()
+    for line in scoreList:
+        scoreList[line] = scoreList[line].split()
+    #variable.write("{0}. . . . .{1}\n".format(name, score))
+    print(scoreList)
+    highScores.close()
 
 def resetBall():
     #randomizes initial location between bricks and paddle
@@ -701,6 +707,8 @@ while 1:
             print("current time: {0}".format(time.time()))
             timeTaken = time.time()-startTime
             print("time taken: {0}".format(timeTaken))
+
+            addScore()
 
             if levelCount == 2:
                 pause = True
