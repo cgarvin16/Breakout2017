@@ -3,6 +3,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
     if levelCount == 1:
         if bricksBroken >= 4 and bricksBroken <= 8:
             tempScore += 250
+            print(tempScore)
         elif bricksBroken > 8 and bricksBroken <= 12:
             tempScore = tempScore + 200
         elif bricksBroken > 12 and bricksBroken <= 16:
@@ -14,7 +15,8 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             tempScore = tempScore + 0
 
-        if timeTaken >= 25:
+        if timeTaken <= 25:
+            print(tempScore)
             tempScore = tempScore + 250
         elif timeTaken > 25 and timeTaken <= 35:
             tempScore = tempScore + 200
@@ -44,7 +46,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             tempScore = tempScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             tempScore = tempScore + 300
         elif timeTaken > 35 and timeTaken <= 50:
             tempScore = tempScore + 240
@@ -73,7 +75,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             tempScore = tempScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             tempScore = tempScore + 350
         elif timeTaken > 35 and timeTaken <= 50:
             tempScore = tempScore + 280
@@ -102,7 +104,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             tempScore = tempScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             tempScore = tempScore + 400
         elif timeTaken > 35 and timeTaken <= 50:
             tempScore = tempScore + 320
@@ -131,7 +133,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             tempScore = tempScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             tempScore = tempScore + 450
         elif timeTaken > 35 and timeTaken <= 50:
             tempScore = tempScore + 360

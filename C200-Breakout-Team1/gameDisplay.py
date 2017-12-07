@@ -32,7 +32,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             finalScore = finalScore + 0
 
-        if timeTaken >= 25:
+        if timeTaken <= 25:
             finalScore = finalScore + 250
         elif timeTaken > 25 and timeTaken <= 35:
             finalScore = finalScore + 200
@@ -61,7 +61,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             finalScore = finalScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             finalScore = finalScore + 300
         elif timeTaken > 35 and timeTaken <= 50:
             finalScore = finalScore + 240
@@ -90,7 +90,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             finalScore = finalScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             finalScore = finalScore + 350
         elif timeTaken > 35 and timeTaken <= 50:
             finalScore = finalScore + 280
@@ -119,7 +119,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             finalScore = finalScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             finalScore = finalScore + 400
         elif timeTaken > 35 and timeTaken <= 50:
             finalScore = finalScore + 320
@@ -148,7 +148,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
         elif bricksBroken > 24:
             finalScore = finalScore + 0
         
-        if timeTaken >= 35:
+        if timeTaken <= 35:
             finalScore = finalScore + 450
         elif timeTaken > 35 and timeTaken <= 50:
             finalScore = finalScore + 360
@@ -455,7 +455,9 @@ def button_i(x,y,w,h,ib,ab, action=None):
                 elif action == "scores":
                     pass
                 elif action == "instr":
-                    pass
+                    global instructions
+                    instructions = True
+                    instruction_screen()
     else:
         instructionIcon = py.image.load(ib)
         gameDisplay.blit(instructionIcon, (x,y))
@@ -516,7 +518,63 @@ def game_intro():
         gameDisplay.blit(Playtext, (420, 290))
 
         py.display.update()
-        
+  
+def instruction_screen():
+    white = (255,255,255)
+    black = (0,0,0)
+    red = (255,0,0)
+    green = (0,200,0)
+    blue = (0,0,255)
+
+    global instructions
+    while instructions == True:
+        for event in py.event.get():
+                if event.type == py.QUIT:
+                    sys.exit()
+                elif py.key.get_pressed()[py.K_b]:#remove this later; this is used for pausing implementation of game_intro since we don't have a pause screen yet; use this for pause screen later
+                    instructions = False
+                
+        gameDisplay.fill((0,0,0))
+
+        largeText = py.font.SysFont("times", 100)
+        text = py.font.Font.render(largeText, "Instructions:", 0, white, None)
+        gameDisplay.blit(text, (150, 0))
+
+        instr = py.font.SysFont("calibri",30)
+        instrText = py.font.Font.render(instr,"Welcome to Winter Breakout!", 0, red, None)
+        gameDisplay.blit(instrText,(230,200))
+
+        instr = py.font.SysFont("calibri",20)
+        instrText = py.font.Font.render(instr,"To play this game, you need to move your paddle with the left and right arrow keys.", 0, blue, None)
+        gameDisplay.blit(instrText,(80,300))
+
+        instr = py.font.SysFont("calibri",20)
+        instrText = py.font.Font.render(instr,"You must knock the ball with your paddle and try to reach the top!", 0, blue, None)
+        gameDisplay.blit(instrText,(80,320))
+
+        instr = py.font.SysFont("calibri",20)
+        instrText = py.font.Font.render(instr,"The ball must hit each brick at least one time to break through.", 0, blue, None)
+        gameDisplay.blit(instrText,(80,340))
+
+        instr = py.font.SysFont("calibri",20)
+        instrText = py.font.Font.render(instr,"*Once you reach level 2 and above the bricks may require more hits to break through.*", 0, blue, None)
+        gameDisplay.blit(instrText,(80,360))
+
+        instr = py.font.SysFont("calibri",20)
+        instrText = py.font.Font.render(instr,"Once you have made a path to the top and your ball has touched the top of the screen,", 0, blue, None)
+        gameDisplay.blit(instrText,(80,380))
+
+        instr = py.font.SysFont("calibri",20)
+        instrText = py.font.Font.render(instr,"you will pass the level and move on! Be careful! don't miss the ball or you will lose a life!", 0, blue, None)
+        gameDisplay.blit(instrText,(80,400))
+
+        instr = py.font.SysFont("calibri",20)
+        instrText = py.font.Font.render(instr,"Now that you know how to play, have fun and break down those bricks!", 0, blue, None)
+        gameDisplay.blit(instrText,(80,420))
+
+        py.display.update()
+    
+    
 def button_p(x,y,w,h,ib,ab, action=None):
     white = (255,255,255)
     black = (0,0,0)
@@ -663,6 +721,7 @@ def updateToolbar():
 
 play = True
 pause = False
+instructions = False
 #beginning of the required pygame skeleton
 #initializes the pygame module
 py.init()
