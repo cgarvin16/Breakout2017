@@ -35,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="gameIdeas.py" />
+    <Compile Include="hs_screen.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="instructionsPage.py">
       <SubType>Code</SubType>
     </Compile>
