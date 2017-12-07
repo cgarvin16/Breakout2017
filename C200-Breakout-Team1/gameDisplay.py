@@ -17,163 +17,163 @@ import time
 
 #function to add scores to a scores text file for saving
 def calculateScore(bricksBroken, timeTaken, score, levelCount):
+    global finalScore
     if levelCount == 1:
-        finalScore = 0
         if bricksBroken >= 4 and bricksBroken <= 8:
             finalScore += 250
         elif bricksBroken > 8 and bricksBroken <= 12:
-            finalScore += 200
+            finalScore = finalScore + 200
         elif bricksBroken > 12 and bricksBroken <= 16:
-            finalScore += 150
+            finalScore = finalScore + 150
         elif bricksBroken > 16 and bricksBroken <= 10:
-            finalScore += 100
+            finalScore = finalScore + 100
         elif bricksBroken > 20 and bricksBroken <= 24:
-            finalScore += 50
+            finalScore = finalScore + 50
         elif bricksBroken > 24:
-            finalScore += 0
+            finalScore = finalScore + 0
 
         if timeTaken >= 25:
-            finalScore += 250
+            finalScore = finalScore + 250
         elif timeTaken > 25 and timeTaken <= 35:
-            finalScore += 200
+            finalScore = finalScore + 200
         elif timeTaken > 35 and timeTaken <= 45:
-            finalScore += 150
+            finalScore = finalScore + 150
         elif timeTaken > 45 and timeTaken <= 55:
-            finalScore += 100
+            finalScore = finalScore + 100
         elif timeTaken > 55 and timeTaken <= 65:
-            finalScore += 50
+            finalScore = finalScore + 50
         elif timeTaken > 65:
-            finalScore += 0
+            finalScore = finalScore + 0
         return finalScore
 
     elif levelCount == 2:
         finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 8:
-            finalScore += 300
+            finalScore = finalScore + 300
         elif bricksBroken > 8 and bricksBroken <= 12:
-            finalScore += 240
+            finalScore = finalScore + 240
         elif bricksBroken > 12 and bricksBroken <= 16:
-            finalScore += 180
+            finalScore = finalScore + 180
         elif bricksBroken > 16 and bricksBroken <= 10:
-            finalScore += 120
+            finalScore = finalScore + 120
         elif bricksBroken > 20 and bricksBroken <= 24:
-            finalScore += 60
+            finalScore = finalScore + 60
         elif bricksBroken > 24:
-            finalScore += 0
+            finalScore = finalScore + 0
         
         if timeTaken >= 35:
-            finalScore += 300
+            finalScore = finalScore + 300
         elif timeTaken > 35 and timeTaken <= 50:
-            finalScore += 240
+            finalScore = finalScore + 240
         elif timeTaken > 50 and timeTaken <= 65:
-            finalScore += 180
+            finalScore = finalScore + 180
         elif timeTaken > 65 and timeTaken <= 80:
-            finalScore += 120
+            finalScore = finalScore + 120
         elif timeTaken > 80 and timeTaken <= 95:
-            finalScore += 60
+            finalScore = finalScore + 60
         elif timeTaken > 65:
-            finalScore += 0
+            finalScore = finalScore + 0
         return finalScore
 
     elif levelCount == 3:
         finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 8:
-            finalScore += 350
+            finalScore = finalScore + 350
         elif bricksBroken > 8 and bricksBroken <= 12:
-            finalScore += 280
+            finalScore = finalScore + 280
         elif bricksBroken > 12 and bricksBroken <= 16:
-            finalScore += 210
+            finalScore = finalScore + 210
         elif bricksBroken > 16 and bricksBroken <= 10:
-            finalScore += 140
+            finalScore = finalScore + 140
         elif bricksBroken > 20 and bricksBroken <= 24:
-            finalScore += 70
+            finalScore = finalScore + 70
         elif bricksBroken > 24:
-            finalScore += 0
+            finalScore = finalScore + 0
         
         if timeTaken >= 35:
-            finalScore += 350
+            finalScore = finalScore + 350
         elif timeTaken > 35 and timeTaken <= 50:
-            finalScore += 280
+            finalScore = finalScore + 280
         elif timeTaken > 50 and timeTaken <= 65:
-            finalScore += 210
+            finalScore = finalScore + 210
         elif timeTaken > 65 and timeTaken <= 80:
-            finalScore += 140
+            finalScore = finalScore + 140
         elif timeTaken > 80 and timeTaken <= 95:
-            finalScore += 70
+            finalScore = finalScore + 70
         elif finalScore > 65:
-            finalScore += 0
+            finalScore = finalScore + 0
         return finalScore
 
     elif levelCount == 4:
         finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 8:
-            finalScore += 400
+            finalScore = finalScore + 400
         elif bricksBroken > 8 and bricksBroken <= 12:
-            finalScore += 320
+            finalScore = finalScore + 320
         elif bricksBroken > 12 and bricksBroken <= 16:
-            finalScore += 240
+            finalScore = finalScore + 240
         elif bricksBroken > 16 and bricksBroken <= 10:
-            finalScore += 160
+            finalScore = finalScore + 160
         elif bricksBroken > 20 and bricksBroken <= 24:
-            finalScore += 80
+            finalScore = finalScore + 80
         elif bricksBroken > 24:
-            finalScore += 0
+            finalScore = finalScore + 0
         
         if timeTaken >= 35:
-            finalScore += 400
+            finalScore = finalScore + 400
         elif timeTaken > 35 and timeTaken <= 50:
-            finalScore += 320
+            finalScore = finalScore + 320
         elif timeTaken > 50 and timeTaken <= 65:
-            finalScore += 240
+            finalScore = finalScore + 240
         elif timeTaken > 65 and timeTaken <= 80:
-            finalScore += 160
+            finalScore = finalScore + 160
         elif timeTaken > 80 and timeTaken <= 95:
-            finalScore += 80
+            finalScore = finalScore + 80
         elif timeTaken > 65:
-            finalScore += 0
+            finalScore = finalScore + 0
         return finalScore
 
     elif levelCount == 5:
         finalScore = score
         if bricksBroken >= 4 and bricksBroken <= 10:
-            finalScore += 450
+            finalScore = finalScore + 450
         elif bricksBroken > 10 and bricksBroken <= 16:
-            finalScore += 360
+            finalScore = finalScore + 360
         elif bricksBroken > 16 and bricksBroken <= 22:
-            finalScore += 270
+            finalScore = finalScore + 270
         elif bricksBroken > 22 and bricksBroken <= 28:
-            finalScore += 180
+            finalScore = finalScore + 180
         elif bricksBroken > 28 and bricksBroken <= 32:
-            finalScore += 90
+            finalScore = finalScore + 90
         elif bricksBroken > 24:
-            finalScore += 0
+            finalScore = finalScore + 0
         
         if timeTaken >= 35:
-            finalScore += 450
+            finalScore = finalScore + 450
         elif timeTaken > 35 and timeTaken <= 50:
-            finalScore += 360
+            finalScore = finalScore + 360
         elif timeTaken > 50 and timeTaken <= 65:
-            finalScore += 270
+            finalScore = finalScore + 270
         elif timeTaken > 65 and timeTaken <= 80:
-            finalScore += 180
+            finalScore = finalScore + 180
         elif timeTaken > 80 and timeTaken <= 95:
-            finalScore += 90
+            finalScore = finalScore + 90
         elif timeTaken > 65:
-            finalScore += 0
+            finalScore = finalScore + 0
         return finalScore
 
 def addScore():
     #opens static file to read scores and check against current score
     #also opens for writing after 
-    highScores = open("highScores.txt", "r+")
+    #highScores = open("highScores.txt", "r+")
     #name = input("Add 3 initials: ")
     global score
-    scoreList = highScores.readlines()
-    for line in scoreList:
-        scoreList[line] = scoreList[line].split()
+    #scoreList = highScores.readlines()
+    #for line in scoreList:
+    #    scoreList[line] = scoreList[line].split()
     #variable.write("{0}. . . . .{1}\n".format(name, score))
-    print(scoreList)
-    highScores.close()
+    #print(scoreList)
+    #highScores.close()
 
 def resetBall():
     #randomizes initial location between bricks and paddle
@@ -187,7 +187,7 @@ def resetBall():
     #variable to change ball direction; begins in random direction
     #tried using trig to calculate better angle options, but move() function only takes int
     global ballDirection
-    ballDirection = [r.choice([2, -2]), r.choice([2, -2])]
+    ballDirection = [r.choice([3, -3]), r.choice([3, -3])]
 
 def newGame():
     #holds initial level value
@@ -574,7 +574,7 @@ def updateToolbar():
         #display 1 heart
         gameDisplay.blit(heart, (670, 18))
 
-    print("Timer: {0}".format(int(timer)))
+    #print("Timer: {0}".format(int(timer)))
 
     py.display.flip()
 
@@ -637,6 +637,7 @@ bricksBroken = 0
 score = 0
 timeTaken = 0
 startTime = 0
+finalScore = 0
 while 1:
     pause = True
     game_intro()
@@ -692,10 +693,10 @@ while 1:
             levelCount += 1
 
             #prints level value to console for testing purposes
-            print(levelCount)
+            #print(levelCount)
 
             #prints bricksBroken to console for testing purposes
-            print(bricksBroken)
+            print("Bricks Broken: " + str(bricksBroken))
 
             resetBall()
 
@@ -756,7 +757,7 @@ while 1:
             lifeCount -= 1
             
             #console printing for testing
-            print(lifeCount)
+            print("LifeCount: " + str(lifeCount))
 
             #if lifeCount is over 3, it pauses to prepare for new ball
             #if lifeCount is 0, it prints 'game over' to console (which is for testing) and goes back to the main menu
@@ -783,14 +784,14 @@ while 1:
 
             #tried using trig to calculate better angle options, but move() function only takes int
             if offset >= 21: #right side of paddle, pos x and neg y, sends up to right 
-                ballDirection[0] = 2
-                ballDirection[1] = -2
+                ballDirection[0] = 3
+                ballDirection[1] = -3
             elif offset < 21 and offset > -21: #middle of paddle, sends up 
                 ballDirection[0] = 0
-                ballDirection[1] = -2
+                ballDirection[1] = -3
             elif offset <= -21: #left side of paddle, neg x and neg y, sends up to left 
-                ballDirection[0] = -2
-                ballDirection[1] = -2
+                ballDirection[0] = -3
+                ballDirection[1] = -3
        
         #using Clock object in pygame and setting frames per second
         clock = py.time.Clock()
