@@ -1,11 +1,9 @@
 #score calculation testing file
 
-def addScore1():
+def addScore1(score):
     #opens static file to read scores and check against current score
     #also opens for appending, not overwriting 
     highScores1 = open("highScores.txt", "r+")
-    global score
-    score = 22
     
     #empty lists to hold stuff for later
     noLineScoreList1 = []

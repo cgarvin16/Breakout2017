@@ -47,6 +47,9 @@
     <Compile Include="pauseMenu.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="scoreDebugFile.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="temp.py" />
     <Compile Include="Wall.py">
       <SubType>Code</SubType>
