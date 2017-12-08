@@ -453,7 +453,10 @@ def button_i(x,y,w,h,ib,ab, action=None):
                     play = True
                     newGame()
                 elif action == "scores":
-                    pass
+                    global hsScreen
+                    hsScreen = True
+                    topTenScores()
+                    hs_screen()
                 elif action == "instr":
                     global instructions
                     instructions = True
@@ -573,7 +576,37 @@ def instruction_screen():
         gameDisplay.blit(instrText,(80,420))
 
         py.display.update()
-    
+
+def hs_screen():
+    white = (255,255,255)
+    black = (0,0,0)
+    red = (255,0,0)
+    green = (0,200,0)
+    blue = (0,0,255)
+
+    global hsScreen
+    while hsScreen == True:
+        for event in py.event.get():
+                if event.type == py.QUIT:
+                    sys.exit()
+                elif py.key.get_pressed()[py.K_b]:#remove this later; this is used for pausing implementation of game_intro since we don't have a pause screen yet; use this for pause screen later
+                    hsScreen = False
+        gameDisplay.fill(black)
+
+        largeText = py.font.SysFont("times", 100)
+        text = py.font.Font.render(largeText, "Highscores:", 0, white, None)
+        gameDisplay.blit(text, (150, 0))
+
+        instr = py.font.SysFont("calibri",40)
+        placeCounter = 1
+        y = 150
+        for i in range(0, 10):
+            instrText = py.font.Font.render(instr, "{0}) {1}        {2}".format(placeCounter, finalHighScores[i][0], finalHighScores[i][1]), 0, white, None)
+            gameDisplay.blit(instrText, (200, y))
+            y += 50
+            placeCounter += 1
+
+        py.display.update()
     
 def button_p(x,y,w,h,ib,ab, action=None):
     white = (255,255,255)
@@ -722,6 +755,7 @@ def updateToolbar():
 play = True
 pause = False
 instructions = False
+hsScreen = False
 #beginning of the required pygame skeleton
 #initializes the pygame module
 py.init()
