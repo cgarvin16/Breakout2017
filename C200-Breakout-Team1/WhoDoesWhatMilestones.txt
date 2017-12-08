@@ -81,7 +81,7 @@ Problem log:
 
 Milestone 2:
 
-–Add level progression – a minimum of five levels of increasing difficulty must
+ï¿½Add level progression ï¿½ a minimum of five levels of increasing difficulty must
 be included. Pause between levels and provide control to the user for resuming the next level.
 	Date done: 12/5
 	Prim. Person in Charge: Logan
@@ -90,44 +90,44 @@ be included. Pause between levels and provide control to the user for resuming t
 	Date done: 12/02
 	Prim. Person in Charge: Carolyn
 
-–Design and implement a score function that adheres to the game objective
+ï¿½Design and implement a score function that adheres to the game objective
 (reach the top wall as quickly as possible). This MUST be documented in a
 manner that completely captures how the score for your game is calculated.
 	Date done: 12/6
 	Prim. Person in Charge: Logan
 
-–Add persistence for the top 10 high-scores/users in old-arcade style fashion:
+ï¿½Add persistence for the top 10 high-scores/users in old-arcade style fashion:
 1    AAA    10,500
 2    AAZ    10,000
 3    ZCV    850
 Maintain the high-score information in a flat file that is loaded at game start-up.
-	Date done:
+	Date done: 
 	Prim. Person in Charge: Charles
 	
 -Add a main menu game screen.
 	Date done: 12/02
 	Prim. Person in Charge: Carolyn
 
-–Add a game screen for viewing the high-scores – scores can only be viewed
+ï¿½Add a game screen for viewing the high-scores ï¿½ scores can only be viewed
 prior to starting a new game.
 	Date done:
 	Prim. Person in Charge: Charles
 
-–Add a game screen for viewing game-play instructions.
+ï¿½Add a game screen for viewing game-play instructions.
 	Date done: 12/02
 	Prim. Person in Charge: Carolyn and Charles
 
-–Add the score, number of lives, and a timer to the display.
+ï¿½Add the score, number of lives, and a timer to the display.
 	Date done: 12/6
 	Prim. Person in Charge: Logan
 
-–The ball should reset if it touches the bottom of the screen. The number of
+ï¿½The ball should reset if it touches the bottom of the screen. The number of
 lives should decrease and the game should pause until the user starts the
 next ball.
 	Date done: 12/5
 	Prim. Person in Charge: Logan
 
-–If the ball touches the bottom and the player is out of lives, the game should
+ï¿½If the ball touches the bottom and the player is out of lives, the game should
 end with an appropriate message and allow the user to input his or her initials
 if a high-score has been attained.
 	Date done:
