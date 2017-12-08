@@ -1,5 +1,5 @@
-#                                    Breakout Beta Version 0.1
-#                                    Milestone 1 Complete
+#                                    Breakout Beta Version 0.5
+#                                    Milestone 2 Complete
 #                                    Done By:
 #                                           Logan Fields
 #                                           Charles Brooks
@@ -18,6 +18,10 @@ import time
 #function to add scores to a scores text file for saving
 def calculateScore(bricksBroken, timeTaken, score, levelCount):
     global finalScore
+    #point values depend upon how many bricks are broken and how long the level takes
+    #each level gets different point values because they are harder/easier to finish faster/in less bricks
+    #at the end of a level, brick count, previous score, level, and time are calculated and sent to this function
+    #based on their values, the score is added to appropriately and sent out
     if levelCount == 1:
         if bricksBroken >= 4 and bricksBroken <= 8:
             finalScore += 250
@@ -162,6 +166,8 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
             finalScore = finalScore + 0
         return finalScore
 
+#this function checks if a score is high enough to add to the high score list
+#if it is, it adds the score to the highScore list 
 def addScore(score):
     #opens static file to read scores and check against current score
     #also opens for appending, not overwriting 
@@ -202,11 +208,8 @@ def addScore(score):
                 highScores1.write("{0}. . . . .{1}\n".format(name, score))
                 break
     highScores1.close()
-   
-    #print(scoreList1)
-    #print(sortedList1)
-    print("-"*30)
-    
+ 
+#calculates the top ten scores from the score list
 def topTenScores():
     #opens static file to read scores 
     highScores2 = open("highScores.txt", "r")
@@ -234,16 +237,10 @@ def topTenScores():
     global finalHighScores
     finalHighScores = sortedList2[:10]
 
-    #printing for testing
-    print(scoreList2)
-    print(noLineScoreList2)
-    print(readyScoreList2)
-    print(sortedList2)
-    print(finalHighScores)
-
     #closes file
     highScores2.close()
 
+#overwrites the old score list with the new top ten scores
 def overWriteScores():
     #opens highScores.txt in overwrite mode
     highScores = open("highScores.txt", "w")
@@ -431,6 +428,7 @@ def levelFive():
     play = True
 
 def button_i(x,y,w,h,ib,ab, action=None):
+    #color values for use later
     white = (255,255,255)
     black = (0,0,0)
     red = (255,0,0)
@@ -474,7 +472,9 @@ def button_i(x,y,w,h,ib,ab, action=None):
     menuText = py.font.Font.render(menu, "Main Menu", 0, blue, None)
     gameDisplay.blit(menuText, (250,180))
 
+#displays the game intro screen
 def game_intro():
+    #colors for later use
     white = (255,255,255)
     black = (0,0,0)
     green = (50,200,50)
@@ -522,6 +522,7 @@ def game_intro():
 
         py.display.update()
   
+#displays the instruction screen 
 def instruction_screen():
     white = (255,255,255)
     black = (0,0,0)
@@ -577,7 +578,9 @@ def instruction_screen():
 
         py.display.update()
 
+#displays the high score page
 def hs_screen():
+    #colors for later
     white = (255,255,255)
     black = (0,0,0)
     red = (255,0,0)
@@ -600,6 +603,8 @@ def hs_screen():
         instr = py.font.SysFont("calibri",40)
         placeCounter = 1
         y = 150
+        
+        #displays the top 10 scores 
         for i in range(0, 10):
             instrText = py.font.Font.render(instr, "{0}) {1}        {2}".format(placeCounter, finalHighScores[i][0], finalHighScores[i][1]), 0, white, None)
             gameDisplay.blit(instrText, (200, y))
@@ -646,6 +651,7 @@ def button_p(x,y,w,h,ib,ab, action=None):
         text = py.font.Font.render(largeText, "Paused", 0, red, None)
         gameDisplay.blit(text, (290, 0))
 
+#displays the pause screen
 def pause_screen():
     white = (255,255,255)
     black = (0,0,0)
@@ -703,6 +709,7 @@ def pause_screen():
 
         py.display.update()
 
+#displays and updates the toolbar at the top of the game
 def updateToolbar():
     #default font and size for the toolbar
     font = py.font.SysFont("times", 30)
@@ -752,10 +759,12 @@ def updateToolbar():
 
     py.display.flip()
 
+#sets state values
 play = True
 pause = False
 instructions = False
 hsScreen = False
+
 #beginning of the required pygame skeleton
 #initializes the pygame module
 py.init()
@@ -795,10 +804,13 @@ lifeCount = 3
 #initialized ballDirection variable
 ballDirection = [0,0]
 
+#initializes lists to use later in wall creaton
 newBrickList = []
 newRecList = []
 newColorList = []
 newHitList = []
+
+#loads new images for cracked bricks and icons
 testBrick = py.image.load("testBrick.png")
 wCracked = py.image.load("wBrick_cracked.png")
 bCracked = py.image.load("bBrick_cracked.png")
@@ -808,13 +820,15 @@ mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
 heart = py.image.load("new_heart_icon.png")
 
-#initializes brick hit, time, and score
+#initializes brick hit, time values, and score values
 bricksBroken = 0
 score = 0
 timeTaken = 0
 startTime = 0
 finalScore = 0
 finalHighScores = []
+
+#main game loop
 while 1:
     pause = True
     game_intro()
@@ -980,9 +994,6 @@ while 1:
         #paints over last screen
         gameDisplay.fill((0,0,0))
 
-         #checks level and changes things if needed
-    
-        
         #moves ball 
         ballRect = ballRect.move(ballDirection)
 
