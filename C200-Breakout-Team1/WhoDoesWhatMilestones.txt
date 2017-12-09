@@ -95,7 +95,7 @@ be included. Pause between levels and provide control to the user for resuming t
 (reach the top wall as quickly as possible). This MUST be documented in a
 manner that completely captures how the score for your game is calculated.
 	Date done: 12/6
-	Prim. Person in Charge: Logan
+	Prim. Person in Charge: Charles
 
 �Add persistence for the top 10 high-scores/users in old-arcade style fashion:
 1    AAA    10,500
