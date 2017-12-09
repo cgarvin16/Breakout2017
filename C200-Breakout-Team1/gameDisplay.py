@@ -751,8 +751,8 @@ while 1:
             passMessage= py.image.load("editedLevelPassed.png")
 
             #paints over the previous screen
-            gameDisplay.fill((0,0,0))
-            gameDisplay.blit(passMessage, (100,100))
+            background = py.image.load("menu_background.png") #adds an image background
+            gameDisplay.blit(background, (0,0))
 
             #moves and pauses ball to prevent if loop from repeating
             ballRect.x = 300
@@ -820,8 +820,9 @@ while 1:
         #check if ball is at bottom
         if ballRect.y > 700: 
             #creates image object to be put to the screen 
+            background = py.image.load("failed_background.png") #adds an image background
+            gameDisplay.blit(background, (0,0))
             failMessage= py.image.load("editedLevelFailed.png")
-            gameDisplay.fill((0,0,0))
             gameDisplay.blit(failMessage, (100,100))
 
             #moves and pauses ball to prevent if loop from repeating
