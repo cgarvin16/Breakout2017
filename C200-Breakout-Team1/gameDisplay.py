@@ -949,6 +949,7 @@ while 1:
                 newHitList[i] -= 1
                 break
 
+
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 3:
                 #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
                 #newBrickList[i] = testBrick
