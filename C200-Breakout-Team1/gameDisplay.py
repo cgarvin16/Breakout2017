@@ -713,6 +713,15 @@ gCracked = py.image.load("gBrick_cracked.png")
 rCracked = py.image.load("rBrick_cracked.png")
 mCracked = py.image.load("mBrick_cracked.png")
 zCracked = py.image.load("zBrick_cracked.png")
+
+EwCracked= py.image.load("wBrick_Ecracked.png")
+EbCracked = py.image.load("bBrick_Ecracked.png")
+EgCracked = py.image.load("gBrick_Ecracked.png")
+ErCracked = py.image.load("rBrick_Ecracked.png")
+EmCracked = py.image.load("mBrick_Ecracked.png")
+EzCracked = py.image.load("zBrick_Ecracked.png")
+
+
 heart = py.image.load("new_heart_icon.png")
 
 #initializes brick hit, time, and score
@@ -923,22 +932,45 @@ while 1:
 
                 #ends loop
                 break
-            elif ballRect.colliderect(newRecList[i]) and newHitList[i] >= 2:
+            elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 2:
+                if newColorList[i] == "wBrick.png" or newColorList[i] == "wCracked":
+                    newBrickList[i] = EwCracked
+                elif newColorList[i] == "rBrick.png" or newColorList[i] == "rCracked":
+                    newBrickList[i] = ErCracked
+                elif newColorList[i] == "gBrick.png" or newColorList[i] == "gCracked":
+                    newBrickList[i] = EgCracked
+                elif newColorList[i] == "bBrick.png" or newColorList[i] == "bCracked":
+                    newBrickList[i] = EbCracked
+                elif newColorList[i] == "mBrick.png" or newColorList[i] == "mCracked":
+                    newBrickList[i] = EmCracked
+                elif newColorList[i] == "zBrick.png" or newColorList[i] == "zCracked":
+                    newBrickList[i] = EzCracked
+                py.display.flip()
+                newHitList[i] -= 1
+                break
+
+            elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 3:
                 #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
                 #newBrickList[i] = testBrick
                 
                 if newColorList[i] == "wBrick.png":
                     newBrickList[i] = wCracked
+                    newColorList[i] = "wCracked"
                 elif newColorList[i] == "rBrick.png":
                     newBrickList[i] = rCracked
+                    newColorList[i] = "rCracked"
                 elif newColorList[i] == "gBrick.png":
                     newBrickList[i] = gCracked
+                    newColorList[i] = "gCracked"
                 elif newColorList[i] == "bBrick.png":
                     newBrickList[i] = bCracked
+                    newColorList[i] = "bCracked"
                 elif newColorList[i] == "mBrick.png":
                     newBrickList[i] = mCracked
+                    newColorList[i] = "mCracked"
                 elif newColorList[i] == "zBrick.png":
                     newBrickList[i] = zCracked
+                    newColorList[i] = "zCracked"
                 py.display.flip()
                 newHitList[i] -= 1
                 break
