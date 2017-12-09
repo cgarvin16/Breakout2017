@@ -1,14 +1,19 @@
-#When ball hit 
-effect = pygame.mixer.Sound('bad_disk_x.wav')
-effect.play()
+import pygame as py
 
-#When ball hits brick
-effect = pygame.mixer.Sound('boing2.wav')
-effect.play()
+py.init()
 
-effect = pygame.mixer.Sound('glass_shatter_c.wav')
-effect.play()
+#When ball cracks a multi-hit brick
+crackSound = py.mixer.Sound('bad_disk_x.wav')
+crackSound.play()
 
+#When ball hits walls/paddles/etc.
+boingSound = py.mixer.Sound('boing2.wav')
+boingSound.play()
 
-effect = pygame.mixer.Sound('hamer_anvil3.wav')
-effect.play()
+#When ball shatters a multi-hit brick
+shatterSound = py.mixer.Sound('glass_shatter_c.wav')
+shatterSound.play()
+
+#when ball hits an unbreakable brick
+steelSound = py.mixer.Sound('hammer_anvil3.wav')
+steelSound.play()
