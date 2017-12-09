@@ -97,6 +97,6 @@ def overWriteScores():
     highScores.close()
 
 finalHighScores = []
-addScore1(100)
+addScore1()
 topTenScores()
 overWriteScores()

@@ -49,9 +49,7 @@ def instruction_screen():
     gameDisplay.blit(instrText,(80,400))
 
     instr = py.font.SysFont("calibri",20)
-    global name
-    global score
-    instrText = py.font.Font.render(instr,"1: {0}    --------    {1}".format(name, score), 0, blue, None)
+    instrText = py.font.Font.render(instr,"Now that you know how to play, have fun and break down those bricks!", 0, blue, None)
     gameDisplay.blit(instrText,(80,420))
 
     py.display.update()
@@ -66,8 +64,6 @@ while 1:
             sys.exit()
         elif py.key.get_pressed()[py.K_ESCAPE]:
             sys.exit()
-    name = 'adw'
-    score = '1000'
     instruction_screen()
 
 
