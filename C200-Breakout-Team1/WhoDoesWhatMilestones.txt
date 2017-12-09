@@ -37,6 +37,7 @@ Logan 12/4 7:00pm-7:30pm
 Logan 12/5 1:45pm-2:20pm, 5:00pm-5:45pm, 11:00pm-11:15pm
 Logan & Charles 12/5 3:10pm-3:45pm
 Logan 12/6 11:45am-11:55am, 2:20pm-3:25pm, 9:00pm-10:30pm
+Group Meeting 12/9
 
 
 Milestone 1: Due November 30th 2017, 11:59pm    Bulk of code
