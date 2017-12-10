@@ -9,11 +9,14 @@
 
 #imports to allow use of other modules
 from Wall import Wall
-from Paddle import Paddle 
+from Paddle import Paddle
+from powerUps import powerUps
 import pygame as py
 import sys
 import random as r 
 import time
+
+
 
 #function to add scores to a scores text file for saving
 def calculateScore(bricksBroken, timeTaken, score, levelCount):
@@ -693,6 +696,9 @@ paddleRect = paddle.image.get_rect()
 paddleRect.x = 300
 paddleRect.y = 620
 
+
+
+
 #allows for held down keys to continue movement
 py.key.set_repeat(10, 10)
 
@@ -720,6 +726,8 @@ EgCracked = py.image.load("gBrick_Ecracked.png")
 ErCracked = py.image.load("rBrick_Ecracked.png")
 EmCracked = py.image.load("mBrick_Ecracked.png")
 EzCracked = py.image.load("zBrick_Ecracked.png")
+
+
 
 
 heart = py.image.load("new_heart_icon.png")
@@ -874,6 +882,8 @@ while 1:
         if ballRect.x <= 0 or ballRect.x >= 800:
             ballDirection[0] = -ballDirection[0]
         
+
+
         #how ball reacting to paddle (paddle pixel ranges: -42 <- -21 = 21 -> 42)
         if ballRect.colliderect(paddleRect):
             ballDirection[1] = -ballDirection[1]
@@ -910,6 +920,8 @@ while 1:
 
         #adds paddle to screen
         gameDisplay.blit(paddle.image, paddleRect)
+
+
 
         #updates the remaining bricks to the screen and checks if a brick has been hit
         #if the brick has been hit, it removes it from the lists
