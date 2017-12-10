@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e9cbc8d4-b84e-4955-8b85-e7f218aa9993</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>gameDisplay.py</StartupFile>
+    <StartupFile>soundEffect.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -50,6 +50,7 @@
     <Compile Include="scoreDebugFile.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="soundEffect.py" />
     <Compile Include="temp.py" />
     <Compile Include="Wall.py">
       <SubType>Code</SubType>
