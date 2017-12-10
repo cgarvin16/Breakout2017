@@ -19,6 +19,7 @@ import random as r
 #beginning of the required pygame skeleton
 #initializes the pygame module
 py.init()
+py.mixer.init()
  
 #sets the game display size as 800px width and 700px height
 gameDisplay = py.display.set_mode((800, 700))
@@ -61,6 +62,21 @@ paddleRect.y = 620
 #allows for held down keys to continue movement
 py.key.set_repeat(10, 10)
  
+#When ball cracks a multi-hit brick
+crackSound = py.mixer.Sound('bad_disk_x.wav')
+
+#When ball hits walls/paddles/etc.
+boingSound = py.mixer.Sound('boing2.wav')
+
+#When ball shatters a multi-hit brick
+shatterSound = py.mixer.Sound('glass_shatter_c.wav')
+
+#when ball hits an unbreakable brick
+steelSound = py.mixer.Sound('hammer_anvil3.wav')
+
+#When you get to the top
+cheeringSound = py.mixer.Sound('cheering.wav')
+
 #code for the game
 while 1:
  
@@ -81,6 +97,7 @@ while 1:
         #creates image object to be put to the screen 
         passMessage= py.image.load("editedLevelPassed.png")
         gameDisplay.blit(passMessage, (100,100))
+        cheeringSound.play()
   
         #moves and pauses ball to prevent if loop from repeating
         ballRect.x = 300
@@ -121,12 +138,13 @@ while 1:
     #if ball hits walls, send in opposite direction 
     if ballRect.x <= 0 or ballRect.x >= 800:
         ballDirection[0] = -ballDirection[0]
+        boingSound.play()
          
- 
          
     #how ball reacting to paddle (paddle pixel ranges: -42 <- -21 = 21 -> 42)
     if ballRect.colliderect(paddleRect):
         ballDirection[1] = -ballDirection[1]
+        boingSound.play()
  
         #variable holds the x location of the differences between the centers of the ball and the paddle
         offset = ballRect.center[0] - paddleRect.center[0]
@@ -168,6 +186,7 @@ while 1:
             del(newColorList[i])
             ballDirection[0] = -ballDirection[0] 
             ballDirection[1] = -ballDirection[1] 
+            shatterSound.play()
              
             #updates screen
             py.display.flip()
