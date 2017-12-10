@@ -526,7 +526,7 @@ def game_intro():
         py.display.update()
 
 #displays the instruction screen 
- def instruction_screen():
+def instruction_screen():
     white = (255,255,255)
     black = (0,0,0)
     red = (255,0,0)
@@ -582,7 +582,7 @@ def game_intro():
         py.display.update()
  
  #displays the high score page
- def hs_screen():
+def hs_screen():
     #colors for later
     white = (255,255,255)
     black = (0,0,0)
@@ -798,7 +798,11 @@ paddleRect = paddle.image.get_rect()
 paddleRect.x = 300
 paddleRect.y = 620
 
+#adds the powerups sprite
+all_sprites = py.sprite.Group()
+powerups = py.sprite.Group()
 
+all_sprites.update()
 
 
 #allows for held down keys to continue movement
@@ -1033,7 +1037,14 @@ while 1:
             gameDisplay.blit(newBrickList[i], newRecList[i])
             if ballRect.colliderect(newRecList[i]):
                 ballDirection[0] = -ballDirection[0] 
-                ballDirection[1] = -ballDirection[1] 
+                ballDirection[1] = -ballDirection[1]
+                #add random powerups
+                if r.random() > 100.0:
+                    powerUps = Powerups(hit.rect.center)
+                    all_sprites.add(powerUps)
+                    powerups.add(powerUps)
+
+
             if ballRect.colliderect(newRecList[i]) and newHitList[i] == 1:
                 del(newBrickList[i])
                 del(newRecList[i])

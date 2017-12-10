@@ -8,9 +8,6 @@ py.init()
 
 
 class powerUps(py.sprite.Sprite):
-    powerup_images = {}
-    powerup_images = [life] = py.image.load("drop_heart_icon.png").convert()
-    powerup_images = [bigPaddle] = py.image.load("largePaddleImage.png").convert()
 
     def __init__(self,center):
         py.sprite.Sprite.__init__(self)
@@ -20,30 +17,16 @@ class powerUps(py.sprite.Sprite):
         self.rect.center = center
         self.speedy = 2
 
+        print("yes")
+
     def update(self):
         self.rect.y =+ self.speedy
         if self.rect.top > HEIGHT:
             self.kill()
 
 
-
-
+life = py.image.load("drop_heart_icon.png")
+bigPaddle = py.image.load("largePaddleImage.png")
         
 
-"""def powerups():
-    self.type = random.choice(lifRect, paddlePRect)
-    self.image = powerup_images[self.type]
-    self.rect.center = center
-    self.speedy = 2
-
-
-    lifepowerUP = py.image.load("drop_heart_icon.png")
-    lifeRect = lifepowerUp.get_rect()
-    paddlepowerUP = py.image.load("largePaddleImage.png")
-    paddlePRect = paddlepwerUp.get_rect()
-
-newBrickList = []
-newRecList = []
-newColorList = []
-newHitList = []"""
 
