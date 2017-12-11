@@ -847,6 +847,21 @@ startTime = 0
 finalScore = 0
 finalHighScores = []
 
+#When ball cracks a multi-hit brick
+crackSound = py.mixer.Sound('bad_disk_x.wav')
+
+#When ball hits walls/paddles/etc.
+boingSound = py.mixer.Sound('boing2.wav')
+
+#When ball shatters a brick
+shatterSound = py.mixer.Sound('glass_shatter_c.wav')
+
+#when ball hits an unbreakable brick
+steelSound = py.mixer.Sound('hammer_anvil3.wav')
+
+#When you get to the top
+cheeringSound = py.mixer.Sound('cheering.wav')
+
 #main game loop
 while 1:
     pause = True
@@ -880,6 +895,7 @@ while 1:
             #creates image object to be put to the screen 
             passMessage= py.image.load("editedLevelPassed.png")
             gameDisplay.blit(passMessage, (100,100))
+            cheeringSound.play()
 
             #moves and pauses ball to prevent if loop from repeating
             ballRect.x = 300
@@ -989,12 +1005,14 @@ while 1:
         #if ball hits walls, send in opposite direction 
         if ballRect.x <= 0 or ballRect.x >= 800:
             ballDirection[0] = -ballDirection[0]
+            boingSound.play()
         
 
 
         #how ball reacting to paddle (paddle pixel ranges: -42 <- -21 = 21 -> 42)
         if ballRect.colliderect(paddleRect):
             ballDirection[1] = -ballDirection[1]
+            boingSound.play()
 
             #variable holds the x location of the differences between the centers of the ball and the paddle
             offset = ballRect.center[0] - paddleRect.center[0]
@@ -1050,6 +1068,7 @@ while 1:
                 del(newRecList[i])
                 del(newColorList[i])
                 del(newHitList[i])
+                shatterSound.play()
                 
                 #updates screen
                 py.display.flip()
@@ -1073,6 +1092,7 @@ while 1:
                 elif newColorList[i] == "zBrick.png" or newColorList[i] == "zCracked":
                     newBrickList[i] = EzCracked
                 py.display.flip()
+                crackSound.play()
                 newHitList[i] -= 1
                 break
 
