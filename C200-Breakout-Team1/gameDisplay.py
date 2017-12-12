@@ -970,6 +970,7 @@ while 1:
             gameDisplay.blit(background, (0,0))
             failMessage= py.image.load("editedLevelFailed.png")
             gameDisplay.blit(failMessage, (100,100))
+            booSound.play()
 
             #moves and pauses ball to prevent if loop from repeating
             ballRect.x = 300
