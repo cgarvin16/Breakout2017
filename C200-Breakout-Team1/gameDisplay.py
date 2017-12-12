@@ -862,6 +862,9 @@ steelSound = py.mixer.Sound('hammer_anvil3.wav')
 #When you get to the top
 cheeringSound = py.mixer.Sound('cheering.wav')
 
+#When you fail
+booSound = py.mixer.Sound('boo.wav')
+
 #main game loop
 while 1:
     pause = True
@@ -1056,6 +1059,8 @@ while 1:
             if ballRect.colliderect(newRecList[i]):
                 ballDirection[0] = -ballDirection[0] 
                 ballDirection[1] = -ballDirection[1]
+                if newHitList[i] ==0:
+                    steelSound.play()
                 #add random powerups
                 if r.random() > 100.0:
                     powerUps = Powerups(hit.rect.center)
@@ -1121,6 +1126,7 @@ while 1:
                     newColorList[i] = "zCracked"
                 py.display.flip()
                 newHitList[i] -= 1
+                crackSound.play()
                 break
         
         updateToolbar()
