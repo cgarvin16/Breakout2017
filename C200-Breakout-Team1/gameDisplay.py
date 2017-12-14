@@ -798,11 +798,7 @@ paddleRect = paddle.image.get_rect()
 paddleRect.x = 300
 paddleRect.y = 620
 
-#adds the powerups sprite
-all_sprites = py.sprite.Group()
-powerups = py.sprite.Group()
 
-all_sprites.update()
 
 
 #allows for held down keys to continue movement
@@ -819,6 +815,13 @@ newBrickList = []
 newRecList = []
 newColorList = []
 newHitList = []
+
+#powerup list
+newPowerList = []
+
+#powerup images
+heartPU = py.image.load("drop_heart_icon.png")
+paddlePU = py.image.load("largePaddleImage.png")
 
 #loads new images for cracked bricks and icons
 testBrick = py.image.load("testBrick.png")
@@ -1082,14 +1085,20 @@ while 1:
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 2:
                 if newColorList[i] == "wBrick.png" or newColorList[i] == "wCracked":
                     newBrickList[i] = EwCracked
+                    #power up stuff
+                    newPowerList[i] = paddlePU
                 elif newColorList[i] == "rBrick.png" or newColorList[i] == "rCracked":
                     newBrickList[i] = ErCracked
                 elif newColorList[i] == "gBrick.png" or newColorList[i] == "gCracked":
                     newBrickList[i] = EgCracked
+                    #power up stuff
+                    newPowerList[i] = heartPU
                 elif newColorList[i] == "bBrick.png" or newColorList[i] == "bCracked":
                     newBrickList[i] = EbCracked
                 elif newColorList[i] == "mBrick.png" or newColorList[i] == "mCracked":
                     newBrickList[i] = EmCracked
+                    #power up stuff
+                    newPowerList[i] = heartPU
                 elif newColorList[i] == "zBrick.png" or newColorList[i] == "zCracked":
                     newBrickList[i] = EzCracked
                 py.display.flip()
@@ -1103,12 +1112,12 @@ while 1:
                 #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
                 #newBrickList[i] = testBrick
 
-                #powerup stuff
-                heartPU = py.image.load("drop_heart_icon.png")
                 
                 if newColorList[i] == "wBrick.png":
                     newBrickList[i] = wCracked
                     newColorList[i] = "wCracked"
+                    #power up stuff
+                    newPowerList[i] = paddlePU
                 elif newColorList[i] == "rBrick.png":
                     newBrickList[i] = rCracked
                     newColorList[i] = "rCracked"
@@ -1118,20 +1127,16 @@ while 1:
                 elif newColorList[i] == "bBrick.png":
                     newBrickList[i] = bCracked
                     newColorList[i] = "bCracked"
+                    #power up stuff
+                    newPowerList[i] = heartPU
                 elif newColorList[i] == "mBrick.png":
                     newBrickList[i] = mCracked
                     newColorList[i] = "mCracked"
                 elif newColorList[i] == "zBrick.png":
                     newBrickList[i] = zCracked
                     newColorList[i] = "zCracked"
-
-                #powerups stuff
-                elif heartPU.x < 0:
-                    y = r.randint(0,700)
-                    heartPU = Wall(800,y)
-                    print("it worked")
-                    pass
-                
+                    #power up stuff
+                    newPowerList[i] = paddlePU
 
                 py.display.flip()
                 newHitList[i] -= 1

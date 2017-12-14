@@ -9,7 +9,7 @@ py.init()
 
 class powerUps(py.sprite.Sprite):
 
-    def __init__(self,center):
+    def __init__(self, type ='dropHeart'):
         py.sprite.Sprite.__init__(self)
         self.type = r.choice('life', 'bigPaddle')
         self.image = powerup_images[self.type]
