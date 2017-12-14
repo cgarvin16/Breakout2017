@@ -1062,11 +1062,6 @@ while 1:
                 ballDirection[1] = -ballDirection[1]
                 if newHitList[i] ==0:
                     steelSound.play()
-                #add random powerups
-                if r.random() > 100.0:
-                    powerUps = Powerups(hit.rect.center)
-                    all_sprites.add(powerUps)
-                    powerups.add(powerUps)
 
 
             if ballRect.colliderect(newRecList[i]) and newHitList[i] == 1:
@@ -1103,9 +1098,13 @@ while 1:
                 break
 
 
+
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 3:
                 #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
                 #newBrickList[i] = testBrick
+
+                #powerup stuff
+                heartPU = py.image.load("drop_heart_icon.png")
                 
                 if newColorList[i] == "wBrick.png":
                     newBrickList[i] = wCracked
@@ -1125,6 +1124,15 @@ while 1:
                 elif newColorList[i] == "zBrick.png":
                     newBrickList[i] = zCracked
                     newColorList[i] = "zCracked"
+
+                #powerups stuff
+                elif heartPU.x < 0:
+                    y = r.randint(0,700)
+                    heartPU = Wall(800,y)
+                    print("it worked")
+                    pass
+                
+
                 py.display.flip()
                 newHitList[i] -= 1
                 crackSound.play()
