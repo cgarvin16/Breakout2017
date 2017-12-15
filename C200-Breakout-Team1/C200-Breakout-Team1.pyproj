@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ballNoBackground.png" />
+    <Content Include="C200 Final Project Write-Up .docx" />
+    <Content Include="C200 Project Documentation.docx" />
     <Content Include="highScores.txt" />
     <Content Include="scoringScheme.txt" />
     <Content Include="testBrick.png" />
