@@ -8,9 +8,6 @@ py.init()
 #sets image options to be used for bricks in a list to loop through
 colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png", "mBrick.png", "zBrick.png"]
 iron = "ironBrick.png"
-#powerup images
-heartPU = py.image.load("drop_heart_icon.png")
-paddlePU = py.image.load("largePaddleImage.png")
 
 #beginning of the class used to creat the brick wall object
 class Wall():
@@ -28,6 +25,7 @@ class Wall():
             self.brickList = []
             self.colorList = []
             self.hitList = []
+            self.powerList = []
 
             #creates four lines of bricks
             for i in range(0, 4):
@@ -40,6 +38,7 @@ class Wall():
                     self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
                     self.colorList.append(colors[counterColor])
                     self.hitList.append(1)
+                    self.powerList.append("none")
                     locCounterX += 114
                 locCounterY += 35
                 counterColor += 1
@@ -49,7 +48,9 @@ class Wall():
             self.brickList = []
             self.colorList = []
             self.hitList = []
+            self.powerList = []
             lineCounter = 0
+
             #creates four lines of bricks
             for i in range(0, 4):
                 locCounterX = 2
@@ -59,6 +60,7 @@ class Wall():
                     self.brickList.append(self.brick.image)
                     self.recList.append(py.Rect(locCounterX, locCounterY, 110, 30))
                     self.colorList.append(colors[counterColor])
+                    self.powerList.append("none")
                     if lineCounter == 0:
                         if i == 1 or i == 3 or i == 6:
                             self.hitList.append(2)
@@ -90,7 +92,6 @@ class Wall():
             self.brickList = []
             self.colorList = []
             self.hitList = []
-            #powerup lists
             self.powerList = []
 
             lineCounter = 0
@@ -100,13 +101,13 @@ class Wall():
                 #creates seven bricks per line
                 for i in range(0,7):
                     if lineCounter == 0 and i == 0:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 1 and i == 5:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 2 and i == 1:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 3 and i == 6:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     else:
                         self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
                     self.brickList.append(self.brick.image)
@@ -115,48 +116,48 @@ class Wall():
                     if lineCounter == 0:
                         if i == 1 or i == 3 or i == 6:
                             self.hitList.append(2)
-                            #powerups:
-                            self.powerList.append(1)
                         elif i == 0:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(5)
                         else:
                             self.hitList.append(1)
+                        if i == 2:
+                            self.powerList.append("heartPU")
+                        else:
+                            self.powerList.append("none")
                     elif lineCounter == 1:
                         if i == 1 or i == 4:
                             self.hitList.append(2)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 5:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(6)
                         else:
                             self.hitList.append(1)
+                        if i == 3:
+                            self.powerList.append("paddlePU")
+                        else:
+                            self.powerList.append("none")
                     elif lineCounter == 2:
                         if i == 0 or i == 3 or i == 4:
                             self.hitList.append(2)
-                            #powerups:
-                            self.powerList.append(5)
                         elif i == 1:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(6)
                         else:
                             self.hitList.append(1)
+                        if i == 6:
+                            self.powerList.append("paddlePU")
+                        else:
+                            self.powerList.append("none")
                     elif lineCounter == 3:
                         if i == 2 or i == 5:
                             self.hitList.append(2)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 6:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(4)
                         else:
                             self.hitList.append(1)
-                            
+                           
+                        if i == 0:
+                            self.powerList.append("heartPU")
+                        else: 
+                            self.powerList.append("none")
                     locCounterX += 114
                 locCounterY += 35
                 counterColor += 1
@@ -177,13 +178,13 @@ class Wall():
                 #creates seven bricks per line
                 for i in range(0,7):
                     if lineCounter == 0 and i == 2:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 1 and i == 4:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 2 and i == 6:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 3 and i == 4:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     else:
                         self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
                     self.brickList.append(self.brick.image)
@@ -192,48 +193,47 @@ class Wall():
                     if lineCounter == 0:
                         if i == 3 or i == 0 or i == 4:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 2:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
-
+                        if i == 6: 
+                            self.powerList.append("heartPU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 1:
                         if i == 2 or i == 6:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 4:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
+                        if i == 0: 
+                            self.powerList.append("paddlePU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 2:
                         if i == 5 or i == 2 or i == 0:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 6:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(1)
+                        if i == 4: 
+                            self.powerList.append("heartPU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 3:
                         if i == 1 or i == 3:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 4:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
+                        if i == 5: 
+                            self.powerList.append("paddlePU")
+                        else: 
+                            self.powerList.append("none")
                             
                     locCounterX += 114
                 locCounterY += 35
@@ -255,17 +255,17 @@ class Wall():
                 #creates seven bricks per line
                 for i in range(0,7):
                     if lineCounter == 0 and i == 2:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 1 and i == 1:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 2 and i == 6:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 3 and i == 4:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 4 and i == 0:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     elif lineCounter == 5 and i == 5:
-                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron, heartPU, paddlePU)
+                        self.brick = Brick(locCounterX, locCounterY, gameDisplay, iron)
                     else:
                         self.brick = Brick(locCounterX, locCounterY, gameDisplay, colors[counterColor])
                     self.brickList.append(self.brick.image)
@@ -274,69 +274,69 @@ class Wall():
                     if lineCounter == 0:
                         if i == 3 or i == 0 or i == 4:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 2:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
+                        if i == 6: 
+                            self.powerList.append("heartPU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 1:
                         if i == 2 or i == 6:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 1:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
+                        if i == 4: 
+                            self.powerList.append("heartPU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 2:
                         if i == 5 or i == 2 or i == 0:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 6:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
+                        if i == 4: 
+                            self.powerList.append("heartPU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 3:
                         if i == 1 or i == 3:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 4:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
+                        if i == 6: 
+                            self.powerList.append("paddlePU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 4:
                         if i == 2 or i == 6:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 0:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else:
                             self.hitList.append(2)
+                        if i == 4: 
+                            self.powerList.append("heartPU")
+                        else: 
+                            self.powerList.append("none")
                     elif lineCounter == 5:
                         if i == 1 or i == 4 or i == 2:
                             self.hitList.append(3)
-                            #powerups:
-                            self.powerList.append(3)
                         elif i == 5:
                             self.hitList.append(0)
-                            #powerups:
-                            self.powerList.append(3)
                         else: 
                             self.hitList.append(2)
+                        if i == 6: 
+                            self.powerList.append("paddlePU")
+                        else: 
+                            self.powerList.append("none")
                     locCounterX += 114
                 locCounterY += 35
                 counterColor += 1

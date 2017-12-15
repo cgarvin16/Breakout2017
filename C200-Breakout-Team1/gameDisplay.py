@@ -1,5 +1,5 @@
-#                                    Breakout Beta Version 0.5
-#                                    Milestone 2 Complete
+#                                    Breakout Beta Version 1
+#                                    Milestone 3 Complete
 #                                    Done By:
 #                                           Logan Fields
 #                                           Charles Brooks
@@ -10,13 +10,10 @@
 #imports to allow use of other modules
 from Wall import Wall
 from Paddle import Paddle
-from powerUps import powerUps
 import pygame as py
 import sys
 import random as r 
 import time
-
-
 
 #function to add scores to a scores text file for saving
 def calculateScore(bricksBroken, timeTaken, score, levelCount):
@@ -25,6 +22,7 @@ def calculateScore(bricksBroken, timeTaken, score, levelCount):
     #each level gets different point values because they are harder/easier to finish faster/in less bricks
     #at the end of a level, brick count, previous score, level, and time are calculated and sent to this function
     #based on their values, the score is added to appropriately and sent out
+    #full description of the scoring values can be found in scoringScheme.txt and our documentation file
     if levelCount == 1:
         if bricksBroken >= 4 and bricksBroken <= 8:
             finalScore += 250
@@ -286,10 +284,12 @@ def newGame():
     global newRecList
     global newColorList
     global newHitList
+    global newPowerList
     newBrickList = wall.brickList
     newRecList = wall.recList
     newColorList = wall.colorList
     newHitList = wall.hitList
+    newPowerList = wall.powerList
 
     #resets intial life value
     lifeCount = 3
@@ -318,10 +318,12 @@ def levelTwo():
     global newRecList
     global newColorList
     global newHitList
+    global newPowerList
     newBrickList = wall.brickList
     newRecList = wall.recList
     newColorList = wall.colorList
     newHitList = wall.hitList
+    newPowerList = wall.powerList
 
     resetBall()
 
@@ -349,10 +351,12 @@ def levelThree():
     global newRecList
     global newColorList
     global newHitList
+    global newPowerList
     newBrickList = wall.brickList
     newRecList = wall.recList
     newColorList = wall.colorList
     newHitList = wall.hitList
+    newPowerList = wall.powerList
 
     resetBall()
 
@@ -380,10 +384,12 @@ def levelFour():
     global newRecList
     global newColorList
     global newHitList
+    global newPowerList
     newBrickList = wall.brickList
     newRecList = wall.recList
     newColorList = wall.colorList
     newHitList = wall.hitList
+    newPowerList = wall.powerList
 
     resetBall()
 
@@ -411,10 +417,12 @@ def levelFive():
     global newRecList
     global newColorList
     global newHitList
+    global newPowerList
     newBrickList = wall.brickList
     newRecList = wall.recList
     newColorList = wall.colorList
     newHitList = wall.hitList
+    newPowerList = wall.powerList
 
     resetBall()
 
@@ -445,6 +453,7 @@ def button_i(x,y,w,h,ib,ab, action=None):
     click = py.mouse.get_pressed()
     global pause
 
+    #part of button clicking response
     if x+w > mouse[0] > x and y+h > mouse[1] > y:
             instructionIcon = py.image.load(ab)
             gameDisplay.blit(instructionIcon, (x,y))
@@ -501,10 +510,10 @@ def game_intro():
         gameDisplay.blit(santa, (0,150))
 
 
-        #displays mouse
+        #gets mouse position
         mouse = py.mouse.get_pos()
 
-         #this displays the icons from buttons
+        #this displays the icons from buttons
         button_i(370,400,40,40,"instr_icon.jpg","instr_icon.jpg", "instr")
         button_i(370,500,40,40,"highScore_icon.jpg","highScore_icon.jpg", "scores")
         button_i(370,300,40,40,"resume_icon.jpg","resume_icon.jpg", "play")
@@ -538,7 +547,7 @@ def instruction_screen():
         for event in py.event.get():
                 if event.type == py.QUIT:
                     sys.exit()
-                elif py.key.get_pressed()[py.K_b]:#remove this later; this is used for pausing implementation of game_intro since we don't have a pause screen yet; use this for pause screen later
+                elif py.key.get_pressed()[py.K_b]:
                     instructions = False
                 
         gameDisplay.fill((0,0,0))
@@ -595,8 +604,9 @@ def hs_screen():
         for event in py.event.get():
                 if event.type == py.QUIT:
                     sys.exit()
-                elif py.key.get_pressed()[py.K_b]:#remove this later; this is used for pausing implementation of game_intro since we don't have a pause screen yet; use this for pause screen later
+                elif py.key.get_pressed()[py.K_b]:
                     hsScreen = False
+
         gameDisplay.fill(black)
  
         largeText = py.font.SysFont("times", 100)
@@ -744,21 +754,34 @@ def updateToolbar():
 
     global lifeCount
     life = py.font.Font.render(font, "Life: ", 0, (255, 255, 255), None)
-    gameDisplay.blit(life, (600, 5))
-    if lifeCount == 3:
-        #display 3 hearts
+    gameDisplay.blit(life, (570, 5))
+
+    
+    if lifeCount == 5:
+        #display 5 hearts
+        gameDisplay.blit(heart, (640, 18))
         gameDisplay.blit(heart, (670, 18))
         gameDisplay.blit(heart, (700, 18))
         gameDisplay.blit(heart, (730, 18))
-    elif lifeCount == 2:
-        #display 2 hearts
+        gameDisplay.blit(heart, (760, 18))
+    elif lifeCount == 4:
+        #display 4 hearts
+        gameDisplay.blit(heart, (640, 18))
         gameDisplay.blit(heart, (670, 18))
         gameDisplay.blit(heart, (700, 18))
+        gameDisplay.blit(heart, (730, 18))
+    elif lifeCount == 3:
+        #display 3 hearts
+        gameDisplay.blit(heart, (640, 18))
+        gameDisplay.blit(heart, (670, 18))
+        gameDisplay.blit(heart, (700, 18))
+    elif lifeCount == 2:
+        #display 2 hearts
+        gameDisplay.blit(heart, (640, 18))
+        gameDisplay.blit(heart, (670, 18))
     elif lifeCount == 1:
         #display 1 heart
-        gameDisplay.blit(heart, (670, 18))
-
-    #print("Timer: {0}".format(int(timer)))
+        gameDisplay.blit(heart, (640, 18))
 
     py.display.flip()
 
@@ -767,6 +790,7 @@ play = True
 pause = False
 instructions = False
 hsScreen = False
+bigPaddle = False
 
 #beginning of the required pygame skeleton
 #initializes the pygame module
@@ -776,7 +800,7 @@ py.init()
 gameDisplay = py.display.set_mode((800, 700))
 
 #adds title to window top of game
-py.display.set_caption("Breakout")
+py.display.set_caption("Christmas Breakout")
 
 #updates the display
 py.display.flip()
@@ -798,9 +822,6 @@ paddleRect = paddle.image.get_rect()
 paddleRect.x = 300
 paddleRect.y = 620
 
-
-
-
 #allows for held down keys to continue movement
 py.key.set_repeat(10, 10)
 
@@ -821,6 +842,7 @@ newPowerList = []
 
 #powerup images
 heartPU = py.image.load("drop_heart_icon.png")
+paddlePUicon = py.image.load("plus_icon.png")
 paddlePU = py.image.load("largePaddleImage.png")
 
 #loads new images for cracked bricks and icons
@@ -838,7 +860,6 @@ EgCracked = py.image.load("gBrick_Ecracked.png")
 ErCracked = py.image.load("rBrick_Ecracked.png")
 EmCracked = py.image.load("mBrick_Ecracked.png")
 EzCracked = py.image.load("zBrick_Ecracked.png")
-
 
 heart = py.image.load("new_heart_icon.png")
 
@@ -872,6 +893,7 @@ booSound = py.mixer.Sound('boo.wav')
 while 1:
     pause = True
     game_intro()
+    levelThree()
     while play == True:
         #code for the game
         #how to react to events like key presses or mouse movement
@@ -915,34 +937,15 @@ while 1:
             #pauses while loop to make image visible
             py.time.wait(3000)
 
-            #prints break line for console
-            print('*'*20)
-            print(levelCount)
-
             #updates score
             score = calculateScore(bricksBroken, timeTaken, score, levelCount)
 
             #adds one to the level indicator for use later
             levelCount += 1
 
-            #prints level value to console for testing purposes
-            #print(levelCount)
-
-            #prints bricksBroken to console for testing purposes
-            print("Bricks Broken: " + str(bricksBroken))
-
             resetBall()
 
-            #prints break line for console 
-            print('-'*20)
-
-            #prints times to console for testing
-            print("start time: {0}".format(startTime))
-            print("current time: {0}".format(time.time()))
-            timeTaken = time.time()-startTime
-            print("time taken: {0}".format(timeTaken))
-            
-
+            #triggers pause screen and next level
             if levelCount == 2:
                 pause = True
                 pause_screen()
@@ -963,8 +966,6 @@ while 1:
                 addScore(score)
                 topTenScores()
                 overWriteScores()
-            #exits the game
-            #quit()
 
         #check if ball is at bottom
         if ballRect.y > 700: 
@@ -1006,15 +1007,11 @@ while 1:
                 overWriteScores()
                 pause = True
                 game_intro()
-            #exits the game
-            #quit()
-
+            
         #if ball hits walls, send in opposite direction 
         if ballRect.x <= 0 or ballRect.x >= 800:
             ballDirection[0] = -ballDirection[0]
             boingSound.play()
-        
-
 
         #how ball reacting to paddle (paddle pixel ranges: -42 <- -21 = 21 -> 42)
         if ballRect.colliderect(paddleRect):
@@ -1042,9 +1039,6 @@ while 1:
         #paints over last screen
         gameDisplay.fill((0,0,0))
 
-         #checks level and changes things if needed
-    
-        
         #moves ball 
         ballRect = ballRect.move(ballDirection)
 
@@ -1052,21 +1046,28 @@ while 1:
         gameDisplay.blit(ball, ballRect)
 
         #adds paddle to screen
-        gameDisplay.blit(paddle.image, paddleRect)
-
-
+        if bigPaddle == True:
+            gameDisplay.blit(paddlePU, paddleRect)
+            if int(time.time()) > (startTimer + 10):
+                bigPaddle = False
+        elif bigPaddle == False:
+            gameDisplay.blit(paddle.image, paddleRect)
 
         #updates the remaining bricks to the screen and checks if a brick has been hit
         #if the brick has been hit, it removes it from the lists
         for i in range(len(newBrickList)):
             gameDisplay.blit(newBrickList[i], newRecList[i])
+            
+            #changes ball direction for all hit bricks
             if ballRect.colliderect(newRecList[i]):
                 ballDirection[0] = -ballDirection[0] 
                 ballDirection[1] = -ballDirection[1]
+
+                #if the brick is iron, it plays the appropriate sound
                 if newHitList[i] ==0:
                     steelSound.play()
 
-
+            #if the brick has been hit and has only one left, make it disappear
             if ballRect.colliderect(newRecList[i]) and newHitList[i] == 1:
                 del(newBrickList[i])
                 del(newRecList[i])
@@ -1076,29 +1077,46 @@ while 1:
                 
                 #updates screen
                 py.display.flip()
-                
+
+                #if the disappearing brick has a powerup, act accordingly
+                #paddle power up displays a + icon and makes the paddle bigger for 10sec
+                if newPowerList[i] == "paddlePU":
+                    print("paddlePU broken")
+                    gameDisplay.blit(paddlePUicon, (newRecList[i].x-70, newRecList[i].y + 200))
+                    py.display.update()
+                    py.time.wait(600)
+                    startTimer = int(time.time())
+                    bigPaddle = True
+
+                #heart power up adds extra lives up to a maximum of 5 lives
+                elif newPowerList[i] == "heartPU":
+                    print("heartPU broken")
+                    gameDisplay.blit(heartPU, (newRecList[i].x-70, newRecList[i].y + 200))
+                    py.display.update()
+                    py.time.wait(600)
+                    if lifeCount < 5:
+                        lifeCount += 1
+
+                del(newPowerList[i])
+
                 #adds 1 to bricksBroken for score calculation
                 bricksBroken += 1
 
                 #ends loop
                 break
+            
+            #if the brick has 2 hits, change it to 1 hit and replace the image appropriately
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 2:
                 if newColorList[i] == "wBrick.png" or newColorList[i] == "wCracked":
                     newBrickList[i] = EwCracked
-                    #power up stuff
-                    newPowerList[i] = paddlePU
                 elif newColorList[i] == "rBrick.png" or newColorList[i] == "rCracked":
                     newBrickList[i] = ErCracked
                 elif newColorList[i] == "gBrick.png" or newColorList[i] == "gCracked":
                     newBrickList[i] = EgCracked
-                    #power up stuff
-                    newPowerList[i] = heartPU
                 elif newColorList[i] == "bBrick.png" or newColorList[i] == "bCracked":
                     newBrickList[i] = EbCracked
                 elif newColorList[i] == "mBrick.png" or newColorList[i] == "mCracked":
                     newBrickList[i] = EmCracked
-                    #power up stuff
-                    newPowerList[i] = heartPU
                 elif newColorList[i] == "zBrick.png" or newColorList[i] == "zCracked":
                     newBrickList[i] = EzCracked
                 py.display.flip()
@@ -1106,18 +1124,11 @@ while 1:
                 newHitList[i] -= 1
                 break
 
-
-
+            #if the brick has 3 hits, change it to 2 hits and replace the image appropriately
             elif ballRect.colliderect(newRecList[i]) and newHitList[i] == 3:
-                #colors = ["wBrick.png", "rBrick.png", "gBrick.png", "bBrick.png"]
-                #newBrickList[i] = testBrick
-
-                
                 if newColorList[i] == "wBrick.png":
                     newBrickList[i] = wCracked
                     newColorList[i] = "wCracked"
-                    #power up stuff
-                    newPowerList[i] = paddlePU
                 elif newColorList[i] == "rBrick.png":
                     newBrickList[i] = rCracked
                     newColorList[i] = "rCracked"
@@ -1127,16 +1138,12 @@ while 1:
                 elif newColorList[i] == "bBrick.png":
                     newBrickList[i] = bCracked
                     newColorList[i] = "bCracked"
-                    #power up stuff
-                    newPowerList[i] = heartPU
                 elif newColorList[i] == "mBrick.png":
                     newBrickList[i] = mCracked
                     newColorList[i] = "mCracked"
                 elif newColorList[i] == "zBrick.png":
                     newBrickList[i] = zCracked
                     newColorList[i] = "zCracked"
-                    #power up stuff
-                    newPowerList[i] = paddlePU
 
                 py.display.flip()
                 newHitList[i] -= 1
@@ -1144,6 +1151,7 @@ while 1:
                 break
         
         updateToolbar()
+
         #updates screen
         py.display.flip()
 

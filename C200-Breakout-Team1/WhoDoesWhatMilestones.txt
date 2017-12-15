@@ -43,6 +43,10 @@ Team work 12/7 2:45pm-3:45pm
 Team meeting 12/9 5:00pm-7:00pm
 Logan 12/9 8:00pm-8:15pm
 Charles 12/11 6pm - 7:10pm
+Carolyn 12/13 11pm - 4:00am
+Logan & Carolyn 12/14 2:30pm-3:30pm
+Logan 12/14 11:00pm-2:00am
+
 
 
 
@@ -143,16 +147,16 @@ if a high-score has been attained.
 
 Milestone 3: Extra features
 -feature 1
-	+powerups (dropped from brick)
+	+powerups (gotten from breaking specific bricks)
 		>extra life 
 		>large paddle (10s)
 	+main person in charge: Carolyn
 		>task breakdown:
 			~get images
 			~program bricks to hold powerups
-			~program bricks to drop upon breaking
-			~program game to react to powerups if caught
-	+date finished:
+			~program powerups to appear upon breaking
+			~program game to react to powerups 
+	+date finished: 12/15
 
 -feature 2
 	+sound
@@ -165,7 +169,7 @@ Milestone 3: Extra features
 			~input sounds to game
 			~program sounds when ball hits wall/paddle/unbroken brick
 			~program sounds when brick breaks
-	+date finished:
+	+date finished: 12/12
 
 -feature 3
 	+cracked/changing bricks
@@ -178,4 +182,4 @@ Milestone 3: Extra features
 			>get cracked and double cracked bricks
 			>input images into game
 			>program image change when relevant
-	+date finished:
+	+date finished: 12/11
