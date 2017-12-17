@@ -893,7 +893,6 @@ booSound = py.mixer.Sound('boo.wav')
 while 1:
     pause = True
     game_intro()
-    levelThree()
     while play == True:
         #code for the game
         #how to react to events like key presses or mouse movement
